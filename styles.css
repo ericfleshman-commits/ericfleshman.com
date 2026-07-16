@@ -476,6 +476,17 @@ details.build p { margin-top: 14px; }
 .trole { color: var(--muted); font-size: 14px; margin-left: 6px; }
 .tnote { display: block; color: var(--muted); font-size: 13.5px; margin-top: 2px; }
 
+/* Education label */
+.edu-label {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-top: 26px;
+  margin-bottom: 4px;
+}
+
 /* Open-to-roles badge */
 .open-line {
   display: inline-flex;
