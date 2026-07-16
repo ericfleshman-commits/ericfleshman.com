@@ -167,6 +167,28 @@ h2 .mono { font-size: 18px; margin-right: 10px; }
 section p { color: var(--muted); margin-bottom: 14px; }
 
 /* Agent */
+.agent-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 20px 0 12px;
+}
+.agent-step {
+  min-width: 0;
+  min-height: 106px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.agent-step-num { color: var(--accent); font-size: 12px; }
+.agent-step strong { color: var(--text); font-family: var(--display); font-size: 17px; font-weight: 600; }
+.agent-step > span:last-child { color: var(--muted); font-size: 12px; }
+.agent-privacy { color: var(--muted); font-size: 14px; margin-bottom: 6px; }
 .agent-box {
   background: var(--bg2);
   border: 1px solid var(--line);
@@ -466,6 +488,8 @@ header .btn.primary { animation: ctapulse 4s ease-in-out infinite; }
 
 @media (max-width: 600px) {
   nav .links a { margin-left: 12px; font-size: 13px; }
+  .agent-flow { grid-template-columns: 1fr; }
+  .agent-step { min-height: 84px; }
   .stat { min-width: calc(50% - 6px); }
   header, section, footer { padding: 48px 18px; }
   header { padding-top: 64px; }
