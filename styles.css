@@ -165,6 +165,7 @@ h2 {
 h2 .mono { font-size: 18px; margin-right: 10px; }
 
 section p { color: var(--muted); margin-bottom: 14px; }
+section p strong { color: var(--text); }
 
 /* Agent */
 .agent-flow {
