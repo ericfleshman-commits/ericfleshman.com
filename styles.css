@@ -433,6 +433,8 @@ details.build summary::-webkit-details-marker { display: none; }
 details.build summary::after { content: "  [ + ]"; color: var(--muted); }
 details.build[open] summary::after { content: "  [ - ]"; color: var(--muted); }
 details.build p { margin-top: 14px; }
+details.build ul { margin: 10px 0 0 20px; color: var(--muted); }
+details.build li { margin-bottom: 7px; font-size: 15.5px; }
 .shots { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
 .shots img {
   width: calc(50% - 6px);
@@ -443,7 +445,8 @@ details.build p { margin-top: 14px; }
 }
 
 /* Method */
-.tenets { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tenets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 720px) { .tenets { grid-template-columns: 1fr; } }
 .tenet {
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -475,6 +478,7 @@ details.build p { margin-top: 14px; }
 .trow strong { color: var(--text); font-family: var(--display); font-size: 16.5px; font-weight: 600; }
 .trole { color: var(--muted); font-size: 14px; margin-left: 6px; }
 .tnote { display: block; color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+.tnote strong { color: var(--text); font-weight: 650; }
 
 /* Education label */
 .edu-label {

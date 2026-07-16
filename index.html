@@ -41,7 +41,7 @@
   </svg>
   <p class="mono kicker">Eric Fleshman / AI-native GTM engineer / NYC</p>
   <h1>I don't manage,<br>I <span class="accent">ship</span>.</h1>
-  <p class="lede">I build closed-loop revenue systems with AI agents at the core, the way engineers ship software. At Kizen I built inbound automation that moved $50M+ in pipeline on a Claude agent. In AlphaForge I built a full outbound loop that sent 25 real emails, caught a real reply, and survived a production bug I fixed live.</p>
+  <p class="lede">I build closed-loop revenue systems with AI agents at the core, the way engineers ship software.</p>
   <div class="cta-row">
     <a class="btn primary" href="#agent">Run the loop on your company</a>
     <a class="btn" href="#work">See the work</a>
@@ -73,7 +73,7 @@
   <h2><span class="mono accent">02</span> Work</h2>
 
   <article class="case">
-    <h3>The $50M inbound loop <span class="mono tag">Kizen · first GTM engineering hire</span></h3>
+    <h3>The $50M inbound engine <span class="mono tag">Kizen · first GTM engineering hire</span></h3>
     <div class="stats-row">
       <div class="stat"><span class="stat-num">$50M+</span><span class="stat-label">pipeline processed</span></div>
       <div class="stat"><span class="stat-num">600+</span><span class="stat-label">changes shipped in 90 days</span></div>
@@ -90,8 +90,15 @@
     <details class="build">
       <summary>Read the full build</summary>
       <p><strong>The problem.</strong> Inbound came from three places (web forms, event lists, Apollo activity) and reps spent their day cleaning contact data instead of calling people. No system turned a raw inbound signal into a rep-ready, enriched contact automatically.</p>
-      <p><strong>What I built.</strong> End-to-end inbound automation anchored on an AI agent (Claude Sonnet) that resolves company identity from an email domain and chains directly into ZoomInfo enrichment, then routes clean, enriched contacts to the right rep. Web inbound, event contacts (400+ event leads, a $38M+ TAM), and Apollo activity all flow through it. I designed the CRM data model from scratch across 4 core objects with bidirectional relationships and shipped 600+ documented changes in 90 days with zero onboarding.</p>
-      <p><strong>The failure that taught me the most.</strong> Before the attribution chain existed, $10.91M in marketing-sourced pipeline sat in the CRM misattributed, invisible to the team that earned it, because the early system assumed source data would arrive clean. It never did. The fix was not cleaning records by hand, it was building inheritance: a Contact to Lead to Account to Opp attribution chain across 4 production automations with a standardized 8-value taxonomy, so the truth propagates instead of being re-entered.</p>
+      <p><strong>What I built.</strong> Inbound automation that turns a raw signal into a rep-ready contact with no human touch:</p>
+      <ul>
+        <li>A Claude agent resolves company identity from the email domain</li>
+        <li>ZoomInfo enrichment attaches contacts and firmographics automatically</li>
+        <li>Routing assigns the right rep by territory and quota fill</li>
+        <li>Web inbound, 400+ event leads (a $38M+ TAM), and Apollo activity all flow through the same pipe</li>
+      </ul>
+      <p>Underneath it: a CRM data model I designed from scratch across 4 core objects, and 600+ documented changes shipped in 90 days with zero onboarding.</p>
+      <p><strong>The failure that taught me the most.</strong> Before the attribution chain existed, $10.91M in marketing-sourced pipeline sat misattributed in the CRM, invisible to the team that earned it. The early system assumed source data would arrive clean. It never did. The fix was not cleaning records by hand. It was building inheritance: a Contact to Lead to Account to Opp attribution chain across 4 production automations with a standardized 8-value taxonomy, so the truth propagates instead of being re-entered.</p>
       <p><strong>Also in this system:</strong> a 4-automation bidirectional Apollo integration, 6 stage gates with a Slack bot that DMs reps their exact missing fields, and the attribution chain above.</p>
     </details>
   </article>
@@ -117,7 +124,14 @@
     <details class="build">
       <summary>Read the full build</summary>
       <p><strong>The problem.</strong> A raw construction TAM is not a market. You have to separate real equipment buyers from dealers, media, and design-only firms, find a real commercial moment, and then actually send something a real company's reputation can stand behind.</p>
-      <p><strong>What I built.</strong> A gate-first qualified TAM of 631 US heavy-civil contractors (the qualification layer rejects dealers, design-only firms, and media before anything downstream treats them as prospects), a Fit Score built on disqualification logic and public award evidence, a reusable ICP Fit Gate function that takes a plain-English ICP as input, an n8n daily permit watcher with stable dedupe, and a full outbound loop: Clay list to n8n send engine to Gmail to recipient, then the reply back through a watcher into Clay.</p>
+      <p><strong>What I built.</strong> A gate-first outbound system where only real buyers make it through:</p>
+      <ul>
+        <li>A qualified TAM of 631 US heavy-civil contractors; dealers, design-only firms, and media rejected up front</li>
+        <li>A Fit Score built on disqualification logic and public award evidence</li>
+        <li>A reusable ICP Fit Gate that takes a plain-English ICP as input</li>
+        <li>An n8n daily permit watcher with stable dedupe</li>
+        <li>The send path: Clay list to n8n send engine to Gmail, and the reply back through a watcher into Clay</li>
+      </ul>
       <p><strong>The failure that taught me the most.</strong> The first real reply almost slipped through. My watcher filtered case-sensitively for "Re:" and Gmail delivered "RE:", so the loop dropped it. I made the filter case-insensitive, republished, and the next poll caught it automatically. A bug found in production, fixed live. That is the difference between a loop that could theoretically work and one that actually closed. The reply came from an equipment leader at a top ENR heavy-civil contractor, who walked through exactly how his team decides rent versus own.</p>
       <p><strong>The ethics moment.</strong> Every draft had a value line offering an "anonymized 600-contractor study" that did not exist. I cut it before sending and replaced it with something true. "Offer value" is not a line you add to an email; it has to be true before you hit send.</p>
       <div class="shots">
@@ -132,10 +146,6 @@
 <section id="method">
   <h2><span class="mono accent">03</span> How I build</h2>
   <div class="tenets">
-    <div class="tenet">
-      <h4 class="mono"><svg class="ticon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="6 9 9 12 6 15"/><line x1="12" y1="15" x2="17" y2="15"/></svg>The verb test</h4>
-      <p>RevOps postings say manage, track, report. GTM engineering says build, deploy, ship. I am on the ship side of that line.</p>
-    </div>
     <div class="tenet">
       <h4 class="mono"><svg class="ticon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M5.5 17 9 10h6l3.5 7"/><path d="M9 10 8 7h3"/><line x1="15" y1="10" x2="13.5" y2="17"/></svg>Bike, not Ferrari</h4>
       <p>I get the motion working end to end first on the simplest stack that runs, then improve it every week. A shipped bike beats a beautiful build that never left the garage.</p>
@@ -156,10 +166,10 @@
   <h2><span class="mono accent">04</span> The path here</h2>
   <p>8+ years on B2B revenue teams, seed to Series D. I started as employee #6 at a security startup, spent years running ABM and demand gen, and became a founding GTM engineer. Marketing taught me what pipeline is worth. Engineering taught me to build the systems that create it.</p>
   <div class="timeline">
-    <div class="trow"><span class="tyear mono">2026</span><div><strong>Kizen</strong> <span class="trole">Founding GTM Engineer</span><span class="tnote">first GTM engineering hire; built the $50M inbound loop above</span></div></div>
-    <div class="trow"><span class="tyear mono">2024</span><div><strong>Convene</strong> <span class="trole">Regional Marketing Manager, NYC</span><span class="tnote">owned marketing's share of $100M+ annual pipeline targets</span></div></div>
-    <div class="trow"><span class="tyear mono">2021</span><div><strong>Augury, Podium, VTS, ComplyAdvantage</strong> <span class="trole">ABM + demand gen</span><span class="tnote">$15M ARR influenced at Augury; launched Podium's AI chatbot to $1.5M in pipeline</span></div></div>
-    <div class="trow"><span class="tyear mono">2017</span><div><strong>strongDM</strong> <span class="trole">Employee #6, founding marketing hire</span><span class="tnote">helped scale $200K to $5M+ ARR; acquired for ~$275M</span></div></div>
+    <div class="trow"><span class="tyear mono">2026</span><div><strong>Kizen</strong> <span class="trole">Founding GTM Engineer</span><span class="tnote">first GTM engineering hire; built the <strong>$50M</strong> inbound engine above</span></div></div>
+    <div class="trow"><span class="tyear mono">2024</span><div><strong>Convene</strong> <span class="trole">Regional Marketing Manager, NYC</span><span class="tnote">owned marketing's share of <strong>$100M+</strong> annual pipeline targets</span></div></div>
+    <div class="trow"><span class="tyear mono">2021</span><div><strong>Augury, Podium, VTS, ComplyAdvantage</strong> <span class="trole">ABM + demand gen</span><span class="tnote"><strong>$15M ARR</strong> influenced at Augury; launched Podium's AI chatbot to <strong>$1.5M</strong> in pipeline</span></div></div>
+    <div class="trow"><span class="tyear mono">2017</span><div><strong>strongDM</strong> <span class="trole">Employee #6, founding marketing hire</span><span class="tnote">helped scale <strong>$200K to $5M+ ARR</strong>; acquired for <strong>~$275M</strong></span></div></div>
   </div>
   <p>If you are standing up your first GTM engineering function, or making an existing revenue motion AI-native, I have done both. We should talk.</p>
   <p class="edu-label mono">Education / Certification</p>
