@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0b0e11">
+<title>The Model Is the Smallest Part | Agent Anatomy | Eric Fleshman</title>
+<meta name="description" content="An interactive, source-grounded anatomy of a production AI agent, using the open-source Grok Build harness as the case study.">
+<link rel="canonical" href="https://ericfleshman.com/agent-anatomy/">
+<meta property="og:title" content="The model is the smallest part: Agent Anatomy">
+<meta property="og:description" content="Five control systems inside a production AI agent, explained from the open-source Grok Build codebase.">
+<meta property="og:url" content="https://ericfleshman.com/agent-anatomy/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://ericfleshman.com/og-sunflower.png">
+<link rel="stylesheet" href="/agent-anatomy/styles.css">
+</head>
+<body>
+  <div class="sitebar"><a class="sitebrand" href="/">GTM<span>E</span> / Eric Fleshman</a><a href="/">Back to portfolio</a></div>
+  <div class="wrap">
+    <header class="hero">
+      <div class="kicker"><span></span> Agent Anatomy / Grok Build case study</div>
+      <h1>The model is the smallest part.</h1>
+      <p class="hero-lead">
+        A production AI agent is a model wrapped in control systems: a protocol boundary, a session brain, permission gates, isolated workspaces, evidence checks, and carefully mapped network paths. This interactive teardown uses the open-source Grok Build harness to show how those pieces work together.
+      </p>
+      <div class="meta-row">
+        <span class="chip">No Rust required</span>
+        <span class="chip">Interactive diagrams</span>
+        <span class="chip">Source-grounded</span>
+        <span class="chip">Security-aware</span>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Sections">
+      <ul>
+        <li><a href="#lifecycle">1. Prompt lifecycle</a></li>
+        <li><a href="#acp">2. ACP architecture</a></li>
+        <li><a href="#laziness">3. Laziness detector</a></li>
+        <li><a href="#subagents">4. Subagents and worktrees</a></li>
+        <li><a href="#security">5. Network and telemetry</a></li>
+        <li><a href="#checklist">6. Build checklist</a></li>
+      </ul>
+    </nav>
+
+    <section id="lifecycle">
+      <div class="section-label">Section 01</div>
+      <h2>From keystroke to model call</h2>
+      <div class="prose">
+        <p>When you press Enter in Grok Build, it can feel instantaneous: your words leave the prompt box, scrollback lights up, and a model begins thinking and calling tools. Under the hood that path is a deliberate pipeline with clear handoffs between the terminal UI, a message protocol, a session actor, and the sampling layer that talks to the model.</p>
+        <p>Nothing in that pipeline is a single “send this to the AI” function. The terminal only knows about keys and screens. The agent process only knows about sessions and conversation turns. Between them sits a protocol boundary so the UI can stay responsive while the agent does heavier work.</p>
+      </div>
+      <div class="flow-shell">
+        <div class="card">
+          <ol class="step-list" id="stepList" aria-label="Lifecycle steps"></ol>
+          <div class="stage-controls">
+            <button type="button" class="btn" id="prevStep">Previous</button>
+            <button type="button" class="btn primary" id="nextStep">Next</button>
+            <button type="button" class="btn" id="playSteps">Play</button>
+          </div>
+        </div>
+        <div class="card stage">
+          <div class="stage-visual" aria-hidden="true"><div class="pipeline" id="pipeline"></div></div>
+          <div class="stage-body"><h3 id="stepTitle">Loading…</h3><p id="stepBody"></p></div>
+        </div>
+      </div>
+      <p class="insight"><strong>Closing insight.</strong> Pressing Enter is not “calling the model.” It is enqueueing intent, crossing a protocol boundary, and letting a session actor turn that intent into a carefully built conversation request. Streaming and the tool loop are why the UI can feel alive while the real work stays ordered and recoverable on the agent side.</p>
+    </section>
+
+    <section id="acp">
+      <div class="section-label">Section 02</div>
+      <h2>ACP client and agent architecture</h2>
+      <div class="prose">
+        <p>If you open the Grok Build terminal interface and type a prompt, two cooperating halves are already talking. One draws the screen and takes your keystrokes. The other runs the model loop, tools, permissions, and session state. They speak a shared language called the <strong>Agent Client Protocol</strong> (ACP).</p>
+        <p>Think of ACP as a stage manager between the audience and the cast. The audience needs a clear view and a way to say “go.” The cast needs room to think, call tools, ask for permission, and stream dialogue line by line. ACP is the headset protocol that keeps those jobs separate without turning every update into a blocking phone call.</p>
+        <p>In the interactive app that split is usually <strong>in-process</strong>: the pager is the ACP client, and the shell is the ACP agent. The same protocol also covers headless runs, standard input and output mode for editors, and a long-lived leader process that can outlive one client.</p>
+      </div>
+      <div class="roles">
+        <div class="role client"><h4>Client (Pager)</h4><p>Renders the UI, captures input, shows scrollback and permission dialogs. Sends control requests and consumes live notifications.</p></div>
+        <div class="role agent"><h4>Agent (Shell)</h4><p>Owns model calls, tools, MCP, plan mode, and conversation state. Answers requests and pushes updates while a turn is running.</p></div>
+        <div class="role channel"><h4>Channel</h4><p>The wire between client and agent: in-memory pairs, standard input and output for external clients, or inter-process communication in leader mode.</p></div>
+        <div class="role session"><h4>Session</h4><p>A durable conversation context: history, mode, tool policy, and working directory. Most traffic is scoped to a session id.</p></div>
+      </div>
+      <div class="acp-diagram" aria-label="ACP architecture diagram">
+        <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" role="img">
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ffca28"/><stop offset="100%" stop-color="#ffdf7a"/></linearGradient></defs>
+          <rect x="24" y="48" width="200" height="124" rx="16" fill="#151a20" stroke="rgba(148,163,184,0.25)"/>
+          <text x="124" y="88" text-anchor="middle" fill="#ffca28" font-family="system-ui,sans-serif" font-size="13" font-weight="700">CLIENT</text>
+          <text x="124" y="112" text-anchor="middle" fill="#e8eaed" font-family="system-ui,sans-serif" font-size="15" font-weight="650">Pager / UI</text>
+          <text x="124" y="138" text-anchor="middle" fill="#9aa4ad" font-family="system-ui,sans-serif" font-size="11">keys, render, modals</text>
+          <rect x="260" y="78" width="200" height="64" rx="14" fill="#1a2027" stroke="rgba(52,211,153,0.4)"/>
+          <text x="360" y="106" text-anchor="middle" fill="#34d399" font-family="system-ui,sans-serif" font-size="12" font-weight="700">ACP CHANNEL</text>
+          <text x="360" y="124" text-anchor="middle" fill="#9aa4ad" font-family="system-ui,sans-serif" font-size="11">requests and notifications</text>
+          <rect x="496" y="48" width="200" height="124" rx="16" fill="#151a20" stroke="rgba(148,163,184,0.25)"/>
+          <text x="596" y="88" text-anchor="middle" fill="#ffdf7a" font-family="system-ui,sans-serif" font-size="13" font-weight="700">AGENT</text>
+          <text x="596" y="112" text-anchor="middle" fill="#e8eaed" font-family="system-ui,sans-serif" font-size="15" font-weight="650">Shell / MvpAgent</text>
+          <text x="596" y="138" text-anchor="middle" fill="#9aa4ad" font-family="system-ui,sans-serif" font-size="11">sessions, tools, model</text>
+          <path d="M224 100 H260" stroke="url(#g1)" stroke-width="2" fill="none"/><path d="M460 100 H496" stroke="url(#g1)" stroke-width="2" fill="none"/>
+          <path d="M224 130 H260" stroke="rgba(52,211,153,0.55)" stroke-width="2" stroke-dasharray="5 4" fill="none"/><path d="M460 130 H496" stroke="rgba(52,211,153,0.55)" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
+          <text x="360" y="188" text-anchor="middle" fill="#717b85" font-family="system-ui,sans-serif" font-size="11">solid: request / response   dashed: live notifications</text>
+        </svg>
+      </div>
+      <h3>Key messages</h3>
+      <ul class="rpc-list">
+        <li><code>initialize</code><span>Handshake: protocol version and capabilities on both sides.</span></li>
+        <li><code>authenticate</code><span>Prove identity and unlock features that need authentication.</span></li>
+        <li><code>session/new</code><span>Create a fresh conversation with a working directory and profile.</span></li>
+        <li><code>session/load</code><span>Resume an existing session from stored state.</span></li>
+        <li><code>session/prompt</code><span>Submit a user turn and drive the agent loop.</span></li>
+        <li><code>session/cancel</code><span>Ask the agent to stop the active turn.</span></li>
+        <li><code>session/set_mode</code><span>Switch operating mode, such as plan mode.</span></li>
+        <li><code>notifications</code><span>Live feed of message chunks, tool calls, plans, and status updates.</span></li>
+        <li><code>permission request</code><span>Reverse call: agent asks the client to approve a tool action.</span></li>
+        <li><code>x.ai/exit_plan_mode</code><span>Reverse call: agent asks for plan-exit approval from the UI.</span></li>
+      </ul>
+      <h3>How streaming works</h3>
+      <p>A turn does not wait until the whole reply is finished before the UI updates. The client calls <code>session/prompt</code> and holds that request open for the duration of the turn. While it is still outstanding, the agent fires notifications: text chunks as tokens arrive, tool cards as tools start and finish, and permission modals when a human decision is required.</p>
+      <p class="insight"><strong>Why the split matters.</strong> UI concerns stay off the model and tool loop, and agent work stays off the render path. The same agent can serve a terminal, a headless script, an editor, or a leader process that outlives one client connection.</p>
+    </section>
+
+    <section id="laziness">
+      <div class="section-label">Section 03</div>
+      <h2>The laziness detector</h2>
+      <div class="prose">
+        <p>Agents do not only fail by crashing. Sometimes they simply stop: they narrate progress without acting, ask permission for an obvious next step, claim the job is done without evidence, or leave multi-step work hanging. The Layer-3 laziness detector is Grok Build’s idle-time check for those stalls.</p>
+        <p>After a turn ends and the session goes quiet, it can classify the recent conversation as stalled or not, and when policy allows, leave a quiet reminder for the next real user turn. It never forces the agent to keep going on its own.</p>
+      </div>
+      <div class="laziness-flow" aria-label="Laziness detector pipeline">
+        <div class="lz-node"><div class="idx">01</div><h4>Turn ends</h4><p>Background check is scheduled after the visible turn finishes.</p></div>
+        <div class="lz-node"><div class="idx">02</div><h4>Opt-in gate</h4><p>Per-model setting; nudge cap can be zero for observe-only.</p></div>
+        <div class="lz-node abort"><div class="idx">03</div><h4>Idle wait</h4><p>Default about 10 seconds. User input or model switch aborts cleanly.</p></div>
+        <div class="lz-node"><div class="idx">04</div><h4>Side-channel call</h4><p>Invisible classifier: transcript as data, plus harness runtime facts.</p></div>
+        <div class="lz-node nudge"><div class="idx">05</div><h4>Optional nudge</h4><p>If stalled, confident, capped, and goal-active: inject a system reminder only.</p></div>
+      </div>
+      <div class="card"><h3 class="flush">What the classifier sees</h3><p>The request is not a continuation of the live chat. It is a strict JSON classifier prompt plus a flattened transcript of roles, tool calls, and results. The harness prepends facts the agent cannot invent, such as how many background tasks are live and how much wall-clock time the turn used. Confident prose is not treated as proof of work; matching tool calls are.</p></div>
+      <div class="cat-grid">
+        <div class="cat-col"><h4>Stalled categories</h4>
+          <div class="cat"><code>stalled_narration</code><p>Claims progress in prose without matching tool calls.</p></div>
+          <div class="cat"><code>stalled_permission_asking</code><p>Asks permission to continue work already in flight.</p></div>
+          <div class="cat"><code>stalled_no_todos_but_task_in_flight</code><p>Multi-step work is underway but structure and progress have stopped.</p></div>
+          <div class="cat"><code>stalled_false_completion</code><p>Frames work as done while major claims lack tool evidence.</p></div>
+        </div>
+        <div class="cat-col"><h4>Not stalled</h4>
+          <div class="cat ok"><code>not_stalled_complete</code><p>Major claims are backed by tool evidence.</p></div>
+          <div class="cat ok"><code>not_stalled_waiting_on_background</code><p>Correctly waiting on live background work.</p></div>
+          <div class="cat ok"><code>not_stalled_waiting_on_user</code><p>Correctly waiting on real user ambiguity.</p></div>
+          <div class="card compact"><h4>Nudge rules</h4><p>Stalled category, sufficient confidence, nudges remaining under the session cap, feature enabled, and active goal mode.</p></div>
+        </div>
+      </div>
+      <div class="grid-2 top-gap">
+        <div class="card"><h4>What it does</h4><ul class="ol-tight"><li>Runs only after idle, not mid-stream.</li><li>Keeps classification off the visible UI stream.</li><li>Supports observe-only rollout.</li><li>Injects a system reminder for the next real user turn.</li></ul></div>
+        <div class="card"><h4>What it does not do</h4><ul class="ol-tight"><li>Does not force the agent to continue by itself.</li><li>Does not invent a synthetic user turn.</li><li>Does not run when disabled.</li><li>Does not treat confident prose as proof of work.</li></ul></div>
+      </div>
+    </section>
+
+    <section id="subagents">
+      <div class="section-label">Section 04</div>
+      <h2>Subagent worktrees and conversational merge</h2>
+      <div class="prose">
+        <p>When Grok Build hands work to a subagent, two questions matter more than the implementation details: where does the child write files, and what comes back to the parent when it finishes?</p>
+        <p>The <strong>task</strong> tool spawns that child. By default it runs in the background and reports through the parent’s conversation, not through a silent git merge. Isolation decides whether the child’s edits share the parent’s workspace or live in a separate tree.</p>
+      </div>
+      <div class="compare">
+        <div class="card"><span class="badge shared">isolation: none</span><h4>Shared workspace</h4><p>The child uses the same working directory as the parent. Simple for read-heavy work, but concurrent writers can collide.</p></div>
+        <div class="card"><span class="badge isolated">isolation: worktree</span><h4>Isolated worktree</h4><p>The child gets its own git worktree under <code>~/.grok/worktrees/&lt;repo&gt;/subagent-&#123;id&#125;</code>. The child’s working directory is that path, so tool edits stay fenced.</p></div>
+      </div>
+      <div class="card"><h3 class="flush">Lifecycle</h3><ol class="ol-tight"><li>Parent calls the task tool with a prompt, agent type, and isolation choice.</li><li>If isolation is worktree, the builder creates a separate tree.</li><li>The child starts as a full session with its own transcript, tools, and turn loop.</li><li>The child works until cancellation, error, or completion.</li><li>Results fold back through conversational merge.</li><li>An optional snapshot reference can preserve the child state for resume.</li></ol></div>
+      <div class="merge-grid">
+        <div class="card yes"><h4>What “merge” means</h4><ul><li><strong>Last assistant text</strong> becomes the result the parent reads.</li><li><strong>Token usage</strong> folds into session accounting.</li><li><strong>Auto-wake</strong> can notify the parent when background work finishes.</li><li><strong>Optional snapshot reference</strong> preserves tree state.</li></ul></div>
+        <div class="card no"><h4>What merge does not mean</h4><ul><li>The parent does <strong>not</strong> automatically run git merge, rebase, or apply the child’s changes.</li><li>Isolation remains real until a human or later explicit step integrates edits.</li><li>Filesystem integration stays a deliberate choice.</li></ul></div>
+      </div>
+      <p class="insight"><strong>Closing insight.</strong> Subagents report home in language and metrics, while worktree isolation keeps their writes off the parent’s desk unless you invite them back. The design separates “tell me what you found” from “apply those changes here.”</p>
+    </section>
+
+    <section id="security">
+      <div class="section-label">Section 05</div>
+      <h2>Network egress and telemetry security</h2>
+      <div class="prose">
+        <p>Grok Build talks to the network for more than model calls. Authentication, traces, product analytics, optional OpenTelemetry, web tools, media generation, updates, session sharing, and plugins all open outbound paths. Most are intentional product features. A few are high-impact sinks that can carry source code, prompts, credentials, or code that later runs on your machine.</p>
+        <p>This table is a risk map for operators and security reviewers. Risk levels describe the size of the remaining trust boundary, not whether a feature is broken. Click a column header to sort.</p>
+      </div>
+      <div class="callout"><h4>Highest-impact paths</h4><ul><li><strong>Model inference</strong>: full conversation context and tool results.</li><li><strong>HTTP MCP servers</strong>: remote tools with credentials and arguments.</li><li><strong>Plugin marketplace git clone</strong>: installation path for hooks, MCP, and skills.</li><li><strong>Share and relay</strong>: live session activity or shareable transcripts.</li><li><strong>Trace storage</strong>: session and turn artifacts when enabled.</li><li><strong>Web fetch</strong>: agent-directed HTTP with server-side request forgery controls.</li><li><strong>Authentication and refresh</strong>: credentials that unlock other paths.</li><li><strong>Auto-update</strong>: supply-chain impact if artifacts are compromised.</li></ul></div>
+      <div class="table-tools"><input type="search" id="tableFilter" placeholder="Filter rows…" aria-label="Filter table" /><select id="riskFilter" aria-label="Filter by risk"><option value="all">All risk levels</option><option value="High">High only</option><option value="Medium">Medium only</option><option value="Low">Low only</option></select></div>
+      <div class="table-scroll"><table id="secTable"><thead><tr><th data-col="0">Destination class <span class="sort-ind">*</span></th><th data-col="1">Purpose <span class="sort-ind">*</span></th><th data-col="2">Authentication <span class="sort-ind">*</span></th><th data-col="3">What is at risk <span class="sort-ind">*</span></th><th data-col="4">Controls <span class="sort-ind">*</span></th><th data-col="5">Risk <span class="sort-ind">*</span></th></tr></thead><tbody id="secBody"></tbody></table></div>
+      <p class="table-note">Turning off product telemetry does not stop inference, MCP, plugins, or sharing. Child-process sandbox network limits do not block in-process HTTP tools.</p>
+    </section>
+
+    <section id="checklist">
+      <div class="section-label">Section 06</div>
+      <h2>Build the harness before you trust the agent</h2>
+      <div class="prose">
+        <p>Reading a production harness changed the question I ask about an agent. The model still matters, but the harder questions are what the surrounding system lets it read, change, spend, expose, and claim it completed.</p>
+        <p>I used the same review on the live agent on my portfolio. That agent researches a company and writes a first-pass GTM systems hypothesis, but it cannot enrich a person, write to a CRM, or send outreach. Its narrowness is not a missing feature. It is the control boundary.</p>
+      </div>
+      <div class="check-grid">
+        <article class="card check-card"><span class="check-num">01</span><h3>Scope</h3><p>What is the smallest input the agent needs? Remove access before adding instructions that ask the model to behave.</p></article>
+        <article class="card check-card"><span class="check-num">02</span><h3>Action</h3><p>What can it change? Put hard gates before normal permissions, or remove write capabilities entirely.</p></article>
+        <article class="card check-card"><span class="check-num">03</span><h3>Isolation</h3><p>Where do edits land? Use a separate workspace when parallel agents write, and require an explicit integration step.</p></article>
+        <article class="card check-card"><span class="check-num">04</span><h3>Permission</h3><p>Who approves risky actions? Centralize the decision so individual tools never authorize themselves.</p></article>
+        <article class="card check-card"><span class="check-num">05</span><h3>Egress</h3><p>What leaves the machine? Audit inference, traces, analytics, remote tools, and sharing as separate paths.</p></article>
+        <article class="card check-card"><span class="check-num">06</span><h3>Cost</h3><p>What stops runaway usage? Use a durable shared counter that fails closed, not memory that disappears with one server process.</p></article>
+        <article class="card check-card"><span class="check-num">07</span><h3>Proof</h3><p>What counts as done? Prefer tool evidence over confident prose, and never serve a canned success when the live path failed.</p></article>
+        <article class="card check-card"><span class="check-num">08</span><h3>Stop</h3><p>How do you turn it off without shipping code? Give the system a kill switch and the user an honest failure state.</p></article>
+      </div>
+      <h3>How the pattern translated to my public agent</h3>
+      <div class="table-scroll"><table class="compare-table"><thead><tr><th>Production harness pattern</th><th>My portfolio agent</th></tr></thead><tbody>
+        <tr><td>Hard capability boundary</td><td>No CRM writes, enrichment, contact lookup, or outbound messaging</td></tr>
+        <tr><td>Central gate before action</td><td>One server endpoint accepts only a company name, with private inputs blocked before provider calls</td></tr>
+        <tr><td>Mapped network paths</td><td>Perplexity receives the company for research, OpenRouter receives the research for synthesis, and analytics record pageviews only</td></tr>
+        <tr><td>Usage accounting</td><td>A durable Upstash counter enforces the global daily generation cap</td></tr>
+        <tr><td>Evidence over performance</td><td>No curated cache and no fake success response when research or synthesis fails</td></tr>
+        <tr><td>Operational stop</td><td>A server-side environment switch disables the endpoint without a code deployment</td></tr>
+      </tbody></table></div>
+      <div class="card provenance"><h3 class="flush">Source and limits</h3><p>This teardown is based on the public Grok Build source at commit <a href="https://github.com/xai-org/grok-build/commit/c68e39f60462f28d9be5e683d9cbe2c57b1a5027" target="_blank" rel="noopener">c68e39f</a>, published July 15, 2026. It describes that source snapshot, not every historical binary or server-side setting.</p><p class="source-note">Primary code paths: <a href="https://github.com/xai-org/grok-build/blob/c68e39f60462f28d9be5e683d9cbe2c57b1a5027/crates/codegen/xai-grok-shell/src/session/acp_session_impl/laziness_classifier.rs" target="_blank" rel="noopener">laziness classifier</a>, <a href="https://github.com/xai-org/grok-build/blob/c68e39f60462f28d9be5e683d9cbe2c57b1a5027/crates/codegen/xai-grok-shell/src/session/plan_mode.rs" target="_blank" rel="noopener">plan-mode state</a>, <a href="https://github.com/xai-org/grok-build/tree/c68e39f60462f28d9be5e683d9cbe2c57b1a5027/crates/codegen/xai-grok-shell/src/agent/subagent" target="_blank" rel="noopener">subagent coordinator</a>, and <a href="https://github.com/xai-org/grok-build/tree/c68e39f60462f28d9be5e683d9cbe2c57b1a5027/crates/codegen/xai-grok-shell/src/upload" target="_blank" rel="noopener">trace upload paths</a>.</p></div>
+    </section>
+
+    <footer><p>Built by Eric Fleshman as a source-grounded case study of Grok Build, SpaceXAI’s terminal AI coding agent. AI agents accelerated the source review and visualization; Eric chose the questions, verified the claims, and decided what was worth teaching.</p><div class="footer-links"><a href="/">Portfolio</a><a href="https://github.com/xai-org/grok-build" target="_blank" rel="noopener">Grok Build source</a><a href="https://github.com/ericfleshman-commits/ericfleshman.com" target="_blank" rel="noopener">Site source</a></div></footer>
+  </div>
+<script src="/agent-anatomy/app.js"></script>
+</body>
+</html>
