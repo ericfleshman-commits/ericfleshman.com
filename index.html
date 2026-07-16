@@ -27,6 +27,7 @@
     <a href="#agent">The loop</a>
     <a href="#work">Work</a>
     <a href="#method">How I build</a>
+    <a href="#background">Background</a>
     <a href="/Eric-Fleshman-Resume.pdf" target="_blank" rel="noopener">Resume</a>
   </div>
 </nav>
@@ -51,7 +52,12 @@
 <hr class="rule">
 <section id="agent">
   <h2><span class="mono accent">01</span> The loop, run on your company</h2>
-  <p>Type your company. What happens next is my GTM judgment, written down as a set of rules and run by two models: Perplexity researches your company's public footprint, Claude applies my playbook to that evidence, and my first-week strategy for your company appears in the box. It runs on the company, not on you: no person lookup, no enrichment, no record built.</p>
+  <div class="agent-flow" aria-label="How the agent works">
+    <div class="agent-step"><span class="mono agent-step-num">01</span><strong>Company name</strong><span>one input</span></div>
+    <div class="agent-step"><span class="mono agent-step-num">02</span><strong>Public research</strong><span>Perplexity</span></div>
+    <div class="agent-step"><span class="mono agent-step-num">03</span><strong>GTM hypothesis</strong><span>Claude + my rules</span></div>
+  </div>
+  <p class="agent-privacy">It runs on the company, not you. No person lookup, enrichment, or visitor record.</p>
   <div class="agent-box">
     <div class="agent-input-row">
       <input id="company-input" type="text" maxlength="80" placeholder="Your company name" autocomplete="organization">
@@ -147,16 +153,31 @@
 </section>
 
 <hr class="rule">
+<section id="background">
+  <h2><span class="mono accent">04</span> The path here</h2>
+  <p>8+ years on B2B revenue teams, seed to Series D. I started as employee #6 at a security startup, spent years running ABM and demand gen, and became a founding GTM engineer. Marketing taught me what pipeline is worth. Engineering taught me to build the systems that create it.</p>
+  <div class="timeline">
+    <div class="trow"><span class="tyear mono">2026</span><div><strong>Kizen</strong> <span class="trole">Founding GTM Engineer</span><span class="tnote">first GTM engineering hire; built the $50M inbound loop above</span></div></div>
+    <div class="trow"><span class="tyear mono">2024</span><div><strong>Convene</strong> <span class="trole">Regional Marketing Manager, NYC</span><span class="tnote">owned marketing's share of $100M+ annual pipeline targets</span></div></div>
+    <div class="trow"><span class="tyear mono">2021</span><div><strong>Augury, Podium, VTS, ComplyAdvantage</strong> <span class="trole">ABM + demand gen</span><span class="tnote">$15M ARR influenced at Augury; launched Podium's AI chatbot to $1.5M in pipeline</span></div></div>
+    <div class="trow"><span class="tyear mono">2017</span><div><strong>strongDM</strong> <span class="trole">Employee #6, founding marketing hire</span><span class="tnote">helped scale $200K to $5M+ ARR; acquired for ~$275M</span></div></div>
+  </div>
+  <p>If you are standing up your first GTM engineering function, or making an existing revenue motion AI-native, that is the job I want.</p>
+  <p class="mono subtext">BS Marketing, Fordham &middot; NYU graduate coursework &middot; Clay AlphaForge GTM Engineering Cohort 2</p>
+</section>
+
+<hr class="rule">
 <footer id="contact">
-  <h2><span class="mono accent">04</span> Contact</h2>
+  <h2><span class="mono accent">05</span> Contact</h2>
   <p>The agent above is the demo. This is the human.</p>
+  <p class="open-line"><span class="open-dot" aria-hidden="true"></span>Open to GTM engineering roles. Senior IC or first hire. NYC or remote.</p>
   <div class="cta-row">
     <a class="btn primary btn-ic" href="mailto:eric.fleshman@gmail.com"><svg class="bicon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6L22 7"/></svg>Email</a>
     <a class="btn btn-ic" href="/Eric-Fleshman-Resume.pdf" target="_blank" rel="noopener" aria-label="View Eric Fleshman's resume, PDF, 2 pages, opens in a new tab"><svg class="bicon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v5h5"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="15" y2="16"/></svg>View resume</a>
     <a class="btn btn-ic" href="https://www.linkedin.com/in/eric-fleshman" target="_blank" rel="noopener"><svg class="bicon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.9c0-1.88-.03-4.3-2.62-4.3-2.63 0-3.03 2.05-3.03 4.17V23H8V8z"/></svg>LinkedIn</a>
     <a class="btn btn-ic" href="https://github.com/ericfleshman-commits" target="_blank" rel="noopener"><svg class="bicon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0.5C5.65 0.5 0.5 5.65 0.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.69 1.25 3.34.95.1-.74.4-1.25.72-1.53-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.78 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .3.2.66.8.55C20.22 21.38 23.5 17.08 23.5 12 23.5 5.65 18.35 0.5 12 0.5z"/></svg>GitHub</a>
   </div>
-  <p class="mono subtext">Built by directing AI agents with guardrails and a human approval gate, which is also what I do for a living. NYC.</p>
+  <p class="mono subtext">Built by directing AI agents with guardrails and a human approval gate, which is also what I do for a living.</p>
 </footer>
 
 <script defer src="/_vercel/insights/script.js"></script>

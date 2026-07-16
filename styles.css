@@ -167,6 +167,28 @@ h2 .mono { font-size: 18px; margin-right: 10px; }
 section p { color: var(--muted); margin-bottom: 14px; }
 
 /* Agent */
+.agent-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 20px 0 12px;
+}
+.agent-step {
+  min-width: 0;
+  min-height: 106px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.agent-step-num { color: var(--accent); font-size: 12px; }
+.agent-step strong { color: var(--text); font-family: var(--display); font-size: 17px; font-weight: 600; }
+.agent-step > span:last-child { color: var(--muted); font-size: 12px; }
+.agent-privacy { color: var(--muted); font-size: 14px; margin-bottom: 6px; }
 .agent-box {
   background: var(--bg2);
   border: 1px solid var(--line);
@@ -435,6 +457,47 @@ details.build p { margin-top: 14px; }
 .ticon { width: 17px; height: 17px; flex: none; opacity: 0.9; }
 .tenet p { font-size: 15px; margin: 0; }
 
+/* Career timeline */
+.timeline { margin: 22px 0 18px; border-left: 2px solid var(--line); }
+.trow { position: relative; display: flex; gap: 16px; padding: 12px 0 12px 24px; }
+.trow::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 21px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(255, 202, 40, 0.5);
+}
+.tyear { color: var(--accent); font-size: 13px; min-width: 42px; padding-top: 3px; flex: none; }
+.trow strong { color: var(--text); font-family: var(--display); font-size: 16.5px; font-weight: 600; }
+.trole { color: var(--muted); font-size: 14px; margin-left: 6px; }
+.tnote { display: block; color: var(--muted); font-size: 13.5px; margin-top: 2px; }
+
+/* Open-to-roles badge */
+.open-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 202, 40, 0.4);
+  background: rgba(255, 202, 40, 0.07);
+  border-radius: 999px;
+  padding: 9px 18px;
+  color: var(--text);
+  font-size: 14.5px;
+  margin-bottom: 20px;
+}
+.open-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: dotblink 2s ease-in-out infinite;
+  flex: none;
+}
+
 /* Selection + keyboard focus, in brand */
 ::selection { background: rgba(255, 202, 40, 0.85); color: #0b0e11; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
@@ -452,6 +515,7 @@ header .btn.primary { animation: ctapulse 4s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-ring { animation: none; }
+  .open-dot { animation: none; }
   header .btn.primary { animation: none; }
   .agent-box.running { animation: none; }
   .agent-box.running .agent-status::before { animation: none; }
@@ -466,6 +530,8 @@ header .btn.primary { animation: ctapulse 4s ease-in-out infinite; }
 
 @media (max-width: 600px) {
   nav .links a { margin-left: 12px; font-size: 13px; }
+  .agent-flow { grid-template-columns: 1fr; }
+  .agent-step { min-height: 84px; }
   .stat { min-width: calc(50% - 6px); }
   header, section, footer { padding: 48px 18px; }
   header { padding-top: 64px; }
