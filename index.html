@@ -18,6 +18,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css?v=2">
+<link rel="stylesheet" href="/nav.css?v=1">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Eric Fleshman","url":"https://ericfleshman.com","jobTitle":"GTM Engineer","sameAs":["https://www.linkedin.com/in/eric-fleshman"]}</script>
 </head>
 <body>
@@ -29,9 +30,15 @@
     <a href="#method">How I Build</a>
     <a href="#background">Background</a>
     <span class="nav-sep" aria-hidden="true"></span>
-    <a href="/alphaforge/">AlphaForge</a>
-    <a href="/agent-anatomy/">Agent Anatomy</a>
-    <a href="/eattailor/">EatTailor</a>
+    <div class="builds-menu">
+      <button type="button" class="builds-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="builds-panel">Builds<svg class="chev" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="builds-panel" id="builds-panel" hidden>
+        <a class="build-item" href="/alphaforge/"><span class="bi-name">AlphaForge</span><span class="bi-desc">Twelve builds in four weeks, and the outbound loop that answered back.</span></a>
+        <a class="build-item" href="/eattailor/"><span class="bi-name">EatTailor</span><span class="bi-desc">A class project taken from idea to a live app, rebuilt by directing AI agents.</span></a>
+        <a class="build-item" href="/agent-anatomy/"><span class="bi-name">Agent Anatomy</span><span class="bi-desc">A teardown of a production coding agent, and why the model is the smallest part.</span></a>
+        <span class="build-item soon"><span class="bi-name">Candidate Zero</span><span class="bi-desc">Job-market verification tooling. Not published yet.</span></span>
+      </div>
+    </div>
     <span class="nav-sep" aria-hidden="true"></span>
     <a href="/Eric-Fleshman-Resume.pdf" target="_blank" rel="noopener">Resume</a>
   </div>
@@ -197,6 +204,7 @@
 </footer>
 
 <script defer src="/_vercel/insights/script.js"></script>
+<script src="/nav.js?v=1"></script>
 <script src="/app.js"></script>
 </body>
 </html>

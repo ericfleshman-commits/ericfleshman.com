@@ -16,9 +16,25 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/alphaforge/styles.css?v=2">
+<link rel="stylesheet" href="/nav.css?v=1">
 </head>
 <body>
-  <div class="sitebar"><a class="sitebrand" href="/">GTM<span>E</span> / Eric Fleshman</a><a href="/">Back to portfolio</a></div>
+  <div class="sitebar">
+    <a class="sitebrand" href="/">GTM<span>E</span> / Eric Fleshman</a>
+    <div class="sitebar-links">
+      <a href="/#work">Work</a>
+      <div class="builds-menu">
+      <button type="button" class="builds-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="builds-panel">Builds<svg class="chev" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="builds-panel" id="builds-panel" hidden>
+        <a class="build-item current" href="/alphaforge/" aria-current="page"><span class="bi-name">AlphaForge</span><span class="bi-desc">Twelve builds in four weeks, and the outbound loop that answered back.</span></a>
+        <a class="build-item" href="/eattailor/"><span class="bi-name">EatTailor</span><span class="bi-desc">A class project taken from idea to a live app, rebuilt by directing AI agents.</span></a>
+        <a class="build-item" href="/agent-anatomy/"><span class="bi-name">Agent Anatomy</span><span class="bi-desc">A teardown of a production coding agent, and why the model is the smallest part.</span></a>
+        <span class="build-item soon"><span class="bi-name">Candidate Zero</span><span class="bi-desc">Job-market verification tooling. Not published yet.</span></span>
+      </div>
+    </div>
+      <a href="/Eric-Fleshman-Resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </div>
   <div class="wrap">
 
     <header class="hero">
@@ -254,6 +270,7 @@
     </footer>
   </div>
 
+<script src="/nav.js?v=1"></script>
 <script src="/alphaforge/app.js?v=2"></script>
 </body>
 </html>
