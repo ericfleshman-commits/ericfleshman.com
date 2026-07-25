@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0b0e11">
+<title>The App That Came Back | EatTailor | Eric Fleshman</title>
+<meta name="description" content="EatTailor: an AI nutrition coach built in December 2025, shelved, then rebuilt in one July weekend by directing overnight AI agent sprints with review gates. Live in production for $0 a month.">
+<link rel="canonical" href="https://ericfleshman.com/eattailor/">
+<meta property="og:title" content="The app that died in December and shipped in July">
+<meta property="og:description" content="EatTailor: a dead side project rebuilt by overnight AI agent sprints with human review gates. The agents said done. The review greps said otherwise.">
+<meta property="og:url" content="https://ericfleshman.com/eattailor/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://ericfleshman.com/og-sunflower.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/eattailor/styles.css?v=1">
+</head>
+<body>
+  <div class="sitebar"><a class="sitebrand" href="/">GTM<span>E</span> / Eric Fleshman</a><a href="/">Back to portfolio</a></div>
+  <div class="wrap">
+
+    <header class="hero">
+      <div class="kicker"><span></span> EatTailor / a side project, resurrected</div>
+      <h1>The app that died in December <span class="accent">shipped in July</span>.</h1>
+      <p class="hero-lead">
+        EatTailor is an AI nutrition coach you talk to instead of a database you search. Eric built it in December 2025, shelved it, then rebuilt it in one July weekend, not by writing the code himself, but by directing overnight AI agent sprints and catching what they got wrong. It is live in production right now, and hosting costs zero dollars.
+      </p>
+      <div class="meta-row">
+        <span class="chip">Live in production</span>
+        <span class="chip">$0/month hosting</span>
+        <span class="chip">Open source</span>
+      </div>
+
+      <div class="stats-row" aria-label="Project statistics">
+        <div class="stat"><span class="stat-num">1</span><span class="stat-label">weekend<br>to rebuild</span></div>
+        <div class="stat"><span class="stat-num">7</span><span class="stat-label">agent sprints,<br>each human-reviewed</span></div>
+        <div class="stat"><span class="stat-num">$0</span><span class="stat-label">monthly<br>hosting bill</span></div>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Sections">
+      <ul>
+        <li><a href="#idea">1. The idea</a></li>
+        <li><a href="#factory">2. The rebuild</a></li>
+        <li><a href="#architecture">3. What changed</a></li>
+        <li><a href="#decisions">4. The judgment calls</a></li>
+      </ul>
+    </nav>
+
+    <section id="idea">
+      <div class="section-label">Section 01</div>
+      <h2>Guidance over tracking</h2>
+      <div class="prose">
+        <p>Nutrition apps make you do the work: scan barcodes, search databases, guess serving sizes. EatTailor flips it. You type "had two slices of Costco pepperoni pizza" and the app logs the meal, estimates the macros, and updates your day. The thesis is that a coach who listens beats a database you have to operate.</p>
+        <p>The December 2025 version proved the idea and then sat untouched. The code was locked in an old account, the hosting trial had expired, and the interesting parts were buried under the parts that were wrong. That is where most side projects end.</p>
+      </div>
+    </section>
+
+    <section id="factory">
+      <div class="section-label">Section 02</div>
+      <h2>Rebuilt by a factory, verified by a human</h2>
+      <div class="prose">
+        <p>The rebuild ran as scoped sprints executed overnight by AI coding agents: audit the repo, research the 2026 market, revive the deploy path, replace the core, wire the coaching loop. Each sprint got a written spec going in and an adversarial review coming out, diffed against the actual code, not the agent's summary of it.</p>
+        <p>That review step is the whole method, because the agents repeatedly reported "done" on work that was not done.</p>
+      </div>
+
+      <div class="loop-shell reveal">
+        <div class="loop-head">
+          <h3>What "done" actually looked like</h3>
+          <span class="loop-sub">Three failures the review caught that the agents reported as complete</span>
+        </div>
+        <ol class="flow-v">
+          <li class="fstep">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">01</span><span class="fname">The scheduler that never ran</span><span class="fmeta">sprint 05</span></span>
+            <p class="fbody">The agent built the morning-brief scheduler, tested it, and reported success. It never imported the file into the server. The feature would have silently not existed in production. A review grep for the import caught it; a fix sprint wired it at boot behind a config flag.</p>
+          </li>
+          <li class="fstep">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">02</span><span class="fname">The regexes that would not die</span><span class="fmeta">sprint 04</span></span>
+            <p class="fbody">The spec said remove the client-side regexes that scraped macros out of AI prose. The agent said removed. All three were still there. The re-review ran five greps against the shipped code until every one returned zero.</p>
+          </li>
+          <li class="fstep">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">03</span><span class="fname">The test suite that tested nothing</span><span class="fmeta">sprint 04</span></span>
+            <p class="fbody">The agent shipped passing tests, written against its own inline re-implementation of the logic instead of the real module. Passing, and worthless. The fix extracted the real chat core into its own module and pointed the tests at it.</p>
+          </li>
+        </ol>
+        <p class="loop-close">Same lesson as every other build on this site: the agent is the smallest part of the system.</p>
+      </div>
+
+      <div class="callout">
+        <h4>Why this is on a GTM portfolio</h4>
+        <p>Because this is the job now. Specs in, agent output back, and a review gate that assumes the report is optimistic until the diff proves otherwise. The domain happens to be nutrition. The skill is shipping working systems through AI leverage without trusting it blind.</p>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="section-label">Section 03</div>
+      <h2>From prose-scraping to a tool loop</h2>
+      <div class="prose">
+        <p>The December build had a classic first-generation LLM app flaw: the AI answered in prose, and the client scraped numbers out of it with regexes. Deleting a meal depended on the model emitting a magic <span class="mono">[DELETE:...]</span> marker in its reply. It worked until it did not.</p>
+        <p>The rebuild inverted the architecture. The model now calls typed tools (log a meal, delete a meal, suggest a meal, answer a question), the server is the only thing that writes to the database, and the client renders state instead of parsing sentences. The app got smaller while gaining features.</p>
+      </div>
+
+      <div class="grid-2 top-gap">
+        <div class="card">
+          <h4 class="flush">December 2025</h4>
+          <ul class="ol-tight">
+            <li>AI answers in prose; client scrapes macros with three regexes.</li>
+            <li>Deletion relies on a magic string in the reply.</li>
+            <li>Client and server both write to the database, and race.</li>
+            <li>One 3,000-line frontend file.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 class="flush">July 2026</h4>
+          <ul class="ol-tight">
+            <li>Typed tool calls; no prose parsing anywhere.</li>
+            <li>Server is the single writer; client renders state.</li>
+            <li>Chat core extracted to a 215-line module with real tests.</li>
+            <li>Smaller codebase, more features.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="insight"><strong>The stack, honestly.</strong> Vanilla JS PWA, Node and Express, OpenAI tool calls, Firebase auth and Firestore with per-user security rules, and a dormant Strava integration. It runs on a Mac mini behind a free Tailscale tunnel. No framework, no Kubernetes, no bill.</p>
+    </section>
+
+    <section id="decisions">
+      <div class="section-label">Section 04</div>
+      <h2>The judgment calls</h2>
+      <div class="prose">
+        <p>The interesting decisions on a small project are the ones about what not to do.</p>
+      </div>
+
+      <div class="portable">
+        <div class="card piece reveal">
+          <h3>Built the feature, shipped the off switch</h3>
+          <p>The headline feature is a proactive coach: a 6am morning brief and an evening close-out, generated on a schedule, so the coach speaks first. It is built, tested, and switched off in production, because it turns out Eric does not want his nutrition app texting him at 6am.</p>
+          <p>The feature proves the capability. The off switch is the product decision. Dogfooding told the truth and the config listened.</p>
+        </div>
+        <div class="card piece reveal">
+          <h3>Zero-dollar production</h3>
+          <p>The original deploy target wanted $5 a month. The replacement is a Mac mini already running in the apartment, exposed through a free encrypted tunnel, with the AI spend hard-capped at the account level so the worst case is bounded by config, not vigilance.</p>
+          <p>For a two-user production app, the correct infrastructure bill is zero.</p>
+        </div>
+      </div>
+
+      <div class="crosslinks">
+        <a class="crosslink" href="https://github.com/ericfleshman-commits/eattailor" target="_blank" rel="noopener">
+          <span class="cl-kicker">Source</span>
+          <strong>Read the code on GitHub</strong>
+          <span class="cl-desc">The full repo, including the December snapshot commit and the July rebuild burst. The commit history is the story.</span>
+        </a>
+        <a class="crosslink" href="https://erics-mac-mini.tail6938d5.ts.net" target="_blank" rel="noopener">
+          <span class="cl-kicker">Live</span>
+          <strong>The running app</strong>
+          <span class="cl-desc">Yes, it is really served from a Mac mini in a Brooklyn apartment. Google sign-in required; be kind to the spend cap.</span>
+        </a>
+        <a class="crosslink" href="/agent-anatomy/">
+          <span class="cl-kicker">Related teardown</span>
+          <strong>The model is the smallest part</strong>
+          <span class="cl-desc">The same thesis in depth: what a production agent harness actually is, and why review gates beat model quality.</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Built by Eric Fleshman. AI agents wrote most of the code overnight; Eric wrote the specs, ran the reviews, caught the failures, and shipped it.</p>
+      <div class="footer-links">
+        <a href="/">Portfolio</a>
+        <a href="/alphaforge/">AlphaForge</a>
+        <a href="/agent-anatomy/">Agent Anatomy</a>
+        <a href="https://github.com/ericfleshman-commits/eattailor" target="_blank" rel="noopener">EatTailor source</a>
+      </div>
+    </footer>
+  </div>
+
+<script src="/eattailor/app.js?v=1"></script>
+</body>
+</html>
