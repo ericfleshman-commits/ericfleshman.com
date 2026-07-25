@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0b0e11">
+<title>Four Weeks, Twelve Builds | AlphaForge | Eric Fleshman</title>
+<meta name="description" content="Eric Fleshman's full AlphaForge arc: 50 builders selected from 1,000+ applicants, 12 builds in 4 weeks, the Architect Award, and an outbound system that closed on a real buyer reply.">
+<link rel="canonical" href="https://ericfleshman.com/alphaforge/">
+<meta property="og:title" content="Four weeks, twelve builds, one system that answered back">
+<meta property="og:description" content="The full AlphaForge GTM Systems Engineering arc: the cohort, the 12 builds, the Caterpillar loop, and the reply that closed it.">
+<meta property="og:url" content="https://ericfleshman.com/alphaforge/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://ericfleshman.com/og-sunflower.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/alphaforge/styles.css?v=2">
+</head>
+<body>
+  <div class="sitebar"><a class="sitebrand" href="/">GTM<span>E</span> / Eric Fleshman</a><a href="/">Back to portfolio</a></div>
+  <div class="wrap">
+
+    <header class="hero">
+      <div class="kicker"><span></span> AlphaForge / Clay's GTM engineering program &middot; Cohort 2</div>
+      <h1>Four weeks, twelve builds, one system that <span class="accent">answered back</span>.</h1>
+      <p class="hero-lead">
+        Eric Fleshman was one of 50 builders selected from more than 1,000 applicants for AlphaForge Cohort 2: four weeks, twelve shipped builds, graded on working systems. This page is the record of that arc, from the first warmup build to the outbound loop that closed on a real buyer reply.
+      </p>
+      <div class="meta-row">
+        <span class="chip">Cohort 2</span>
+        <span class="chip">Architect Award, coaches' pick</span>
+        <span class="chip">One live reply</span>
+      </div>
+
+      <div class="stats-row" aria-label="Cohort statistics">
+        <div class="stat"><span class="stat-num">50</span><span class="stat-label">builders selected<br>from 1,000+ applicants</span></div>
+        <div class="stat"><span class="stat-num">12</span><span class="stat-label">builds shipped</span></div>
+        <div class="stat"><span class="stat-num">4</span><span class="stat-label">weeks</span></div>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Sections">
+      <ul>
+        <li><a href="#awards">1. Selected</a></li>
+        <li><a href="#loop">2. The Caterpillar loop</a></li>
+        <li><a href="#builds">3. All twelve builds</a></li>
+        <li><a href="#portable">4. What traveled</a></li>
+      </ul>
+    </nav>
+
+    <section id="awards">
+      <div class="section-label">Section 01</div>
+      <h2>Selected, then picked twice</h2>
+      <div class="prose">
+        <p>AlphaForge is Clay's GTM engineering program. Cohort 2 took 50 builders out of a pool north of a thousand, put them on a four-week shipping cadence, and graded on working systems rather than slide decks. At graduation the coaching staff handed out awards. Eric came out of it with the coaches' pick and a paper plate.</p>
+      </div>
+
+      <div class="award-carousel reveal" aria-roledescription="carousel" aria-label="Graduation award slides">
+        <div class="ac-track" tabindex="0">
+          <figure class="ac-slide" data-i="0">
+            <img src="/images/alphaforge/architect-award-slide.png" alt="Architect Award citation slide for Eric Fleshman: systems thinking that made everyone else's build sharper" width="2000" height="1125">
+            <figcaption>
+              <span class="award-tag">Architect Award &middot; coaches' pick</span>
+              <p><strong>"Systems thinking that made everyone else's build sharper."</strong> Selected by the AlphaForge coaching team after what the deck called a frankly heated debate.</p>
+            </figcaption>
+          </figure>
+          <figure class="ac-slide" data-i="1">
+            <img src="/images/alphaforge/architect-award-announcement.png" alt="AlphaForge graduation slide announcing the Architect Award winner: Eric" loading="lazy" width="2000" height="1125">
+            <figcaption>
+              <span class="award-tag">Graduation &middot; award 07</span>
+              <p>The reveal: "For the builder whose systems thinking made everyone else's work better." And the winner is... Eric.</p>
+            </figcaption>
+          </figure>
+          <figure class="ac-slide" data-i="2">
+            <img src="/images/alphaforge/paper-plate-award-slide.png" alt="Paper plate award: The There's a Better Tool Award for Eric Fleshman" loading="lazy" width="2000" height="1125">
+            <figcaption>
+              <span class="award-tag fun">Paper plate &middot; no. 10 of 24</span>
+              <p>The "There's a Better Tool" Award. "Every week he'd post about another browser tab, another AI assistant, always knowing which tool fit the job."</p>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="ac-controls">
+          <button type="button" class="ac-btn" data-dir="-1" aria-label="Previous slide">&#8249;</button>
+          <div class="ac-dots" role="tablist" aria-label="Slide selector">
+            <button type="button" class="ac-dot active" data-go="0" aria-label="Slide 1: Architect Award citation"></button>
+            <button type="button" class="ac-dot" data-go="1" aria-label="Slide 2: winner announcement"></button>
+            <button type="button" class="ac-dot" data-go="2" aria-label="Slide 3: paper plate award"></button>
+          </div>
+          <button type="button" class="ac-btn" data-dir="1" aria-label="Next slide">&#8250;</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="loop">
+      <div class="section-label">Section 02</div>
+      <h2>The Caterpillar build, end to end</h2>
+      <div class="prose">
+        <p>The centerpiece, assembled layer by layer across the middle weeks of the cohort, was an outbound system built for a heavy-equipment go-to-market: find US heavy-civil contractors at a real commercial moment, disqualify everything that only looks like a buyer, and send something a real company's reputation can stand behind. A raw construction TAM is not a market. Dealers, design-only firms, and trade media all show up in the same list as the people who actually buy and rent machines.</p>
+        <p>So the system was built gate-first. Signal arrives, a gate decides whether it deserves human attention, and only what passes gets enriched, drafted, and sent. The measure of the build was never the diagram. It was whether the loop would close on a stranger.</p>
+      </div>
+
+      <div class="loop-shell reveal">
+        <div class="loop-head">
+          <h3>Signal in, reply back</h3>
+          <span class="loop-sub">Clay to n8n to Gmail to watcher, back into Clay</span>
+        </div>
+        <ol class="flow-v">
+          <li class="fstep">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">01</span><span class="fname">Signal in</span><span class="fmeta">n8n daily watcher</span></span>
+            <p class="fbody">A trigger event lands: a public award or permit filing that says a contractor just took on work. An n8n watcher polls public federal award data (the USASpending API) daily with stable dedupe, so the same award never enters the pipe twice. The proof run entered on a real one: McCarthy Building Companies and a $220M I-70 corridor award.</p>
+          </li>
+          <li class="fstep">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">02</span><span class="fname">ICP Fit Gate</span><span class="fmeta">pass / fail + reasoning</span></span>
+            <p class="fbody">The gate scores the signal and writes down why. It runs on disqualification logic first: dealers, design-only firms, and media get rejected before anything expensive happens. What survived across the full sweep was a qualified TAM of <strong>631 US heavy-civil contractors</strong>. Every verdict carries its reasoning, so a bad call is debuggable instead of mysterious.</p>
+          </li>
+          <li class="fstep">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">03</span><span class="fname">Enrich</span><span class="fmeta">Clay</span></span>
+            <p class="fbody">Only accounts that cleared the gate get enriched: firmographics, the equipment and operations roles that actually decide rent versus own, and the public award evidence that justified the reach-out in the first place. Across the proof cohort that meant 46 named decision-makers, 40 of them with verified work emails.</p>
+          </li>
+          <li class="fstep">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">04</span><span class="fname">Engage</span><span class="fmeta">25 approved, 24 delivered</span></span>
+            <p class="fbody">Drafts are personalized off the enriched evidence, then pass a human approval gate before the n8n send engine hands them to Gmail. Twenty-five approved sends, twenty-four delivered.</p>
+          </li>
+          <li class="fstep proof">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">05</span><span class="fname">The loop answered back</span><span class="fmeta">Traylor Bros &middot; real buyer reply</span></span>
+            <p class="fbody">A real reply came back from Traylor Bros, a top ENR heavy-civil contractor. Not an out-of-office and not a bounce: an equipment leader who walked through exactly how his team decides rent versus own. This is the proof point. Every box above it is a claim until a stranger answers.</p>
+            <div class="reply-card">
+              <div class="from">Inbound &middot; equipment leader, Traylor Bros</div>
+              <p>Walked through his team's actual rent-versus-own decision process, unprompted.</p>
+            </div>
+          </li>
+          <li class="fstep fix">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">06</span><span class="fname">The RE: bug, caught live</span><span class="fmeta">fixed mid-cohort</span></span>
+            <p class="fbody">That reply almost never registered. The watcher filtered case-sensitively for one spelling of the reply prefix, and Gmail delivered another. The loop silently dropped the only thing it existed to catch. The fix was a case-insensitive filter, republished; the next poll picked the reply up automatically and pushed it back into Clay.</p>
+            <p class="bugline">filter: <span class="bad">"Re:"</span> becomes <span class="good">/^re:/i</span> &nbsp;&nbsp;// found in production, fixed live</p>
+          </li>
+        </ol>
+        <p class="loop-close">Reply written back into Clay. Loop closed.</p>
+      </div>
+
+      <div class="callout">
+        <h4>The ethics moment</h4>
+        <p>Every draft carried a value line offering an "anonymized 600-contractor study" that did not exist. It got cut before sending and replaced with something true. "Offer value" is not a line you add to an email. It has to be true before you hit send.</p>
+      </div>
+
+      <div class="grid-2 top-gap">
+        <div class="card">
+          <h4 class="flush">What the build proved</h4>
+          <ul class="ol-tight">
+            <li>A gate with written reasoning beats a score with none.</li>
+            <li>Disqualification logic is cheaper than enrichment.</li>
+            <li>A human approval gate is part of the system, not overhead on it.</li>
+            <li>A loop is only closed once you have watched it close.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 class="flush">What it deliberately did not do</h4>
+          <ul class="ol-tight">
+            <li>No sending without a human approving the draft.</li>
+            <li>No claims in copy that could not be backed up.</li>
+            <li>No enrichment spend on accounts the gate rejected.</li>
+            <li>No silent failures: a dropped reply had to be findable.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="insight"><strong>Coach's read.</strong> "The fullest loop I've seen." The system was not the most complicated one in the cohort. It was the one where signal, gate, enrichment, send, and reply were all wired to the same circuit, so a real answer had somewhere to land.</p>
+    </section>
+
+    <section id="builds">
+      <div class="section-label">Section 03</div>
+      <h2>All twelve builds</h2>
+      <div class="prose">
+        <p>Four weeks, one build shipped at a time, each one a working system rather than a plan for one. The foundations set the writing and thinking standard, the middle builds assembled the Caterpillar system layer by layer, P9 put real emails in real inboxes, and the final week turned the work into public artifacts.</p>
+      </div>
+
+      <div class="build-phase"><h3>Foundations</h3><span class="rule"></span></div>
+      <ol class="build-list">
+        <li><span class="bnum">W</span><span class="bname">Origin story</span><span class="bdesc">The honest narrative: why marketing-to-GTM-engineering, written before any table existed.</span></li>
+        <li><span class="bnum">P1</span><span class="bname">Nobody Wants the Tool That Tells the Truth</span><span class="bdesc">Ship an assertion, not an insight. The writing standard every later build was graded against.</span></li>
+        <li><span class="bnum">P2</span><span class="bname">Teaching Is Knowing</span><span class="bdesc">Published as "The AI Agent Is the Smallest Part of the System." The harness thesis, early.</span></li>
+      </ol>
+      <div class="build-phase"><h3>The system, layer by layer</h3><span class="rule"></span></div>
+      <ol class="build-list">
+        <li><span class="bnum">P3</span><span class="bname">Your First Build</span><span class="bdesc">An accounting-firm FETE table (Find, Enrich, Tier, Engage). Shipped as a build log titled "The Build Broke at Step 1," because iteration is the point.</span></li>
+        <li><span class="bnum">P4</span><span class="bname">Audiences</span><span class="bdesc">"Stop Selling Excavators to Architecture Firms." The Caterpillar ICP and a 5-layer audience architecture.</span></li>
+        <li><span class="bnum">P5</span><span class="bname">Signals &amp; Intent</span><span class="bdesc">Live news and fundraising signals layered onto the audience, with recency and confidence gates over raw signal dumps.</span></li>
+        <li><span class="bnum">P6</span><span class="bname">Make It Reusable</span><span class="bdesc">The published ICP Fit Gate function plus a live federal-data webhook leg. Built the evening of July 4.</span></li>
+        <li><span class="bnum">P7</span><span class="bname">TAM</span><span class="bdesc">631 qualified heavy-civil contractors, and a silent payload bug found and documented on the way.</span></li>
+        <li><span class="bnum">P8</span><span class="bname">Segment Strategically</span><span class="bdesc">Trigger-based segments (Owner-Led, Sales-Led, Enterprise) defended against a lazy size-based cut.</span></li>
+      </ol>
+      <div class="build-phase"><h3>The loop closes</h3><span class="rule"></span></div>
+      <ol class="build-list">
+        <li><span class="bnum">P9</span><span class="bname">Make It Fire</span><span class="bdesc">The live send: 25 approved, 24 delivered, one real buyer reply. The RE: filter bug found and fixed in production.</span></li>
+      </ol>
+      <div class="build-phase"><h3>Positioning and public artifacts</h3><span class="rule"></span></div>
+      <ol class="build-list">
+        <li><span class="bnum">P10</span><span class="bname">Pick Your Wedge</span><span class="bdesc">The positioning brief. "I don't manage, I ship."</span></li>
+        <li><span class="bnum">P11</span><span class="bname">Make It Yours</span><span class="bdesc">This website. "My portfolio prospects you back."</span></li>
+        <li><span class="bnum">P12</span><span class="bname">Teach It Forward</span><span class="bdesc"><a href="/agent-anatomy/">Agent Anatomy</a>, the public teardown of a production coding agent.</span></li>
+      </ol>
+      <p class="note mono">// Numbering and titles are the cohort's own prompt sequence, Cohort 2, June to July 2026.</p>
+    </section>
+
+    <section id="portable">
+      <div class="section-label">Section 04</div>
+      <h2>What traveled past graduation</h2>
+      <div class="prose">
+        <p>Most cohort work stops being useful the day the cohort ends. Two pieces of this one did not, because they were built as components rather than as demos.</p>
+      </div>
+
+      <div class="portable">
+        <div class="card piece reveal">
+          <h3>The ICP Fit Gate</h3>
+          <p>Built for one heavy-civil TAM, but the input is a plain-English ICP and the output is a verdict with its reasoning attached. That signature is what made it portable: point it at a different market, hand it a different ICP, and the disqualification-first logic still holds.</p>
+          <p>It is now the reusable component in front of anything that costs money to enrich or credibility to send.</p>
+        </div>
+        <div class="card piece reveal">
+          <h3>The workspace reorg</h3>
+          <p>Mid-cohort, the project workspace stopped being navigable. Twelve builds in four weeks generates tables, views, and workflows faster than any naming convention survives by accident.</p>
+          <p>The reorg was a build in its own right: restructure the workspace so any single build could be found, re-run, and explained without its author in the room. Shipping speed after the reorg is the argument for it.</p>
+        </div>
+      </div>
+
+      <div class="crosslinks">
+        <a class="crosslink" href="/agent-anatomy/">
+          <span class="cl-kicker">Related teardown</span>
+          <strong>The model is the smallest part</strong>
+          <span class="cl-desc">The same gate-first instinct, applied to a production AI agent harness: permissions, isolation, egress, and what counts as proof of work.</span>
+        </a>
+        <a class="crosslink" href="/#agent">
+          <span class="cl-kicker">Live on the homepage</span>
+          <strong>Run the loop on your company</strong>
+          <span class="cl-desc">A narrow public agent: one company name in, a first-pass GTM systems hypothesis out. No enrichment, no CRM writes, no outreach. The narrowness is the control boundary.</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Built by Eric Fleshman as a record of AlphaForge, Clay's GTM engineering program. AI agents accelerated the build; Eric chose the questions, verified the claims, and shipped every deadline.</p>
+      <div class="footer-links">
+        <a href="/">Portfolio</a>
+        <a href="/agent-anatomy/">Agent Anatomy</a>
+        <a href="/Eric-Fleshman-Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="https://github.com/ericfleshman-commits/ericfleshman.com" target="_blank" rel="noopener">Site source</a>
+      </div>
+    </footer>
+  </div>
+
+<script src="/alphaforge/app.js?v=2"></script>
+</body>
+</html>
