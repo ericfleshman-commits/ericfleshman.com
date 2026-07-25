@@ -1,0 +1,84 @@
+/* Shared Builds menu — used by the homepage nav and every deep-page sitebar.
+   Inherits each page's own --accent, so it recolors per page automatically. */
+
+.builds-menu { position: relative; display: inline-flex; align-items: center; }
+
+.builds-trigger {
+  font-family: inherit;
+  font-size: .84rem;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  line-height: 1;
+}
+.builds-trigger:hover,
+.builds-trigger[aria-expanded="true"] { color: var(--text); }
+.builds-trigger .chev {
+  width: 9px; height: 9px;
+  transition: transform .18s ease;
+  opacity: .85;
+}
+.builds-trigger[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+.builds-panel {
+  position: absolute;
+  top: calc(100% + .7rem);
+  right: 0;
+  z-index: 200;
+  width: min(340px, calc(100vw - 2rem));
+  background: #10151a;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 20px 44px -14px rgba(0,0,0,.75);
+  padding: .4rem;
+  display: grid;
+  gap: .1rem;
+}
+.builds-panel[hidden] { display: none; }
+
+.build-item {
+  display: grid;
+  gap: .2rem;
+  padding: .62rem .72rem;
+  border-radius: 9px;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+}
+a.build-item:hover { background: rgba(255,255,255,.05); text-decoration: none; }
+.bi-name { color: var(--text); font-size: .88rem; font-weight: 600; letter-spacing: .01em; }
+.bi-desc { color: var(--muted); font-size: .755rem; line-height: 1.45; }
+
+.build-item.current {
+  border-left-color: var(--accent);
+  background: rgba(255,255,255,.035);
+}
+.build-item.current .bi-name { color: var(--accent); }
+
+.build-item.soon { opacity: .5; cursor: default; }
+.build-item.soon .bi-name { font-weight: 500; }
+
+/* Homepage nav sizing */
+nav .links .builds-menu { margin-left: 18px; }
+nav .links .builds-trigger { font-size: 14px; }
+
+/* Deep-page sitebar */
+.sitebar-links { display: flex; align-items: center; gap: 1.1rem; }
+.sitebar-links a { color: var(--muted); font-size: .84rem; }
+.sitebar-links a:hover { color: var(--text); text-decoration: none; }
+
+@media (max-width: 640px) {
+  nav .links .builds-menu { margin-left: 12px; }
+  nav .links .builds-trigger { font-size: 13px; }
+  .sitebar-links { gap: .8rem; }
+  .builds-panel { width: min(300px, calc(100vw - 1.5rem)); }
+}
+
+/* Brand is a link home on every page */
+nav .brand { cursor: pointer; text-decoration: none; }
+nav a.brand:hover { opacity: .82; text-decoration: none; }
+.sitebar .sitebrand:hover { opacity: .82; text-decoration: none; }

@@ -13,9 +13,24 @@
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://ericfleshman.com/og-sunflower.png">
 <link rel="stylesheet" href="/agent-anatomy/styles.css">
+<link rel="stylesheet" href="/nav.css?v=1">
 </head>
 <body>
-  <div class="sitebar"><a class="sitebrand" href="/">GTM<span>E</span> / Eric Fleshman</a><a href="/">Back to portfolio</a></div>
+  <div class="sitebar">
+    <a class="sitebrand" href="/">GTM<span>E</span> / Eric Fleshman</a>
+    <div class="sitebar-links">
+      <a href="/#work">Work</a>
+      <div class="builds-menu">
+      <button type="button" class="builds-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="builds-panel">Builds<svg class="chev" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="builds-panel" id="builds-panel" hidden>
+        <a class="build-item" href="/alphaforge/"><span class="bi-name">AlphaForge</span><span class="bi-desc">Twelve builds in four weeks, and the outbound loop that answered back.</span></a>
+        <a class="build-item" href="/eattailor/"><span class="bi-name">EatTailor</span><span class="bi-desc">A class project taken from idea to a live app, rebuilt by directing AI agents.</span></a>
+        <a class="build-item current" href="/agent-anatomy/" aria-current="page"><span class="bi-name">Agent Anatomy</span><span class="bi-desc">A teardown of a production coding agent, and why the model is the smallest part.</span></a>
+      </div>
+    </div>
+      <a href="/Eric-Fleshman-Resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </div>
   <div class="wrap">
     <header class="hero">
       <div class="kicker"><span></span> Agent Anatomy / Grok Build case study</div>
@@ -216,6 +231,7 @@
 
     <footer><p>Built by Eric Fleshman as a source-grounded case study of Grok Build, SpaceXAI’s terminal AI coding agent. AI agents accelerated the source review and visualization; Eric chose the questions, verified the claims, and decided what was worth teaching.</p><div class="footer-links"><a href="/">Portfolio</a><a href="https://github.com/xai-org/grok-build" target="_blank" rel="noopener">Grok Build source</a><a href="https://github.com/ericfleshman-commits/ericfleshman.com" target="_blank" rel="noopener">Site source</a></div></footer>
   </div>
+<script src="/nav.js?v=1"></script>
 <script src="/agent-anatomy/app.js"></script>
 </body>
 </html>
