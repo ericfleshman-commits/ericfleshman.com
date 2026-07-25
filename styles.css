@@ -554,3 +554,13 @@ header .btn.primary { animation: ctapulse 4s ease-in-out infinite; }
   .tenets { grid-template-columns: 1fr; }
   .shots img { width: 100%; }
 }
+
+
+/* Nav: page links can outgrow small screens; let the row scroll instead of wrap */
+@media (max-width: 640px) {
+  nav .links { display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; max-width: 72vw; }
+  nav .links::-webkit-scrollbar { display: none; }
+  nav .links a { white-space: nowrap; }
+}
+.sitemap a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.sitemap a:hover { color: var(--accent); }
