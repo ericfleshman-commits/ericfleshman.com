@@ -77,3 +77,8 @@ nav .links .builds-trigger { font-size: 14px; }
   .sitebar-links { gap: .8rem; }
   .builds-panel { width: min(300px, calc(100vw - 1.5rem)); }
 }
+
+/* Brand is a link home on every page */
+nav .brand { cursor: pointer; text-decoration: none; }
+nav a.brand:hover { opacity: .82; text-decoration: none; }
+.sitebar .sitebrand:hover { opacity: .82; text-decoration: none; }
