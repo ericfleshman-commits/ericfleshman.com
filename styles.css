@@ -564,3 +564,10 @@ header .btn.primary { animation: ctapulse 4s ease-in-out infinite; }
 }
 .sitemap a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
 .sitemap a:hover { color: var(--accent); }
+
+
+/* Nav group dividers */
+nav .nav-sep { display: inline-block; width: 1px; height: 13px; background: var(--line); margin-left: 18px; vertical-align: -2px; }
+@media (max-width: 640px) {
+  nav .nav-sep { margin-left: 12px; flex: 0 0 1px; height: 12px; }
+}
