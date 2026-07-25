@@ -122,7 +122,7 @@ p strong, li strong { color: var(--text); font-weight: 650; }
 .top-gap { margin-top: 1.25rem; }
 .insight { margin-top: 1.25rem; padding: 1rem 1.15rem; border-radius: 14px; border: 1px solid rgba(52,211,153,.22); background: rgba(52,211,153,.06); color: var(--muted); }
 .insight strong { color: var(--accent); }
-.callout { border-radius: 14px; border: 1px solid rgba(251,191,36,.28); background: rgba(251,191,36,.07); padding: 1rem 1.15rem; margin: 1.25rem 0; }
+.callout { border-radius: 14px; border: 1px solid rgba(52,211,153,.28); background: rgba(52,211,153,.07); padding: 1rem 1.15rem; margin: 1.25rem 0; }
 .callout h4 { margin: 0 0 .45rem; color: var(--warn); font-size: .95rem; }
 .callout p:last-child { margin-bottom: 0; }
 .ol-tight { margin: .5rem 0 0; padding-left: 1.2rem; color: var(--muted); }
