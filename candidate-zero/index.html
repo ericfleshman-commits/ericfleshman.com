@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0b0e11">
+<title>Twelve Recruiters, Zero Interviews | Candidate Zero | Eric Fleshman</title>
+<meta name="description" content="Candidate Zero: a job-search engine that verifies every listing against the employer's own hiring system, enforces a pay floor, and remembers every role you already ruled out. Built after a six-year audit found twelve recruiters had produced zero interviews.">
+<link rel="canonical" href="https://ericfleshman.com/candidate-zero/">
+<meta property="og:title" content="Twelve recruiters, six years, zero interviews">
+<meta property="og:description" content="So I built the thing I wanted them to be. It reads 719 company job boards, keeps the handful worth an evening, and never applies on your behalf.">
+<meta property="og:url" content="https://ericfleshman.com/candidate-zero/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://ericfleshman.com/og-sunflower.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/candidate-zero/styles.css?v=1">
+<link rel="stylesheet" href="/nav.css?v=1">
+</head>
+<body>
+  <div class="sitebar">
+    <a class="sitebrand" href="/">GTM<span>E</span> / Eric Fleshman</a>
+    <div class="sitebar-links">
+      <a href="/#work">Work</a>
+      <div class="builds-menu">
+      <button type="button" class="builds-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="builds-panel">Builds<svg class="chev" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="builds-panel" id="builds-panel" hidden>
+        <a class="build-item" href="/alphaforge/"><span class="bi-name">AlphaForge</span><span class="bi-desc">Twelve builds in four weeks, and the outbound loop that answered back.</span></a>
+        <a class="build-item current" href="/candidate-zero/" aria-current="page"><span class="bi-name">Candidate Zero</span><span class="bi-desc">A six-year recruiter audit, and the engine I built to replace them.</span></a>
+        <a class="build-item" href="/eattailor/"><span class="bi-name">EatTailor</span><span class="bi-desc">A class project taken from idea to a live app, rebuilt by directing AI agents.</span></a>
+        <a class="build-item" href="/agent-anatomy/"><span class="bi-name">Agent Anatomy</span><span class="bi-desc">A teardown of a production coding agent, and why the model is the smallest part.</span></a>
+      </div>
+    </div>
+      <a href="/Eric-Fleshman-Resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </div>
+  <div class="wrap">
+
+    <header class="hero">
+      <div class="kicker"><span></span> Candidate Zero / audited, built, running</div>
+      <h1>Twelve recruiters. Six years. <span class="accent">Zero interviews.</span></h1>
+      <p class="hero-lead">
+        In July 2026 Eric audited six years of his own inbox and found more than a dozen third-party recruiters had produced no interviews and no placements. Not one. Every interview he had ever landed came from applying directly or from someone he actually knew. So he built the thing he had been waiting for them to be: an engine that checks company hiring systems directly, keeps only the roles that are real and clear his pay floor, and never once applies on his behalf.
+      </p>
+      <div class="meta-row">
+        <span class="chip">Runs unattended</span>
+        <span class="chip">719 company boards</span>
+        <span class="chip">Never applies for you</span>
+      </div>
+
+      <div class="stats-row" aria-label="Project statistics">
+        <div class="stat"><span class="stat-num">719</span><span class="stat-label">company boards<br>read directly</span></div>
+        <div class="stat"><span class="stat-num">20,684</span><span class="stat-label">postings read<br>in one run</span></div>
+        <div class="stat"><span class="stat-num">33</span><span class="stat-label">clear<br>every filter</span></div>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Sections">
+      <ul>
+        <li><a href="#audit">1. The audit</a></li>
+        <li><a href="#engine">2. What it actually does</a></li>
+        <li><a href="#asset">3. The part that compounds</a></li>
+        <li><a href="#decisions">4. The judgment calls</a></li>
+      </ul>
+    </nav>
+
+    <section id="audit">
+      <div class="section-label">Section 01</div>
+      <h2>I thought it was me</h2>
+      <div class="prose">
+        <p>The audit started as a simple question: had any recruiter ever actually gotten Eric a job? He searched six years of Gmail, 2020 to 2026, and counted. More than a dozen third-party recruiters. Zero interviews sourced. Zero placements. Every interview in six years traced back to a direct application or a warm introduction from someone he knew personally.</p>
+        <p>The clearest case is a company called Revin. In 2025 an agency pitched Eric the role, stayed vague about the company, and produced nothing at all. In 2026 he applied to Revin himself. He reached the final round and they called his references. Same candidate, same company, same resume. The only variable was the middleman.</p>
+        <p>The uncomfortable part of finding a pattern like that is realizing how long you assumed the problem was you. The research says that reaction is close to universal: most job seekers were ghosted by an employer in the past year, a majority call the silence the hardest part of searching, and a third of ghosted candidates blame themselves for it. Meanwhile four out of five recruiters admit their own employer posts jobs that do not exist or are already filled.</p>
+        <p>Then there is the finding that reframes the whole industry. Glassdoor studied more than a million interview reviews and found that candidates who got their interview through a recruiter were ghosted more often than candidates who applied cold on a website. The paid channel performs worse than doing nothing.</p>
+        <p>None of that is a story about bad people. It is a story about how the money moves. A contingency recruiter gets paid only when a placement happens, and submitting a candidate costs the agency nothing, so spraying names at companies is the rational strategy rather than a personal failing. The costs land on everyone else. The employer eats the screening. The candidate becomes the expensive version of themselves, since hiring the identical person who applied directly saves the company the fee.</p>
+      </div>
+    </section>
+
+    <section id="engine">
+      <div class="section-label">Section 02</div>
+      <h2>What it actually does</h2>
+      <div class="prose">
+        <p>Candidate Zero is not a job board and it is not a search tool. It is a pipeline that runs unattended and produces one short list. It reads job data straight from the systems employers already use to post roles, which are public and require no permission, no integration, and no login.</p>
+      </div>
+
+      <div class="loop-shell reveal">
+        <div class="loop-head">
+          <h3>One run, start to finish</h3>
+          <span class="loop-sub">The July 26 run: 719 boards in, a handful out</span>
+        </div>
+        <ol class="flow-v">
+          <li class="fstep">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">01</span><span class="fname">Read the source, not the aggregator</span><span class="fmeta">20,684 postings</span></span>
+            <p class="fbody">It pulls postings directly from the employer's own hiring system across six vendors. No scraped job board, no reseller, no listing that has been sitting in someone's index for three weeks.</p>
+          </li>
+          <li class="fstep">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">02</span><span class="fname">Throw away almost everything</span><span class="fmeta">cheap filters first</span></span>
+            <p class="fbody">Title families, then location, then pay. The order is deliberate and it is a cost decision: the expensive checks only ever run on the handful of roles that already survived the free ones. That discipline is what makes reading seventeen thousand postings cost pennies.</p>
+          </li>
+          <li class="fstep">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">03</span><span class="fname">Read the description and doubt it</span><span class="fmeta">shape rules</span></span>
+            <p class="fbody">A title is not a job. The engine reads the description looking for roles wearing a costume: a go-to-market title whose duties are actually software engineering, or a systems role that is a sales quota in disguise. It quotes the giveaway phrase back to you rather than silently deciding.</p>
+          </li>
+          <li class="fstep">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">04</span><span class="fname">Remember every ruling, forever</span><span class="fmeta">private, never published</span></span>
+            <p class="fbody">Roles already applied to, rejected from, or ruled out never come back. That memory is the difference between a search tool and something that works for you over months. It lives in a private file that is not part of the public code.</p>
+          </li>
+          <li class="fstep">
+            <span class="fdot" aria-hidden="true"></span>
+            <span class="fnode"><span class="fnum">05</span><span class="fname">Hand over a short list</span><span class="fmeta">zero noise by design</span></span>
+            <p class="fbody">A digest with pay, location, verdict, and a direct link. Roles that died since the last run get listed too, with how long they were alive, because an answer is a deliverable. On a quiet night it says so instead of padding the list.</p>
+          </li>
+        </ol>
+        <p class="loop-close">Of the 33 roles that cleared every filter that night, 22 were ones Eric had already applied to, been rejected from, or ruled out, so they never reached his morning. Earlier the same evening the engine surfaced two roles the old eight-company version had never seen, one of them a $220,000 to $300,000 revenue operations architect job.</p>
+      </div>
+
+      <div class="grid-2 top-gap">
+        <div class="card">
+          <h4 class="flush">What the agency did</h4>
+          <ul class="ol-tight">
+            <li>Hid the company name to prevent a direct application.</li>
+            <li>Pitched roles with no proof they were still open.</li>
+            <li>Went silent on anything that stopped looking like a fee.</li>
+            <li>Submitted a name to a company Eric had already applied to himself.</li>
+            <li>Attached a fee to his candidacy that a direct applicant did not carry.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 class="flush">What the engine does</h4>
+          <ul class="ol-tight">
+            <li>Names every company, always.</li>
+            <li>Checks each role against the employer's own system before showing it.</li>
+            <li>Reports roles that died, with how long they lived.</li>
+            <li>Remembers every company already applied to or ruled out.</li>
+            <li>Never submits anything. It arms the candidate and stops there.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="asset">
+      <div class="section-label">Section 03</div>
+      <h2>The part that compounds</h2>
+      <div class="prose">
+        <p>Finding jobs is close to free in 2026, so the code is not the interesting part. The interesting part is the index behind it.</p>
+        <p>There is no single place to ask a hiring system for every company's jobs. Each employer has its own address inside that system, and the address frequently has nothing to do with the company name. Chainalysis lives at one slug, Gong at another that ends in "io", Telnyx at one with a number stuck on the end. That is why the first working version of this engine read eight companies: eight was how many addresses Eric knew by hand.</p>
+        <p>So the real build was a discovery pass. It takes a company domain, finds its careers page, works out which hiring system it uses, extracts the address, verifies the address returns real postings, and records the answer with a date. In one evening it probed 3,257 domains and produced 719 verified company boards across six hiring systems, correctly burying 55 addresses that were dead. The count of postings visible to the engine went from 957 to more than 28,000.</p>
+        <p>That index is the asset, not the pipeline. The pipeline is a few hundred lines anyone could rewrite. The index was built by crawling and verifying, it heals itself when an address goes stale, and it gets more accurate every time it runs. Publishing the code gives away the easy half.</p>
+      </div>
+
+      <div class="callout">
+        <h4>Why this is on a GTM portfolio</h4>
+        <p>Because it is the same job, pointed at a different problem. Go-to-market engineering is finding the real buyer, verifying the signal, and routing to the right human before the moment passes. This does that for careers instead of pipeline: source from the system of record, verify liveness, filter on real criteria, dedupe against history, and deliver something a human can act on in ten minutes. The domain happens to be job listings. The craft is identical.</p>
+      </div>
+    </section>
+
+    <section id="decisions">
+      <div class="section-label">Section 04</div>
+      <h2>The judgment calls</h2>
+      <div class="prose">
+        <p><strong>It never applies for you.</strong> The obvious feature request is auto-apply, and every competitor ships it. This will not. Volume is the disease, not the cure, and a tool that submits on your behalf recreates exactly what the agency did: your name arriving somewhere you did not choose, in a form you did not read. The engine arms you. You take the shot.</p>
+        <p><strong>Everything personal stays out of the public code.</strong> The engine is meant to be open. The pay targets, the companies already ruled out, and the application history are not, so they live in files that are excluded from the repository by an automated check that fails the build if anything private is ever staged. That check was the very first commit, before any working code existed.</p>
+        <p><strong>Nothing gets shown that has not been checked.</strong> Every listing is verified against the employer's own system before it appears. Every zombie listing caught before a human sees it is a rejection nobody has to internalize. That is the honest version of the promise, and the current limit is worth stating plainly too: because the engine reads employer systems directly, its inventory is live by construction rather than by clever detection. Catching ghost listings out in the wild, on aggregators, is the next piece of work rather than a thing it already does.</p>
+        <p><strong>It cannot reach what was never posted.</strong> The one thing agencies genuinely sell is the unposted role, and no amount of reading public data will surface it. The counterargument is the audit itself: across six years and more than a dozen recruiters, that access produced zero interviews. It was not being delivered anyway.</p>
+      </div>
+
+      <div class="crosslinks">
+        <a class="crosslink" href="https://github.com/ericfleshman-commits/candidate-zero" target="_blank" rel="noopener">
+          <span class="cl-kicker">Source</span>
+          <strong>Read the engine on GitHub</strong>
+          <span class="cl-desc">Python, 229 automated checks, and a privacy check that was the first commit in the repository. The index and every personal file stay out by design.</span>
+        </a>
+        <a class="crosslink" href="/agent-anatomy/">
+          <span class="cl-kicker">Related teardown</span>
+          <strong>The model is the smallest part</strong>
+          <span class="cl-desc">Why the harness, the review gates, and the plumbing matter more than which model is driving. Same thesis, different build.</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Built by Eric Fleshman. AI agents wrote most of the code in overnight sprints; Eric wrote the specs, ran an adversarial review over every claim on this page, and cut the numbers that could not be sourced.</p>
+      <div class="footer-links">
+        <a href="/">Portfolio</a>
+        <a href="/alphaforge/">AlphaForge</a>
+        <a href="/eattailor/">EatTailor</a>
+        <a href="/agent-anatomy/">Agent Anatomy</a>
+      </div>
+    </footer>
+
+  </div>
+  <script src="/nav.js?v=1"></script>
+  <script src="/candidate-zero/app.js?v=1"></script>
+</body>
+</html>
