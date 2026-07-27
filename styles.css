@@ -571,3 +571,18 @@ nav .nav-sep { display: inline-block; width: 1px; height: 13px; background: var(
 @media (max-width: 640px) {
   nav .nav-sep { margin-left: 12px; flex: 0 0 1px; height: 12px; }
 }
+
+/* thesis link under the tenets */
+.method-more { color: var(--muted); font-size: 15.5px; max-width: 64ch; margin: 26px auto 0; }
+
+/* 90-second demo clip */
+.demo-clip { margin: 26px 0 22px; padding: 0; }
+.demo-clip video {
+  width: 100%; display: block; border-radius: 14px;
+  border: 1px solid var(--line); background: #000;
+  box-shadow: 0 24px 60px rgba(0,0,0,.45);
+}
+.demo-clip figcaption {
+  margin-top: 10px; font-size: 12.5px; color: var(--faint);
+  letter-spacing: .02em; text-align: center;
+}
