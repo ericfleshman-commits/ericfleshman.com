@@ -4,18 +4,18 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#0b0e11">
-<title>Twelve Recruiters, Zero Interviews | Candidate Zero | Eric Fleshman</title>
-<meta name="description" content="Candidate Zero: a job-search engine that verifies every listing against the employer's own hiring system, enforces a pay floor, and remembers every role you already ruled out. Built after a six-year audit found twelve recruiters had produced zero interviews.">
-<link rel="canonical" href="https://ericfleshman.com/candidate-zero/">
-<meta property="og:title" content="Twelve recruiters, six years, zero interviews">
-<meta property="og:description" content="So I built the thing I wanted them to be. It reads 719 company job boards, keeps the handful worth an evening, and never applies on your behalf.">
-<meta property="og:url" content="https://ericfleshman.com/candidate-zero/">
+<title>I Replaced My Recruiters With a Cron Job | CandidateZero | Eric Fleshman</title>
+<meta name="description" content="CandidateZero: a job-search engine that verifies every listing against the employer's own hiring system, enforces a pay floor, and remembers every role you already ruled out. Built after a six-year audit found twelve recruiters had produced zero interviews.">
+<link rel="canonical" href="https://ericfleshman.com/candidatezero/">
+<meta property="og:title" content="I replaced my recruiters with a cron job">
+<meta property="og:description" content="An engine that reads 719 company job boards nightly, verifies every role against the employer's own system, and hands back the handful worth an evening. Built after an audit of my own inbox showed which hiring channels actually work.">
+<meta property="og:url" content="https://ericfleshman.com/candidatezero/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://ericfleshman.com/og-sunflower.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/candidate-zero/styles.css?v=1">
+<link rel="stylesheet" href="/candidatezero/styles.css?v=1">
 <link rel="stylesheet" href="/nav.css?v=1">
 </head>
 <body>
@@ -27,7 +27,7 @@
       <button type="button" class="builds-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="builds-panel">Builds<svg class="chev" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="builds-panel" id="builds-panel" hidden>
         <a class="build-item" href="/alphaforge/"><span class="bi-name">AlphaForge</span><span class="bi-desc">Twelve builds in four weeks, and the outbound loop that answered back.</span></a>
-        <a class="build-item current" href="/candidate-zero/" aria-current="page"><span class="bi-name">Candidate Zero</span><span class="bi-desc">A six-year recruiter audit, and the engine I built to replace them.</span></a>
+        <a class="build-item current" href="/candidatezero/" aria-current="page"><span class="bi-name">CandidateZero</span><span class="bi-desc">A six-year recruiter audit, and the engine I built to replace them.</span></a>
         <a class="build-item" href="/eattailor/"><span class="bi-name">EatTailor</span><span class="bi-desc">A class project taken from idea to a live app, rebuilt by directing AI agents.</span></a>
         <a class="build-item" href="/agent-anatomy/"><span class="bi-name">Agent Anatomy</span><span class="bi-desc">A teardown of a production coding agent, and why the model is the smallest part.</span></a>
       </div>
@@ -38,10 +38,10 @@
   <div class="wrap">
 
     <header class="hero">
-      <div class="kicker"><span></span> Candidate Zero / audited, built, running</div>
-      <h1>Twelve recruiters. Six years. <span class="accent">Zero interviews.</span></h1>
+      <div class="kicker"><span></span> CandidateZero / a GTM engineer's job search, automated</div>
+      <h1>I replaced my recruiters with a <span class="accent">cron job</span>.</h1>
       <p class="hero-lead">
-        In July 2026 Eric audited six years of his own inbox and found more than a dozen third-party recruiters had produced no interviews and no placements. Not one. Every interview he had ever landed came from applying directly or from someone he actually knew. So he built the thing he had been waiting for them to be: an engine that checks company hiring systems directly, keeps only the roles that are real and clear his pay floor, and never once applies on his behalf.
+        Every interview Eric has ever landed came from applying directly or from someone he knew. None of them came from a third-party recruiter, and in July 2026 he went through six years of his own inbox to be certain: more than a dozen agency recruiters, no interviews, no placements. One channel worked and one never had. So he built the thing he had been waiting for the recruiters to be. CandidateZero reads job data straight from the systems employers post with, checks every role is still live, enforces a pay floor, remembers everything he has already ruled out, and never once applies on his behalf.
       </p>
       <div class="meta-row">
         <span class="chip">Runs unattended</span>
@@ -67,7 +67,7 @@
 
     <section id="audit">
       <div class="section-label">Section 01</div>
-      <h2>I thought it was me</h2>
+      <h2>I thought it was me. It was the model.</h2>
       <div class="prose">
         <p>The audit started as a simple question: had any recruiter ever actually gotten Eric a job? He searched six years of Gmail, 2020 to 2026, and counted. More than a dozen third-party recruiters. Zero interviews sourced. Zero placements. Every interview in six years traced back to a direct application or a warm introduction from someone he knew personally.</p>
         <p>The clearest case is a company called Revin. In 2025 an agency pitched Eric the role, stayed vague about the company, and produced nothing at all. In 2026 he applied to Revin himself. He reached the final round and they called his references. Same candidate, same company, same resume. The only variable was the middleman.</p>
@@ -81,7 +81,7 @@
       <div class="section-label">Section 02</div>
       <h2>What it actually does</h2>
       <div class="prose">
-        <p>Candidate Zero is not a job board and it is not a search tool. It is a pipeline that runs unattended and produces one short list. It reads job data straight from the systems employers already use to post roles, which are public and require no permission, no integration, and no login.</p>
+        <p>CandidateZero is not a job board and it is not a search tool. It is a pipeline that runs unattended and produces one short list. It reads job data straight from the systems employers already use to post roles, which are public and require no permission, no integration, and no login.</p>
       </div>
 
       <div class="loop-shell reveal">
@@ -170,7 +170,7 @@
       </div>
 
       <div class="crosslinks">
-        <a class="crosslink" href="https://github.com/ericfleshman-commits/candidate-zero" target="_blank" rel="noopener">
+        <a class="crosslink" href="https://github.com/ericfleshman-commits/candidatezero" target="_blank" rel="noopener">
           <span class="cl-kicker">Source</span>
           <strong>Read the engine on GitHub</strong>
           <span class="cl-desc">Python, 229 automated checks, and a privacy check that was the first commit in the repository. The index and every personal file stay out by design.</span>
@@ -195,6 +195,6 @@
 
   </div>
   <script src="/nav.js?v=1"></script>
-  <script src="/candidate-zero/app.js?v=1"></script>
+  <script src="/candidatezero/app.js?v=1"></script>
 </body>
 </html>
