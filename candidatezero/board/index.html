@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CandidateZero, the verified GTM jobs board</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --surface: #1a1a19;
+    --panel: #232322;
+    --border: #383835;
+    --text: #ffffff;
+    --text-2: #c3c2b7;
+    --muted: #8f8e85;
+    --accent: #3987e5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--surface);
+    color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 40px 24px 64px; }
+  header h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -0.01em; }
+  .tagline { margin: 0 0 28px; color: var(--text-2); max-width: 62ch; }
+  .stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 40px; }
+  .tile {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    min-width: 150px;
+    flex: 1 1 150px;
+  }
+  .tile .label { display: block; font-size: 13px; color: var(--text-2); }
+  .tile .value { display: block; font-size: 26px; font-weight: 600; margin-top: 2px; }
+  .tile .value.small { font-size: 16px; line-height: 2.1; }
+  section { margin-bottom: 44px; }
+  h2 {
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-2);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin: 0 0 4px;
+  }
+  h2 .count { color: var(--muted); font-weight: 400; }
+  .empty { color: var(--muted); padding: 12px 0; }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 12px 6px 0;
+  }
+  td { padding: 10px 12px 10px 0; border-top: 1px solid var(--border); vertical-align: top; }
+  tr:first-child td { border-top: 0; }
+  td.company { font-weight: 600; white-space: nowrap; }
+  td.num { white-space: nowrap; }
+  .note { display: block; font-size: 13px; color: var(--muted); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover, a:focus { text-decoration: underline; }
+  footer { color: var(--text-2); font-size: 14px; max-width: 70ch; border-top: 1px solid var(--border); padding-top: 20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>CandidateZero</h1>
+  <p class="tagline">A verified board of GTM engineering, RevOps and revenue systems roles,
+  plus adjacent titles worth a look. One listing rule for everyone alike: the title
+  fits the family and the posting is live on the employer's own applicant tracking system.
+  Comp appears when the employer publishes it.</p>
+  <div class="stats">
+    <div class="tile"><span class="label">Company boards read</span><span class="value">719</span></div>
+    <div class="tile"><span class="label">Postings read this week</span><span class="value">42,159</span></div>
+    <div class="tile"><span class="label">Roles verified live right now</span><span class="value">84</span></div>
+    <div class="tile"><span class="label">Roles closed this week</span><span class="value">0</span></div>
+    <div class="tile"><span class="label">Last run</span><span class="value small">2026-07-27 13:29 UTC</span></div>
+  </div>
+</header>
+<main>
+<section>
+  <h2>New this week <span class="count">84</span></h2>
+  <div class="scroll">
+<table>
+  <thead>
+    <tr><th>Company</th><th>Role</th><th>Comp</th><th>Location</th><th>Source</th><th>Posted</th><th></th></tr>
+  </thead>
+  <tbody>
+    <tr class="role">
+      <td class="company">1Password</td>
+      <td>Director, GTM Engineering</td>
+      <td class="num">not published</td>
+      <td>Remote (United States | Canada)</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-02</td>
+      <td><a href="https://jobs.ashbyhq.com/1password/c59e8aab-b2b2-458f-9cda-514a6e41b457">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Aircall.io, Inc.</td>
+      <td>Director, Forward Deployed Engineering &amp; AI GTM</td>
+      <td class="num">$200,000 to $260,000</td>
+      <td>New York Office; San Francisco Office; Seattle Office</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-15</td>
+      <td><a href="https://job-boards.greenhouse.io/aircallioinc/jobs/4307245009">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Anthropic</td>
+      <td>Program Manager, GTM Systems</td>
+      <td class="num">$235,000 to $300,000</td>
+      <td>San Francisco, CA | New York City, NY | Seattle, WA</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-20</td>
+      <td><a href="https://job-boards.greenhouse.io/anthropic/jobs/5363352008">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Anthropic</td>
+      <td>Staff Software Engineer, GTM Systems</td>
+      <td class="num">$320,000 to $405,000</td>
+      <td>San Francisco, CA</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-23</td>
+      <td><a href="https://job-boards.greenhouse.io/anthropic/jobs/5368166008">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Anthropic</td>
+      <td>Technical Program Manager, GTM Systems</td>
+      <td class="num">$290,000 to $365,000</td>
+      <td>San Francisco, CA | New York City, NY</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-22</td>
+      <td><a href="https://job-boards.greenhouse.io/anthropic/jobs/5368023008">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Applecart</td>
+      <td>Head of GTM Systems and Engineering</td>
+      <td class="num">$200,000 to $230,000</td>
+      <td>New York, New York</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-04-23</td>
+      <td><a href="https://www.applecart.co/careers?gh_jid=7711963003">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Axial</td>
+      <td>GTM Engineer</td>
+      <td class="num">$100,000 to $150,000</td>
+      <td>New York, NY</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-02-10</td>
+      <td><a href="https://job-boards.greenhouse.io/axial/jobs/5116152008">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Beautiful.ai</td>
+      <td>GTM Engineer</td>
+      <td class="num">$80,000 to $120,000</td>
+      <td>Remote</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-03-06</td>
+      <td><a href="https://job-boards.greenhouse.io/beautifulai/jobs/5055492007">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Buffer</td>
+      <td>Senior Growth Engineer</td>
+      <td class="num">$156,500 to $202,300</td>
+      <td>Remote</td>
+      <td>Ashby</td>
+      <td class="num">2026-05-26</td>
+      <td><a href="https://jobs.ashbyhq.com/buffer/6ee07995-2738-4cee-b16d-fc8967674346">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Buildkite</td>
+      <td>Staff GTM Engineer</td>
+      <td class="num">not published</td>
+      <td>USA - Pacific Time</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-02-16</td>
+      <td><a href="https://job-boards.greenhouse.io/buildkite/jobs/5121800008">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Butterflymx</td>
+      <td>GTM Engineer</td>
+      <td class="num">not published</td>
+      <td>US Remote</td>
+      <td>Ashby</td>
+      <td class="num">2026-06-26</td>
+      <td><a href="https://jobs.ashbyhq.com/butterflymx/92959bb6-9ea3-402b-b55f-39a7d8ad8585">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Clay</td>
+      <td>GTM Engineer - CX</td>
+      <td class="num">$140,000 to $200,000</td>
+      <td>New York (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-05-18</td>
+      <td><a href="https://jobs.ashbyhq.com/claylabs/e43101dd-4e98-4c60-bc1b-adbbb38c7b15">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Clay</td>
+      <td>GTM Engineer - Seller Efficiency</td>
+      <td class="num">$140,000 to $180,000</td>
+      <td>New York (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-05-18</td>
+      <td><a href="https://jobs.ashbyhq.com/claylabs/d5c7f612-10e7-4080-8b8a-d51e70fff9c5">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Clay</td>
+      <td>GTM Engineer - Systems and Infrastructure</td>
+      <td class="num">$140,000 to $200,000</td>
+      <td>New York (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-06-09</td>
+      <td><a href="https://jobs.ashbyhq.com/claylabs/f90028b7-6c35-4392-824c-105967ccd406">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Cockroach Labs</td>
+      <td>Manager, Revenue Systems</td>
+      <td class="num">$150,000 to $200,000</td>
+      <td>New York, NY</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-05-18</td>
+      <td><a href="https://www.cockroachlabs.com/careers/job/?gh_jid=7926298">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Corti</td>
+      <td>GTM Engineer</td>
+      <td class="num">not published</td>
+      <td>Copenhagen, Denmark</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-21</td>
+      <td><a href="https://jobs.ashbyhq.com/corti/542068bd-b25c-440f-ab3f-11b2adcfe5d1">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Cyberark</td>
+      <td>Manager, Solution Consultant - AI GTM</td>
+      <td class="num">not published</td>
+      <td>8 Locations</td>
+      <td>Workday</td>
+      <td class="num">2026-07-22</td>
+      <td><a href="https://paloaltonetworks.wd5.myworkdayjobs.com/panwexternalcareers/job/New-York-City-United-States-of-America/AIRS-Domain-Consultant-Manager---AI-Security_JR-019759">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Dust</td>
+      <td>Growth Engineer</td>
+      <td class="num">$100,000 to $200,000</td>
+      <td>San Francisco</td>
+      <td>Ashby</td>
+      <td class="num">2026-04-17</td>
+      <td><a href="https://jobs.ashbyhq.com/dust/18f24ccf-5182-4099-8802-ab9b36e88db7">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Eliseai</td>
+      <td>GTM Engineer</td>
+      <td class="num">not published</td>
+      <td>New York City</td>
+      <td>Ashby</td>
+      <td class="num">2025-06-20</td>
+      <td><a href="https://jobs.ashbyhq.com/EliseAI/7a74322c-415a-41cb-8956-ee170d3bb267">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Exiger</td>
+      <td>Manager, Go-to-Market Systems</td>
+      <td class="num">not published</td>
+      <td>McLean, Virginia, United States</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-06-04</td>
+      <td><a href="https://www.exiger.com/careers/6014301004?gh_jid=6014301004">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Firecrawl</td>
+      <td>Growth Engineer, Product Growth</td>
+      <td class="num">$220,000 to $250,000</td>
+      <td>San Francisco, CA (Hybrid) OR Remote (Americas, UTC-3 to UTC-10)</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-13</td>
+      <td><a href="https://jobs.ashbyhq.com/firecrawl/61f134a9-d91f-4b7b-a35d-14c60916454e">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Firecrawl</td>
+      <td>Senior Growth Engineer</td>
+      <td class="num">$230,000 to $275,000</td>
+      <td>San Francisco, CA; Miami, FL; Boston, MA; London, UK</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-13</td>
+      <td><a href="https://jobs.ashbyhq.com/firecrawl/fe6ab2c9-0528-4751-a6dd-67467e90fc0e">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Fireworks AI</td>
+      <td>Head of GTM Engineering &amp; Systems</td>
+      <td class="num">$250,000 to $270,000</td>
+      <td>San Mateo, CA</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-15</td>
+      <td><a href="https://job-boards.greenhouse.io/fireworksai/jobs/4280781009">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Flex</td>
+      <td>Go-To-Market (GTM) Engineer</td>
+      <td class="num">not published</td>
+      <td>New York, NY; Salt Lake City, UT; San Francisco, CA</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-06-25</td>
+      <td><a href="https://job-boards.greenhouse.io/flex/jobs/4709497005">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Fonoa</td>
+      <td>Senior GTM Systems Engineer</td>
+      <td class="num">not published</td>
+      <td>London, United Kingdom (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-05-29</td>
+      <td><a href="https://jobs.ashbyhq.com/fonoa/1e03ab6b-1123-4c73-a411-07eb4d99c2e6">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Gainsight</td>
+      <td>GTM Data Architect - GTM Systems and Customer Data</td>
+      <td class="num">not published</td>
+      <td>IND - Hyderabad (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-01</td>
+      <td><a href="https://jobs.ashbyhq.com/gainsight/2bc63590-d3c1-456e-9d59-39fccea5f7bd">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Gong.io</td>
+      <td>GTM Engineer (GTM Automations)</td>
+      <td class="num">$100,000 to $145,000</td>
+      <td>Austin | Chicago | New York City | Salt Lake City | San Francisco</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-22</td>
+      <td><a href="https://job-boards.greenhouse.io/gongio/jobs/4693864006">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Harness </td>
+      <td>GTM Systems Manager</td>
+      <td class="num">not published</td>
+      <td>San Francisco, California, United States</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-04-09</td>
+      <td><a href="https://www.harness.io/company/jobs/apply?gh_jid=5102468007&amp;gh_jid=5102468007">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Harness </td>
+      <td>GTM Systems Manager</td>
+      <td class="num">not published</td>
+      <td>New York, New York, United States</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-05-01</td>
+      <td><a href="https://www.harness.io/company/jobs/apply?gh_jid=5112622007&amp;gh_jid=5112622007">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Hebbia</td>
+      <td>GTM Engineer</td>
+      <td class="num">$140,000 to $190,000</td>
+      <td>NYC</td>
+      <td>Ashby</td>
+      <td class="num">2026-03-31</td>
+      <td><a href="https://jobs.ashbyhq.com/hebbia-ai/4b1d51bc-2985-471b-b3b5-1ddf62e0a50a">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Hebbia</td>
+      <td>GTM Systems</td>
+      <td class="num">$140,000 to $190,000</td>
+      <td>NYC</td>
+      <td>Ashby</td>
+      <td class="num">2026-03-31</td>
+      <td><a href="https://jobs.ashbyhq.com/hebbia-ai/ef36fe55-afdf-4b1a-8965-cd9c05242b2e">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Hightouch</td>
+      <td>Go-to-Market Engineer</td>
+      <td class="num">$130,000 to $180,000</td>
+      <td>Remote, United States</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-03-10</td>
+      <td><a href="https://job-boards.greenhouse.io/hightouch/jobs/5823552004">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Hologram</td>
+      <td>GTM Engineer, Post-Sales</td>
+      <td class="num">$10,000 to $135,000</td>
+      <td>Remote - United States Only</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-16</td>
+      <td><a href="https://job-boards.greenhouse.io/hologram/jobs/7804952003">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Hologram</td>
+      <td>GTM Engineer, Pre-Sales</td>
+      <td class="num">$10,000 to $135,000</td>
+      <td>Remote - United States Only</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-06-24</td>
+      <td><a href="https://job-boards.greenhouse.io/hologram/jobs/7777968003">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Hyperbound</td>
+      <td>GTM Engineer</td>
+      <td class="num">$150,000 to $180,000</td>
+      <td>San Francisco</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-02</td>
+      <td><a href="https://jobs.ashbyhq.com/Hyperbound/66414a24-a724-4f80-9aed-c14599d020f7">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Iterable</td>
+      <td>Director, GTM AI Enablement</td>
+      <td class="num">$168,000 to $240,000</td>
+      <td>Atlanta, Georgia; Austin, Texas; Boston, Massachusetts; Chicago, Illinois; Denver, Colorado</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-21</td>
+      <td><a href="https://job-boards.greenhouse.io/iterable/jobs/8074901">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Langchain</td>
+      <td>GTM Engineer</td>
+      <td class="num">not published</td>
+      <td>San Francisco, CA</td>
+      <td>Ashby</td>
+      <td class="num">2026-02-15</td>
+      <td><a href="https://jobs.ashbyhq.com/langchain/32c6fe13-76e0-49a2-849d-991014416987">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Langchain</td>
+      <td>GTM Engineer</td>
+      <td class="num">not published</td>
+      <td>New York, NY | Austin, TX | San Francisco, CA (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-04-29</td>
+      <td><a href="https://jobs.ashbyhq.com/langchain/825b6d91-bc5e-4165-8a7c-2022a2248f7e">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Lattice</td>
+      <td>GTM Engineer</td>
+      <td class="num">$141,440 to $156,000</td>
+      <td>Remote - US, PST preferred</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-06-01</td>
+      <td><a href="https://lattice.com/job?gh_jid=8570083002">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Livekit</td>
+      <td>GTM Systems Engineer</td>
+      <td class="num">$120,000 to $250,000</td>
+      <td>Remote, U.S</td>
+      <td>Ashby</td>
+      <td class="num">2026-06-23</td>
+      <td><a href="https://jobs.ashbyhq.com/livekit/c8098929-c448-4d69-b164-0273e996abcf">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Manifest</td>
+      <td>Growth Engineer</td>
+      <td class="num">$160,000 to $230,000</td>
+      <td>New York City</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-15</td>
+      <td><a href="https://jobs.ashbyhq.com/manifest-os/4b3d46a4-eecf-430d-bc37-b0cd961c5ec3">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Manifest</td>
+      <td>GTM Engineer</td>
+      <td class="num">$160,000 to $230,000</td>
+      <td>New York City</td>
+      <td>Ashby</td>
+      <td class="num">2026-06-18</td>
+      <td><a href="https://jobs.ashbyhq.com/manifest-os/d2619b83-fa0b-43f7-b60f-c0eaed139afd">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">OpenAI</td>
+      <td>Applied AI Engineer, GTM Growth Engineering</td>
+      <td class="num">$230,000 to $385,000</td>
+      <td>San Francisco</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-25</td>
+      <td><a href="https://jobs.ashbyhq.com/openai/38e3c4bf-a632-405e-9619-b87382ca2472">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">OpenAI</td>
+      <td>Enterprise Application Data Architect, GTM Systems</td>
+      <td class="num">$260,000 to $288,000</td>
+      <td>San Francisco (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-06-16</td>
+      <td><a href="https://jobs.ashbyhq.com/openai/a057c19d-83db-4bb2-a86f-07caa422d770">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">OpenAI</td>
+      <td>Product Engineer, GTM Growth Engineering</td>
+      <td class="num">$230,000 to $385,000</td>
+      <td>San Francisco</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-25</td>
+      <td><a href="https://jobs.ashbyhq.com/openai/1bb1f351-41a2-43a5-bac1-259859886cb3">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Oscilar</td>
+      <td>Growth Engineer</td>
+      <td class="num">$176,000 to $210,000</td>
+      <td>Remote</td>
+      <td>Ashby</td>
+      <td class="num">2026-04-11</td>
+      <td><a href="https://jobs.ashbyhq.com/oscilar/2288cde3-0012-4dc3-9ee1-6e68f997911b">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Otter.ai</td>
+      <td>Senior Analyst, GTM Systems</td>
+      <td class="num">$160,000 to $180,000</td>
+      <td>San Francisco, CA</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-10</td>
+      <td><a href="https://otter.ai/careers?gh_jid=7799810003">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Otter.ai</td>
+      <td>Senior GTM Engineer</td>
+      <td class="num">$150,000 to $165,000</td>
+      <td>San Francisco, CA</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-10</td>
+      <td><a href="https://otter.ai/careers?gh_jid=7799802003">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Pendo</td>
+      <td>GTM AI Engineer</td>
+      <td class="num">$105,000 to $130,000</td>
+      <td>Raleigh, NC</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-06-25</td>
+      <td><a href="https://job-boards.greenhouse.io/pendo/jobs/8597810002">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Primer</td>
+      <td>Business Intelligence &amp; GTM AI Associate</td>
+      <td class="num">not published</td>
+      <td>United Kingdom | Portugal | Ireland (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-22</td>
+      <td><a href="https://jobs.ashbyhq.com/primer.io/98ea74e8-f1f6-4eb6-b52f-ad69f7130cb6">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Qualys</td>
+      <td>Lead Product Manager, GTM Systems &amp; Partner Channel Programs</td>
+      <td class="num">$165,000 to $190,000</td>
+      <td>Foster City</td>
+      <td>Workday</td>
+      <td class="num">2026-06-26</td>
+      <td><a href="https://qualys.wd5.myworkdayjobs.com/Careers/job/Foster-City/Lead-Product-Manager--GTM-Systems---Partner-Channel-Programs_R0004687">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Ramp</td>
+      <td>GTM Systems Engineer, Salesforce</td>
+      <td class="num">$122,200 to $183,400</td>
+      <td>New York, NY (HQ) | San Francisco, CA (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-11</td>
+      <td><a href="https://jobs.ashbyhq.com/ramp/ffc09fc0-7785-48db-a203-a148f62534be">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Range</td>
+      <td>Growth Engineer, GTM</td>
+      <td class="num">not published</td>
+      <td>New York City</td>
+      <td>Ashby</td>
+      <td class="num">2026-06-10</td>
+      <td><a href="https://jobs.ashbyhq.com/range/eebd3f14-f959-480e-b4fe-ce2e43dd05d0">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Renaissance Learning North America</td>
+      <td>Director, Go-To-Market Systems</td>
+      <td class="num">$120,500 to $150,500</td>
+      <td>Remote - US</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-05-04</td>
+      <td><a href="https://job-boards.greenhouse.io/renaissancelearning-nam/jobs/5194086008">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Render</td>
+      <td>GTM Engineer</td>
+      <td class="num">$160,000 to $195,000</td>
+      <td>Remote: United States</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-10</td>
+      <td><a href="https://jobs.ashbyhq.com/render/ca865a27-e5c2-4b3d-843a-076f898ad1df">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Repl</td>
+      <td>GTM AI Operations Lead, Demand Generation</td>
+      <td class="num">$145,000 to $200,000</td>
+      <td>Foster City, CA (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-06-12</td>
+      <td><a href="https://jobs.ashbyhq.com/replit/455c1feb-7157-48d5-b2a6-57606ed1a6cd">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Repl</td>
+      <td>RevOps Architect</td>
+      <td class="num">$220,000 to $300,000</td>
+      <td>Foster City, CA (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-03-07</td>
+      <td><a href="https://jobs.ashbyhq.com/replit/e6b55837-b60b-4564-92cc-e8624fd6ee60">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Resolve</td>
+      <td>Growth Engineer</td>
+      <td class="num">not published</td>
+      <td>San Francisco</td>
+      <td>Ashby</td>
+      <td class="num">2025-05-01</td>
+      <td><a href="https://jobs.ashbyhq.com/Resolve%20AI/9670b82f-be04-4210-896c-56e39a825a97">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Rilla</td>
+      <td>GTM Engineer</td>
+      <td class="num">$120,000 to $200,000</td>
+      <td>New York City</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-26</td>
+      <td><a href="https://jobs.ashbyhq.com/rilla/bad787f7-83ef-471b-9f9a-054799ba7476">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Seeq</td>
+      <td>AI GTM Manager</td>
+      <td class="num">$160,000 to $160,000</td>
+      <td>United States (remote)</td>
+      <td>Workable</td>
+      <td class="num">2026-06-24</td>
+      <td><a href="https://apply.workable.com/j/AFB9FB3A91">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Sezzle</td>
+      <td>Revenue Systems Administrator</td>
+      <td class="num">not published</td>
+      <td>Bogota, Colombia</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-16</td>
+      <td><a href="https://job-boards.greenhouse.io/sezzle/jobs/7802883003">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Sezzle</td>
+      <td>Revenue Systems Administrator</td>
+      <td class="num">$2,000 to $3,500</td>
+      <td>Argentina, Remote</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-17</td>
+      <td><a href="https://job-boards.greenhouse.io/sezzle/jobs/7807960003">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Sezzle</td>
+      <td>Revenue Systems Administrator</td>
+      <td class="num">$2,000 to $3,500</td>
+      <td>Mexico, Remote</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-17</td>
+      <td><a href="https://job-boards.greenhouse.io/sezzle/jobs/7807961003">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Sezzle</td>
+      <td>Revenue Systems Administrator</td>
+      <td class="num">$2,000 to $3,500</td>
+      <td>Brazil, Remote</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-17</td>
+      <td><a href="https://job-boards.greenhouse.io/sezzle/jobs/7808009003">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Sierra</td>
+      <td>GTM Engineer</td>
+      <td class="num">$150,000 to $230,000</td>
+      <td>San Francisco, CA</td>
+      <td>Ashby</td>
+      <td class="num">2026-01-29</td>
+      <td><a href="https://jobs.ashbyhq.com/Sierra/1c991675-099f-49dd-9b9b-bd3c9111e65c">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Signoz</td>
+      <td>GTM Engineer</td>
+      <td class="num">not published</td>
+      <td>India</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-20</td>
+      <td><a href="https://jobs.ashbyhq.com/SigNoz/f4273207-6f44-40cc-81b0-b1d8b288dc45">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">SingleStore</td>
+      <td>GTM Systems Manager</td>
+      <td class="num">$130,000 to $140,000</td>
+      <td>United States</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-02-20</td>
+      <td><a href="https://job-boards.greenhouse.io/singlestore/jobs/7642496">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Socure</td>
+      <td>Head of Growth Engineering</td>
+      <td class="num">$180,000 to $220,000</td>
+      <td>Hybrid - US | Hybrid - Miami, FL (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-17</td>
+      <td><a href="https://jobs.ashbyhq.com/socure/51548581-03b9-4d9d-830c-972aa187af28">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Spellbook</td>
+      <td>GTM Systems Manager</td>
+      <td class="num">CAD 115,000 to CAD 145,000</td>
+      <td>Remote - Canada</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-15</td>
+      <td><a href="https://jobs.ashbyhq.com/spellbook.com/ae3a9134-2f98-436e-bd61-388acb75e79f">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Taktile</td>
+      <td>GTM Engineer</td>
+      <td class="num">$130,000 to $175,000</td>
+      <td>New York Office | Berlin Office (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-05-08</td>
+      <td><a href="https://jobs.ashbyhq.com/taktile/13745e50-734a-4ca4-8e00-94f47ccce433">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Telnyx</td>
+      <td>GTM Systems &amp; Automation Lead (Remote)</td>
+      <td class="num">not published</td>
+      <td>United States</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-05-26</td>
+      <td><a href="https://job-boards.greenhouse.io/telnyx54/jobs/7748835003">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Telnyx</td>
+      <td>Software Engineer, GTM AI - Python</td>
+      <td class="num">not published</td>
+      <td>United States; Brazil; Canada</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-06-05</td>
+      <td><a href="https://job-boards.greenhouse.io/telnyx54/jobs/7764933003">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Thelevel</td>
+      <td>Revenue Operations Architect — GTM Systems Builder</td>
+      <td class="num">not published</td>
+      <td>United States (remote)</td>
+      <td>Lever</td>
+      <td class="num">2026-07-10</td>
+      <td><a href="https://jobs.lever.co/levelai/547c0e23-c994-418b-b256-3e44333a75b6">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Together AI</td>
+      <td>GTM Engineer</td>
+      <td class="num">$160,000 to $160,000</td>
+      <td>San Francisco</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-02</td>
+      <td><a href="https://job-boards.greenhouse.io/togetherai/jobs/5178712007">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Tryprofound</td>
+      <td>GTM Engineer, Post-Sales</td>
+      <td class="num">$130,000 to $200,000</td>
+      <td>New York, New York</td>
+      <td>Ashby</td>
+      <td class="num">2026-03-31</td>
+      <td><a href="https://jobs.ashbyhq.com/Profound/89ac0747-8523-479e-bbdb-031b9b5fd4a5">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Tryprofound</td>
+      <td>GTM Engineer, Pre-Sales</td>
+      <td class="num">$130,000 to $200,000</td>
+      <td>New York, New York</td>
+      <td>Ashby</td>
+      <td class="num">2026-01-15</td>
+      <td><a href="https://jobs.ashbyhq.com/Profound/eb407179-297d-4cd8-8e85-0b9bb8ab53d9">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Uncapped</td>
+      <td>GTM Engineer</td>
+      <td class="num">not published</td>
+      <td>London, England, United Kingdom (remote)</td>
+      <td>Workable</td>
+      <td class="num">2026-07-13</td>
+      <td><a href="https://apply.workable.com/j/F10CB13E5C">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Vanta</td>
+      <td>Sr. AI GTM Engineer</td>
+      <td class="num">$195,000 to $229,000</td>
+      <td>Remote U.S.</td>
+      <td>Ashby</td>
+      <td class="num">2026-07-10</td>
+      <td><a href="https://jobs.ashbyhq.com/vanta/91c73485-5d0c-4272-9643-401ebcfff9d1">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Vibe</td>
+      <td>GTM Engineer</td>
+      <td class="num">not published</td>
+      <td>New York (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-05-15</td>
+      <td><a href="https://jobs.ashbyhq.com/vibe/bc40b699-54cc-4f3a-8b3f-07f4905ffa85">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Wealth.com</td>
+      <td>GTM Engineer</td>
+      <td class="num">$130,000 to $180,000</td>
+      <td>Phoenix, AZ (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-06-16</td>
+      <td><a href="https://jobs.ashbyhq.com/wealth-com/c46c1464-d1e3-4fb7-9ace-7f1b9b65774c">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Workos</td>
+      <td>GTM Engineer</td>
+      <td class="num">$175,000 to $200,000</td>
+      <td>United States &amp; Canada (remote)</td>
+      <td>Ashby</td>
+      <td class="num">2026-04-10</td>
+      <td><a href="https://jobs.ashbyhq.com/workos/990c41b1-e3c3-4a75-83c2-ca916899c110">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Y</td>
+      <td>Go To Market Engineer</td>
+      <td class="num">not published</td>
+      <td>Bogota | United States | Canada | Brazil | Argentina (remote)</td>
+      <td>Lever</td>
+      <td class="num">2026-07-14</td>
+      <td><a href="https://jobs.lever.co/yuno/9a93d9ed-185c-4707-bffe-6561ef225890">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Y</td>
+      <td>Go to Market Engineer Lead</td>
+      <td class="num">not published</td>
+      <td>United States | Colombia | Argentina | Brazil | Chile | Canada (remote)</td>
+      <td>Lever</td>
+      <td class="num">2026-07-14</td>
+      <td><a href="https://jobs.lever.co/yuno/98150c87-3c29-467e-95a9-712444928468">Apply</a></td>
+    </tr>
+    <tr class="role">
+      <td class="company">Zscaler</td>
+      <td>GTM AI Manager, Sales Analytics</td>
+      <td class="num">not published</td>
+      <td>Bangalore, IND</td>
+      <td>Greenhouse</td>
+      <td class="num">2026-07-16</td>
+      <td><a href="https://job-boards.greenhouse.io/zscaler/jobs/5147265007">Apply</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</section>
+<section>
+  <h2>Still open <span class="count">0</span></h2>
+  <p class="empty">Nothing carried over from earlier weeks.</p>
+</section>
+<section>
+  <h2>Closed recently <span class="count">0</span></h2>
+  <p class="empty">No roles closed in the last 7 days on the boards we watch.</p>
+</section>
+</main>
+<footer>
+  <p>Every listing above was re-verified on the employer's own applicant tracking system
+  during the most recent nightly run. The engine never applies for anyone.</p>
+  <p class="note">Generated 2026-07-27 13:39 UTC. Apply links go straight to the employer,
+  never through an aggregator.</p>
+</footer>
+</div>
+</body>
+</html>
