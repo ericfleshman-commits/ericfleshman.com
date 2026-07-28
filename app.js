@@ -8,7 +8,7 @@
 
   var steps = [
     "Perplexity: researching the public web...",
-    "Claude: writing the systems hypothesis...",
+    "writing the systems hypothesis...",
     "closing the loop...",
   ];
 
@@ -45,7 +45,7 @@
       clearInterval(ticker);
 
       if (res.ok && data.note) {
-        setStatus("researched by Perplexity. written by Claude.");
+        setStatus("researched by Perplexity. written under my rules.");
         output.textContent = "";
         var q = document.createElement("div");
         q.className = "agent-q";
