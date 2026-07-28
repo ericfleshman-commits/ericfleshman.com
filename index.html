@@ -68,23 +68,23 @@
   <div class="agent-flow" aria-label="How the agent works">
     <div class="agent-step"><span class="mono agent-step-num">01</span><strong>Company name</strong><span>one input</span></div>
     <div class="agent-step"><span class="mono agent-step-num">02</span><strong>Public research</strong><span>Perplexity</span></div>
-    <div class="agent-step"><span class="mono agent-step-num">03</span><strong>GTM hypothesis</strong><span>Claude + my rules</span></div>
+    <div class="agent-step"><span class="mono agent-step-num">03</span><strong>GTM hypothesis</strong><span>my rules, any model</span></div>
   </div>
   <p class="agent-privacy">It runs on the company, not you. No person lookup, enrichment, or visitor record.</p>
 
-  <!-- ============================================================
-       90-SECOND DEMO CLIP. To publish: drop the encoded files at
-       /images/loop-demo.mp4 (H.264) and /images/loop-demo-poster.jpg,
-       then delete this comment wrapper. Nothing else to change.
-       ============================================================
-  <figure class="demo-clip">
-    <video controls preload="none" playsinline poster="/images/loop-demo-poster.jpg" aria-label="Ninety second screen recording of the agent researching a company and writing a GTM systems hypothesis">
-      <source src="/images/loop-demo.mp4" type="video/mp4">
-      Your browser cannot play this clip. The agent below does the same thing live.
-    </video>
-    <figcaption class="mono">90 seconds, unedited, one take. A company name goes in and a systems hypothesis comes out.</figcaption>
+  <figure class="ghost-wrap" aria-label="A recorded run of the agent, replayed">
+    <div class="agent-box ghost" id="ghost-box">
+      <span class="mono ghost-chip">replay</span>
+      <div class="agent-input-row">
+        <div class="ghost-input mono" id="ghost-input" aria-hidden="true"><span class="ghost-caret"></span></div>
+        <span class="btn primary ghost-btn" id="ghost-btn" aria-hidden="true">Run the loop</span>
+      </div>
+      <div class="mono agent-status" id="ghost-status"></div>
+      <div class="agent-output" id="ghost-output" hidden></div>
+    </div>
+    <figcaption class="mono ghost-caption">One real run from July 2026, replayed exactly as it happened. Yours runs live below.</figcaption>
   </figure>
-  -->
+
 
   <div class="agent-box">
     <div class="agent-input-row">
@@ -94,7 +94,7 @@
     <div id="agent-status" class="mono agent-status" aria-live="polite"></div>
     <div id="agent-output" class="agent-output" hidden></div>
   </div>
-  <p class="mono guardrail">Perplexity researches the public web. Claude writes the systems hypothesis. No cache, contact enrichment, visitor identification, outreach, or input storage by me. Both calls are key-locked and capped daily. If either fails, you get my email.</p>
+  <p class="mono guardrail">Perplexity researches the public web. A model writes the systems hypothesis under my rules, and the provider is swappable by design. No cache, contact enrichment, visitor identification, outreach, or input storage by me. Both calls are key-locked and capped daily. If either fails, you get my email.</p>
 </section>
 
 <hr class="rule">
@@ -223,6 +223,8 @@
 
 <script defer src="/_vercel/insights/script.js"></script>
 <script src="/nav.js?v=1"></script>
+<script id="ghost-note" type="application/json">{"company": "Ramp", "note": "Ramp's clear focus on finance teams as its primary buyer suggests they have a defined target segment, particularly CFOs and finance operations leaders who seek to streamline workflow and manage spend effectively. This focus creates a sharp opportunity to enhance customer interactions through personalized onboarding and customer success initiatives tailored specifically for these finance professionals. These initiatives can drive product adoption and increase long-term customer value by ensuring that users experience immediate benefits from the platform. First system I'd build: a customer onboarding loop that integrates user feedback, enabling continuous improvement of the onboarding process based on customer needs and pain points."}</script>
+<script src="/ghost.js"></script>
 <script src="/app.js"></script>
 </body>
 </html>
