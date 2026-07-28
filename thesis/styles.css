@@ -138,15 +138,6 @@ a:hover { text-decoration: underline; }
 }
 .test ol li b { display: block; color: var(--text); font-weight: 600; margin-bottom: 3px; }
 
-/* lens grid */
-.lenses { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 12px; margin: 26px 0; }
-.lens {
-  padding: 18px 18px; background: var(--bg-elev);
-  border: 1px solid var(--line); border-radius: 12px;
-}
-.lens h4 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
-.lens p { margin: 0; font-size: 14px; color: var(--faint); line-height: 1.55; max-width: none; }
-
 /* receipt link inline */
 .recpt {
   display: inline-flex; align-items: center; gap: 7px;

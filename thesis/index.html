@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#0b0e11">
 <title>How I decide what to build | Eric Fleshman</title>
-<meta name="description" content="Three short arguments about GTM engineering: start from the constraint, ship the provable thing first, and run a structural test before you believe anyone's AI-native claim.">
+<meta name="description" content="Two short arguments about GTM engineering: start from the constraint, and run a structural test before you believe anyone's AI-native claim.">
 <link rel="canonical" href="https://ericfleshman.com/thesis/">
 <meta property="og:title" content="How I decide what to build">
-<meta property="og:description" content="Start from the constraint, not the tool. Ship the provable thing before the biggest thing. And three questions to run before you believe an AI-native claim.">
+<meta property="og:description" content="Start from the constraint, not the tool. And three questions to run before you believe an AI-native claim.">
 <meta property="og:url" content="https://ericfleshman.com/thesis/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://ericfleshman.com/og-sunflower.png">
@@ -44,7 +44,7 @@
   <header class="hero">
     <div class="kicker"><i></i> Thesis / how I decide what to build</div>
     <h1>The build is the easy part.<br>Picking it is the <span class="accent">job</span>.</h1>
-    <p class="hero-lead">A portfolio shows what someone shipped. It does not show why they shipped that and not the other four things on the list. These are the three arguments I actually run on, written down. <strong>The numbers behind them are on the <a href="/receipts/">receipts page</a>.</strong></p>
+    <p class="hero-lead">A portfolio shows what someone shipped. It does not show why they shipped that and not the other four things on the list. These are the two arguments I actually run on, written down. <strong>The numbers behind them are on the <a href="/receipts/">receipts page</a>.</strong></p>
 
     <div class="toc">
       <a href="#constraint">
@@ -52,13 +52,8 @@
         <span><span class="tt">Start with the constraint, not the build</span>
         <span class="td">If you cannot say the problem in one sentence without naming a tool, you are not ready to build.</span></span>
       </a>
-      <a href="#provable">
-        <span class="tn">02</span>
-        <span><span class="tt">Provability beats impact on the first build</span>
-        <span class="td">The biggest win on the roadmap is usually the one you cannot prove. That is a trap, and it is expensive.</span></span>
-      </a>
       <a href="#ainative">
-        <span class="tn">03</span>
+        <span class="tn">02</span>
         <span><span class="tt">Three questions before you believe &ldquo;AI-native&rdquo;</span>
         <span class="td">A structural test you can run from the outside, on the docs, in about twenty minutes.</span></span>
       </a>
@@ -72,7 +67,7 @@
     </div>
     <p class="standfirst">Most GTM projects begin with a tool. The good ones begin with a sentence about what is actually stopping the company from growing.</p>
 
-    <p>Ask someone what they are working on and you usually get a product name. We are rolling out Clay. We are moving routing to LeanData. We are adding an AI SDR. None of those are answers. They are the middle of a story whose beginning nobody said out loud.</p>
+    <p>Ask someone what they are working on and you usually get a product name. We are rolling out Clay. We are rebuilding lead routing. We are adding an AI SDR. None of those are answers. They are the middle of a story whose beginning nobody said out loud.</p>
 
     <p>The beginning is the constraint: the one thing that, if you removed it, would let the company grow faster or cheaper than it does today. Every system worth building removes one of those. Everything else is work that looks like work.</p>
 
@@ -100,46 +95,9 @@
     <p>It also protects against the most expensive failure in this job: building something excellent that nobody needed. That build still costs a quarter. It just costs it quietly.</p>
   </article>
 
-  <article class="piece" id="provable">
-    <div class="piece-head">
-      <span class="piece-num">02 / sequencing</span>
-      <h2>Provability beats impact on the first build</h2>
-    </div>
-    <p class="standfirst">Impact and effort are the two axes everyone uses to prioritize. They are not enough, and the gap between them is where good work goes to die uncredited.</p>
-
-    <p>Almost every prioritization exercise ends in the same two by two. Impact on one axis, effort on the other, build the top left. It is a reasonable start. It also quietly assumes that if a thing works, everyone will agree it worked.</p>
-
-    <p>They will not. On most GTM roadmaps the highest-impact project is also the least provable one. Forecast accuracy is the standard example. It is genuinely the most valuable thing to fix, and the outcome is tangled up with rep behavior, deal mix, and the market. At the end of the quarter you cannot separate your work from the noise. You will have done real work and had no way to show it.</p>
-
-    <p>That matters because of what happens next. An unprovable first win does not merely fail to earn credit. It spends the budget and the patience that the next three builds needed.</p>
-
-    <div class="pull">
-      <p>The first thing you ship decides whether you get to ship the second thing.</p>
-    </div>
-
-    <h3>So I score on five lenses, not two</h3>
-    <div class="lenses">
-      <div class="lens"><h4>Impact</h4><p>How far does it move a number someone already cares about.</p></div>
-      <div class="lens"><h4>Ease</h4><p>Can it ship this quarter with the people and tools we already have.</p></div>
-      <div class="lens"><h4>Provability</h4><p>At the end, can I show it worked in a way the person paying will accept.</p></div>
-      <div class="lens"><h4>Sequencing</h4><p>Does finishing this make the next builds cheaper, or is it a dead end.</p></div>
-      <div class="lens"><h4>Durability</h4><p>Will this still be true in a year, or does it only work for this quarter's motion.</p></div>
-    </div>
-
-    <p>One to five on each, equal weights. The arithmetic is not the point and I will happily let anyone reweight it in front of me. The point is that provability, sequencing, and durability get a column at all, so the argument about them has somewhere to happen instead of turning into a vibe. The last time I ran this on five candidate workflows, the winner led on four of the five lenses, and it was not the highest-impact option on the board.</p>
-
-    <h3>Three habits that fall out of it</h3>
-
-    <p><strong>Log from day one.</strong> Instrumentation is what everyone leaves for later, and later does not come. On my last build I shipped the systems first and the measurement second. Under the clock that was the right call, and it had a bill. Now the decision log is step one rather than step six. This goes double for anything with a model in it: your CRM has an audit trail and most AI tools do not, and &ldquo;the model decided&rdquo; is not a sentence you want to say out loud to a CRO.</p>
-
-    <p><strong>Aim for 90, not 100.</strong> A system that handles ninety percent of cases and hands the rest to a human queue ships this month and survives contact with reality. A system that promises a hundred invites a permanent argument about the last ten and never gets signed off. Naming the ninety up front is not lowering the bar. It is the thing that gets the bar approved.</p>
-
-    <p><strong>Turn on what you already pay for, then build the rest.</strong> Bespoke is the right answer sometimes, and bespoke sends a maintenance bill every month, including the months after you leave. If a tool already in the stack does eighty percent of it, activate that first and spend the build budget on the part nothing off the shelf can do. I learned this by doing it the other way around and paying for it.</p>
-  </article>
-
   <article class="piece" id="ainative">
     <div class="piece-head">
-      <span class="piece-num">03 / judgment</span>
+      <span class="piece-num">02 / judgment</span>
       <h2>Three questions before you believe &ldquo;AI-native&rdquo;</h2>
     </div>
     <p class="standfirst">In 2026 nearly every company calls itself &ldquo;AI-native&rdquo;. Most are not. The test is structural, not a matter of taste, and you can run it from the outside.</p>
@@ -179,7 +137,7 @@
 
   <section class="cta">
     <h2>That is the reasoning. Here is the proof.</h2>
-    <p>Three arguments are easy to write and harder to back. Every number behind these lives on one page, each with the system it came from and how it was counted.</p>
+    <p>Two arguments are easy to write and harder to back. Every number behind these lives on one page, each with the system it came from and how it was counted.</p>
     <div class="btn-row">
       <a class="btn primary" href="/receipts/">See the receipts</a>
       <a class="btn" href="/#work">See the case studies</a>
