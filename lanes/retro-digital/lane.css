@@ -400,3 +400,6 @@ details.build summary:hover {
   section[data-num]::after,
   footer[data-num]::after { top: 18px; left: 8px; }
 }
+
+/* Deck seams in the retro language: hard stamped line, not a soft gradient */
+.panel:not(:last-child) { border-bottom: 2px solid rgba(255, 202, 40, 0.5); }

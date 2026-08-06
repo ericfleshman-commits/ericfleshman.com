@@ -710,6 +710,19 @@ footer { position: relative; }
 /* Contact panel: no footer border, it is a screen */
 .panel-contact { border-top: 0; padding-bottom: 0; }
 
+/* Section seams: each screen closes with a stamped break at its bottom
+   edge, so the break is visible even when the panel is snapped. */
+.panel:not(:last-child) { border-bottom: 2px solid rgba(255, 202, 40, 0.32); }
+
+/* Dense panels: fit the viewport instead of scrolling internally */
+.panel h2 { margin-bottom: 14px; }
+.agent-flow { margin: 14px 0 10px; }
+.agent-step { min-height: 92px; padding: 14px; }
+.agent-privacy { margin-bottom: 4px; font-size: 13px; }
+.ghost-wrap { margin: 18px 0 14px; }
+.agent-box { margin: 12px 0 10px; padding: 20px; }
+.guardrail { font-size: 11.5px; }
+
 /* Nav stays above the deck */
 nav { z-index: 20; }
 
@@ -722,6 +735,24 @@ nav { z-index: 20; }
 
 @media (prefers-reduced-motion: reduce) {
   .htrack { transition: none; }
+}
+
+/* Short viewports (laptops ~800px tall): tighten so panels fit, no internal scroll */
+@media (max-height: 860px) {
+  .pinner { padding-top: 48px; padding-bottom: 40px; }
+  .panel h2 { margin-bottom: 10px; font-size: 26px; }
+  .agent-step { min-height: 76px; padding: 12px; }
+  .ghost-wrap { margin: 12px 0 10px; }
+  .ghost-input { min-height: 38px; }
+  .agent-box { margin: 10px 0 8px; padding: 16px; }
+  .guardrail { font-size: 11px; }
+  .stats-row { margin: 12px 0 10px; }
+  .stat { padding: 12px 14px 10px; }
+  .fstep { padding: 3px 0 3px 30px; }
+  .case { padding: 18px; }
+  .tenet { padding: 14px; }
+  .timeline { margin: 14px 0 12px; }
+  .trow { padding: 8px 0 8px 24px; }
 }
 
 /* thesis link under the tenets (merged from remote 07-28) */
