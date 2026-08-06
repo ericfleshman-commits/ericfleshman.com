@@ -571,3 +571,96 @@ nav .nav-sep { display: inline-block; width: 1px; height: 13px; background: var(
 @media (max-width: 640px) {
   nav .nav-sep { margin-left: 12px; flex: 0 0 1px; height: 12px; }
 }
+
+/* ============================================================
+   Cinematic pass 2: ghost numerals, ghost wordmark, exploded loop
+   Art direction: pankajstwt hero/footer explorations (Jul-Aug 2026)
+   Refs: vault 01-work/job-search/alphaforge/art-refs/
+   Rules: decorative only. No copy, no layout restructuring.
+   ============================================================ */
+
+/* Giant ghost numeral at each section's top-right, echoing the mono kicker */
+section[data-num], footer[data-num] { position: relative; }
+section[data-num]::before, footer[data-num]::before {
+  content: attr(data-num);
+  position: absolute;
+  top: -0.22em;
+  right: 0;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(96px, 15vw, 168px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(255, 202, 40, 0.075);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+section[data-num] > *, footer[data-num] > * { position: relative; z-index: 1; }
+
+/* Footer ghost wordmark: the page closes on the brand, cropped like a film title */
+footer { overflow: hidden; }
+.ghost-word {
+  position: absolute;
+  left: 50%;
+  bottom: -0.28em;
+  transform: translateX(-50%);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(84px, 22vw, 320px);
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: rgba(255, 202, 40, 0.085);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to top, black 55%, transparent 97%);
+  mask-image: linear-gradient(to top, black 55%, transparent 97%);
+}
+footer .ghost-word { display: block; }
+
+/* Agent flow reads as an exploded technical stack:
+   one dashed alignment guide through the row, one lit stage */
+.agent-flow { position: relative; }
+.agent-flow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 6%;
+  right: 6%;
+  border-top: 1px dashed rgba(255, 202, 40, 0.38);
+  z-index: 0;
+}
+.agent-step { position: relative; z-index: 1; }
+.agent-step-num { display: inline-block; }
+/* assembly fasteners: a small dot at each corner of the plate */
+.agent-step {
+  background-image:
+    radial-gradient(circle, rgba(255, 202, 40, 0.55) 2px, transparent 2.7px),
+    radial-gradient(circle, rgba(255, 202, 40, 0.55) 2px, transparent 2.7px),
+    radial-gradient(circle, rgba(255, 202, 40, 0.55) 2px, transparent 2.7px),
+    radial-gradient(circle, rgba(255, 202, 40, 0.55) 2px, transparent 2.7px);
+  background-position: 9px 9px, calc(100% - 9px) 9px, 9px calc(100% - 9px), calc(100% - 9px) calc(100% - 9px);
+  background-repeat: no-repeat;
+}
+/* the last plate is the lit stage: the hypothesis is the point */
+.agent-step:last-child {
+  border-color: rgba(255, 202, 40, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 0 28px -6px rgba(255, 202, 40, 0.38);
+}
+.agent-step:last-child .agent-step-num {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+  align-self: flex-start;
+}
+.agent-step:last-child strong { color: var(--accent); }
+
+/* input caret in brand */
+#company-input { caret-color: var(--accent); }
+
+@media (max-width: 600px) {
+  .agent-flow::before { display: none; }
+}
