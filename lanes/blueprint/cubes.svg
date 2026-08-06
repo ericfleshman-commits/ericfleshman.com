@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 170" fill="none" role="img" aria-hidden="true">
+  <!-- Isometric cube cluster, sunflower tones, dark-page native.
+       Three cubes stacked and leaning front-left, registered to a
+       dashed centerline and a dimension baseline with end ticks. -->
+  <defs>
+    <pattern id="bp-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#ffca28" stroke-opacity="0.3" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- construction: centerline datum + dimension baseline -->
+  <line x1="85" y1="44" x2="85" y2="152" stroke="#ffca28" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="2 5"/>
+  <line x1="36" y1="152" x2="164" y2="152" stroke="#ffca28" stroke-opacity="0.35" stroke-width="1"/>
+  <line x1="36" y1="145" x2="36" y2="159" stroke="#ffca28" stroke-opacity="0.55" stroke-width="1"/>
+  <line x1="164" y1="145" x2="164" y2="159" stroke="#ffca28" stroke-opacity="0.55" stroke-width="1"/>
+  <line x1="100" y1="152" x2="100" y2="157" stroke="#ffca28" stroke-opacity="0.45" stroke-width="1"/>
+  <!-- measure callout off the base cube's right edge -->
+  <line x1="116" y1="105" x2="148" y2="105" stroke="#ffca28" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="1 4"/>
+  <line x1="148" y1="99" x2="148" y2="111" stroke="#ffca28" stroke-opacity="0.45" stroke-width="1"/>
+
+  <!-- cube 1 (base) -->
+  <polygon points="90,92 116,105 90,118 64,105" fill="#ffca28" fill-opacity="0.10"/>
+  <polygon points="116,105 90,118 90,144 116,131" fill="url(#bp-hatch)"/>
+  <polygon points="64,105 90,118 90,144 64,131" fill="#ffca28" fill-opacity="0.03"/>
+  <g stroke="#ffca28" stroke-opacity="0.8" stroke-width="1.1" stroke-linejoin="round">
+    <polyline points="64,105 90,92 116,105 116,131 90,144 64,131 64,105"/>
+    <line x1="90" y1="118" x2="90" y2="144"/>
+  </g>
+
+  <!-- cube 2 (mid) -->
+  <polygon points="87,74 107,84 87,94 67,84" fill="#ffca28" fill-opacity="0.14"/>
+  <polygon points="107,84 87,94 87,114 107,104" fill="#ffca28" fill-opacity="0.05"/>
+  <polygon points="67,84 87,94 87,114 67,104" fill="#ffca28" fill-opacity="0.03"/>
+  <g stroke="#ffca28" stroke-opacity="0.85" stroke-width="1.1" stroke-linejoin="round">
+    <polyline points="67,84 87,74 107,84 107,104 87,114 67,104 67,84"/>
+    <line x1="87" y1="94" x2="87" y2="114"/>
+  </g>
+
+  <!-- cube 3 (top, lit) -->
+  <polygon points="85,60.5 100,68 85,75.5 70,68" fill="#ffca28" fill-opacity="0.95"/>
+  <polygon points="100,68 85,75.5 85,90.5 100,83" fill="#ffca28" fill-opacity="0.18"/>
+  <polygon points="70,68 85,75.5 85,90.5 70,83" fill="#ffca28" fill-opacity="0.08"/>
+  <g stroke="#0b0e11" stroke-width="1.1" stroke-linejoin="round">
+    <polyline points="70,68 85,60.5 100,68 100,83 85,90.5 70,83 70,68"/>
+    <line x1="85" y1="75.5" x2="85" y2="90.5"/>
+  </g>
+
+  <!-- fastener dots at key vertices -->
+  <circle cx="64" cy="105" r="1.8" fill="#ffca28"/>
+  <circle cx="107" cy="84" r="1.8" fill="#ffca28"/>
+  <circle cx="85" cy="60.5" r="1.8" fill="#0b0e11"/>
+</svg>

@@ -131,10 +131,7 @@ h2 {
   font-weight: 600;
   margin-bottom: 22px;
 }
-h2 .mono {
-  font-size: clamp(17px, 1.6vw, 22px);
-  margin-right: 0;
-}
+h2 .mono { font-size: clamp(17px, 1.6vw, 22px); margin-right: 0; }
 h2 .mono::after {
   content: "";
   display: inline-block;
@@ -156,38 +153,24 @@ h2 .mono::after {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
-.case {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.07),
-    0 34px 80px -44px rgba(0, 0, 0, 0.8);
-}
+.case { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 34px 80px -44px rgba(0, 0, 0, 0.8); }
 .case:hover {
   border-color: rgba(255, 202, 40, 0.16);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.07),
-    0 30px 70px -36px rgba(0, 0, 0, 0.75),
-    0 0 34px -10px rgba(255, 202, 40, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 30px 70px -36px rgba(0, 0, 0, 0.75), 0 0 34px -10px rgba(255, 202, 40, 0.18);
 }
 .stat:hover {
   transform: translateY(-3px);
   border-color: rgba(255, 202, 40, 0.3);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 16px 34px -14px rgba(0, 0, 0, 0.7),
-    0 0 26px -8px rgba(255, 202, 40, 0.24);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 16px 34px -14px rgba(0, 0, 0, 0.7), 0 0 26px -8px rgba(255, 202, 40, 0.24);
 }
 .tenet:hover {
   border-color: rgba(255, 202, 40, 0.22);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 0 26px -8px rgba(255, 202, 40, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 0 26px -8px rgba(255, 202, 40, 0.16);
 }
 .agent-step:hover {
   transform: translateY(-2px);
   border-color: rgba(255, 202, 40, 0.24);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 0 26px -8px rgba(255, 202, 40, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 0 26px -8px rgba(255, 202, 40, 0.18);
 }
 /* Case titles get editorial weight */
 .case h3 {
@@ -196,10 +179,7 @@ h2 .mono::after {
   letter-spacing: -0.02em;
   margin-bottom: 18px;
 }
-.case .tag {
-  border-color: rgba(232, 234, 237, 0.14);
-  background: rgba(232, 234, 237, 0.03);
-}
+.case .tag { border-color: rgba(232, 234, 237, 0.14); background: rgba(232, 234, 237, 0.03); }
 
 /* 7. Stat numbers: size and weight hierarchy, one warm light */
 .stat-num {
@@ -220,13 +200,7 @@ h2 .mono::after {
 /* 8. Vertical flow rails: lit line, glowing nodes */
 .fstep::before {
   width: 1px;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    rgba(232, 234, 237, 0.16) 30%,
-    rgba(232, 234, 237, 0.16) 70%,
-    transparent
-  );
+  background: linear-gradient(180deg, transparent, rgba(232, 234, 237, 0.16) 30%, rgba(232, 234, 237, 0.16) 70%, transparent);
 }
 .fdot { box-shadow: 0 0 10px rgba(255, 202, 40, 0.55); }
 .fnode {
@@ -238,16 +212,10 @@ h2 .mono::after {
   border-color: rgba(255, 202, 40, 0.55);
   color: var(--accent);
   background: rgba(255, 202, 40, 0.06);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 0 20px -4px rgba(255, 202, 40, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 0 20px -4px rgba(255, 202, 40, 0.35);
 }
 /* Full-build expander: a warm-to-cool hairline */
-details.build {
-  position: relative;
-  border-top: 0;
-  padding-top: 16px;
-}
+details.build { position: relative; border-top: 0; padding-top: 16px; }
 details.build::before {
   content: "";
   position: absolute;
@@ -265,9 +233,7 @@ details.build::before {
   border-radius: 16px;
   background-color: rgba(17, 21, 26, 0.7);
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0) 34%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 28px 64px -34px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 28px 64px -34px rgba(0, 0, 0, 0.8);
 }
 .agent-box::before {
   content: "";
@@ -280,20 +246,11 @@ details.build::before {
 }
 .agent-box:focus-within {
   border-color: rgba(255, 202, 40, 0.45);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 0 4px rgba(255, 202, 40, 0.06),
-    0 0 46px -8px rgba(255, 202, 40, 0.32);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 0 0 4px rgba(255, 202, 40, 0.06), 0 0 46px -8px rgba(255, 202, 40, 0.32);
 }
-.agent-box:focus-within::before {
-  opacity: 1;
-  box-shadow: 0 1px 10px rgba(255, 202, 40, 0.5);
-}
+.agent-box:focus-within::before { opacity: 1; box-shadow: 0 1px 10px rgba(255, 202, 40, 0.5); }
 .agent-box.running { border-color: rgba(255, 202, 40, 0.5); }
-.agent-box.running::before {
-  opacity: 1;
-  box-shadow: 0 0 14px rgba(255, 202, 40, 0.6);
-}
+.agent-box.running::before { opacity: 1; box-shadow: 0 0 14px rgba(255, 202, 40, 0.6); }
 #company-input {
   background: rgba(11, 14, 17, 0.55);
   border: 1px solid rgba(232, 234, 237, 0.12);
@@ -302,9 +259,7 @@ details.build::before {
 }
 #company-input:focus {
   border-color: var(--accent);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 0 0 3px rgba(255, 202, 40, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 0 0 3px rgba(255, 202, 40, 0.1);
 }
 
 /* 10. Loop cards: one lit stage, a rotating dashed orbit.
@@ -326,82 +281,49 @@ details.build::before {
   pointer-events: none;
   z-index: 0;
 }
-@keyframes orbit {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
+@keyframes orbit { to { transform: translate(-50%, -50%) rotate(360deg); } }
 .agent-step:last-child {
   border-color: rgba(255, 202, 40, 0.45);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.07),
-    0 0 30px -6px rgba(255, 202, 40, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 0 30px -6px rgba(255, 202, 40, 0.3);
 }
 
 /* 11. Tenets: light icons, quiet cards */
-.tenet h4 {
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
+.tenet h4 { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
 .ticon { filter: drop-shadow(0 0 6px rgba(255, 202, 40, 0.4)); }
 
 /* 12. Timeline: a lit rail, glowing year markers */
-.timeline {
-  position: relative;
-  border-left: 0;
-}
+.timeline { position: relative; border-left: 0; }
 .timeline::before {
   content: "";
   position: absolute;
   left: 0; top: 10px; bottom: 10px;
   width: 1px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 202, 40, 0.55),
-    rgba(232, 234, 237, 0.14) 45%,
-    rgba(255, 202, 40, 0.1)
-  );
+  background: linear-gradient(180deg, rgba(255, 202, 40, 0.55), rgba(232, 234, 237, 0.14) 45%, rgba(255, 202, 40, 0.1));
 }
 .trow { border-bottom: 1px solid rgba(232, 234, 237, 0.05); }
 .trow:last-child { border-bottom: 0; }
-.trow::before {
-  box-shadow: 0 0 0 3px rgba(255, 202, 40, 0.1), 0 0 12px rgba(255, 202, 40, 0.5);
-}
+.trow::before { box-shadow: 0 0 0 3px rgba(255, 202, 40, 0.1), 0 0 12px rgba(255, 202, 40, 0.5); }
 .tyear { text-shadow: 0 0 14px rgba(255, 202, 40, 0.35); }
 
 /* 13. Buttons: hairline glass, one lit primary */
-.btn {
-  background: rgba(17, 21, 26, 0.5);
-  border: 1px solid rgba(232, 234, 237, 0.14);
-  border-radius: 10px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
+.btn { background: rgba(17, 21, 26, 0.5); border: 1px solid rgba(232, 234, 237, 0.14); border-radius: 10px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06); }
 .btn:hover {
   border-color: rgba(255, 202, 40, 0.45);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 0 24px -6px rgba(255, 202, 40, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 0 24px -6px rgba(255, 202, 40, 0.3);
 }
 .btn.primary {
   background: linear-gradient(180deg, #ffd54f 0%, var(--accent) 100%);
   border-color: rgba(255, 202, 40, 0.7);
   color: #0b0e11;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    0 10px 30px -10px rgba(255, 202, 40, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 10px 30px -10px rgba(255, 202, 40, 0.55);
 }
 .btn.primary:hover {
   filter: brightness(1.05);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    0 12px 36px -10px rgba(255, 202, 40, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 12px 36px -10px rgba(255, 202, 40, 0.7);
 }
 
 /* 14. Contact: sitemap sits on a hairline, not a border */
-.sitemap {
-  border-top: 1px solid rgba(232, 234, 237, 0.06);
-  padding-top: 20px;
-  margin-top: 34px;
-}
+.sitemap { border-top: 1px solid rgba(232, 234, 237, 0.06); padding-top: 20px; margin-top: 34px; }
 
 /* 15. Motion and small screens */
 @media (prefers-reduced-motion: reduce) {
@@ -415,13 +337,18 @@ details.build::before {
   .stat:hover, .agent-step:hover { transform: none; }
 }
 
+/* Short viewports: hero recenters so the statement never clips */
+@media (max-height: 700px) {
+  .panel-hero .pinner {
+    margin: auto auto auto 0;
+    padding-bottom: 64px;
+  }
+}
+
 @media (max-width: 700px) {
   .pinner { padding: 72px 20px 48px clamp(20px, 5vw, 36px); }
   .panel-hero .pinner { padding-bottom: 56px; }
-  .panel-hero h1 {
-    font-size: clamp(44px, 11vw, 64px);
-    line-height: 0.98;
-  }
+  .panel-hero h1 { font-size: clamp(44px, 11vw, 64px); line-height: 0.98; }
   .panel-hero .hero-ring { opacity: 0.14; }
   .agent-flow::after { display: none; }
   h2 { font-size: clamp(28px, 7vw, 36px); }
