@@ -646,3 +646,81 @@ footer { position: relative; }
 @media (max-width: 600px) {
   .agent-flow::before { display: none; }
 }
+
+/* ============================================================
+   Horizontal deck (cinematic-horizontal prototype)
+   Full-viewport panels, vertical scroll maps to left-right travel.
+   ============================================================ */
+
+.hwrap {
+  height: calc(7 * 100vh);
+  height: calc(7 * 100dvh);
+}
+
+.hsticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.htrack {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+/* Full-viewport panels */
+.panel {
+  flex: 0 0 100vw;
+  height: 100%;
+  display: flex;
+  overflow-y: auto;
+  position: relative;
+  scrollbar-width: none;
+  max-width: none;   /* beats the old header/section/footer 780px cap */
+  margin: 0;
+  padding: 0;        /* pinner owns the padding now */
+}
+.panel::-webkit-scrollbar { display: none; }
+
+.pinner {
+  width: 100%;
+  max-width: 780px;
+  margin: auto;
+  padding: 88px 48px 64px;
+}
+
+/* Panel ghost numerals: bigger, centered right, like a film slate */
+.panel[data-num]::before {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(140px, 20vw, 280px);
+  right: clamp(8px, 3vw, 40px);
+}
+
+.panel-hero { text-align: left; }
+.panel-hero h1 { font-size: clamp(52px, 8.5vw, 112px); }
+.panel-hero .hero-ring { top: 40px; right: -120px; opacity: 0.12; }
+
+/* Work panels: a touch wider, card content intact */
+.panel-case .pinner { max-width: 860px; }
+.panel-case .case { margin-bottom: 0; }
+
+/* Contact panel: no footer border, it is a screen */
+.panel-contact { border-top: 0; padding-bottom: 0; }
+
+/* Nav stays above the deck */
+nav { z-index: 20; }
+
+@media (max-width: 600px) {
+  .pinner { padding: 76px 20px 48px; }
+  .panel-hero h1 { font-size: clamp(44px, 11vw, 64px); }
+  .panel-hero .hero-ring { width: 260px; height: 260px; right: -110px; top: 12px; }
+  .panel[data-num]::before { font-size: clamp(110px, 30vw, 150px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .htrack { transition: none; }
+}
