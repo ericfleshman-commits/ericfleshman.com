@@ -598,27 +598,9 @@ section[data-num]::before, footer[data-num]::before {
 }
 section[data-num] > *, footer[data-num] > * { position: relative; z-index: 1; }
 
-/* Footer ghost wordmark: the page closes on the brand, cropped like a film title */
-footer { overflow: hidden; }
-.ghost-word {
-  position: absolute;
-  left: 50%;
-  bottom: -0.28em;
-  transform: translateX(-50%);
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(84px, 22vw, 320px);
-  line-height: 0.8;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  color: rgba(255, 202, 40, 0.085);
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  -webkit-mask-image: linear-gradient(to top, black 55%, transparent 97%);
-  mask-image: linear-gradient(to top, black 55%, transparent 97%);
-}
-footer .ghost-word { display: block; }
+/* Footer ghost wordmark: removed 2026-08-06 (Eric: "no likey").
+   Keeping the open-line pill styles below for the speaking-engagements swap. */
+footer { position: relative; }
 
 /* Agent flow reads as an exploded technical stack:
    one dashed alignment guide through the row, one lit stage */
