@@ -1,0 +1,430 @@
+/* ============================================================
+   CINEMATIC LIGHT lane
+   The Signal / Monoio / Tasklayer school: atmosphere through
+   LIGHT, not elements. Soft radial light fields behind every
+   screen, film grain, editorial type, content resting low-left,
+   one accent color doing all the work.
+
+   Self-contained. Drop in AFTER styles.css and nav.css.
+   Decorative only: pseudo-elements, layered gradients, one
+   local SVG grain tile (grain.svg, same folder, relative path).
+   Palette: bg #0b0e11, cards #11151a, text #e8eaed, muted
+   #9aa4ad, accent #ffca28. Text contrast stays AA.
+   ============================================================ */
+
+/* 1. Global atmosphere: cool wash, soft vignette, drifting grain */
+body::before {
+  background:
+    radial-gradient(1300px 900px at 84% -12%, rgba(232, 234, 237, 0.035), transparent 62%),
+    radial-gradient(120% 100% at 50% 44%, transparent 58%, rgba(4, 6, 8, 0.42) 100%);
+}
+body::after {
+  opacity: 0.05;
+  background-image: url("grain.svg");
+  background-size: 180px 180px;
+  animation: grainshift 22s linear infinite alternate;
+}
+@keyframes grainshift {
+  from { background-position: 0 0; }
+  to   { background-position: 14px 9px; }
+}
+
+/* 2. Nav: thin glass bar, links lit by a light underline */
+nav {
+  background: rgba(11, 14, 17, 0.55);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  border-bottom: 1px solid rgba(232, 234, 237, 0.07);
+}
+nav .links a { position: relative; }
+nav .links a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -5px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent 85%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+nav .links a:hover::after { opacity: 0.75; }
+
+/* 3. Deck geometry: content rests low-left on every screen.
+   Panels stay transparent; each screen carries its own light
+   field. Left-anchored pinner, open negative space right. */
+.pinner {
+  margin: auto auto auto 0;
+  padding: 88px clamp(30px, 5vw, 76px) 64px clamp(40px, 7vw, 108px);
+}
+/* Panel light fields: warm sunflower in hero and contact,
+   cooler near-white elsewhere. Four to eight percent. */
+#top {
+  background:
+    radial-gradient(1200px 780px at 16% 82%, rgba(255, 202, 40, 0.08), transparent 60%),
+    radial-gradient(760px 560px at 94% -8%, rgba(255, 202, 40, 0.045), transparent 55%);
+}
+#agent          { background: radial-gradient(1040px 720px at 10% 26%, rgba(232, 234, 237, 0.05),  transparent 62%); }
+#work           { background: radial-gradient(1120px 760px at 82% 14%, rgba(232, 234, 237, 0.055), transparent 60%); }
+#work-alphaforge{ background: radial-gradient(1000px 700px at 18% 70%, rgba(232, 234, 237, 0.05), transparent 60%); }
+#method         { background: radial-gradient(1120px 740px at 76% 28%, rgba(232, 234, 237, 0.055), transparent 62%); }
+#background     { background: radial-gradient(1020px 700px at 20% 22%, rgba(232, 234, 237, 0.05),  transparent 60%); }
+#contact        { background: radial-gradient(1100px 760px at 14% 18%, rgba(255, 202, 40, 0.055), transparent 62%); }
+/* Ghost scene numerals: dimmer, lit from within */
+section[data-num]::before,
+footer[data-num]::before {
+  color: rgba(255, 202, 40, 0.05);
+  text-shadow: 0 0 70px rgba(255, 202, 40, 0.07);
+}
+
+/* 4. Hero: the editorial statement, low-left, lit warm */
+.panel-hero .pinner {
+  margin: auto auto 0 0;
+  max-width: 920px;
+  padding-bottom: clamp(44px, 8vh, 100px);
+}
+.panel-hero .kicker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  text-shadow: 0 0 14px rgba(255, 202, 40, 0.35);
+}
+.panel-hero .kicker::before {
+  content: "";
+  width: 38px;
+  height: 1px;
+  flex: none;
+  background: linear-gradient(90deg, rgba(255, 202, 40, 0.8), rgba(255, 202, 40, 0));
+}
+.panel-hero h1 {
+  font-size: clamp(58px, 9vw, 122px);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  margin-bottom: 30px;
+}
+.panel-hero h1 .accent { text-shadow: 0 0 42px rgba(255, 202, 40, 0.42); }
+.panel-hero .lede {
+  font-size: clamp(18px, 1.7vw, 21px);
+  line-height: 1.7;
+  max-width: 52ch;
+  margin-bottom: 32px;
+}
+/* The loop mark: slow dashed orbit, traveling comet dot.
+   The ring turns at 120s; the comet circle orbits the center
+   at 18s, so it glides along the dashes. */
+.panel-hero .hero-ring {
+  opacity: 0.2;
+  animation: ringspin 120s linear infinite;
+  filter: drop-shadow(0 0 22px rgba(255, 202, 40, 0.14));
+}
+.panel-hero .hero-ring circle:last-of-type {
+  transform-origin: 50% 50%;
+  animation: cometspin 18s linear infinite;
+}
+@keyframes cometspin { to { transform: rotate(360deg); } }
+
+/* 5. Scene titles: number, a light rule, the title */
+h2 {
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+h2 .mono {
+  font-size: clamp(17px, 1.6vw, 22px);
+  margin-right: 0;
+}
+h2 .mono::after {
+  content: "";
+  display: inline-block;
+  width: 44px;
+  height: 1px;
+  margin: 0 16px 0 14px;
+  vertical-align: middle;
+  background: linear-gradient(90deg, rgba(255, 202, 40, 0.65), transparent);
+}
+
+/* 6. Cards shed heavy borders; light defines the edges.
+   One shared treatment: faint cool outline, inner top catch
+   light, warm glow on hover. */
+.case, .stat, .tenet, .agent-step {
+  border: 1px solid rgba(232, 234, 237, 0.07);
+  border-radius: 14px;
+  background-color: rgba(17, 21, 26, 0.6);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0) 46%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.case {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 34px 80px -44px rgba(0, 0, 0, 0.8);
+}
+.case:hover {
+  border-color: rgba(255, 202, 40, 0.16);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 30px 70px -36px rgba(0, 0, 0, 0.75),
+    0 0 34px -10px rgba(255, 202, 40, 0.18);
+}
+.stat:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 202, 40, 0.3);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 16px 34px -14px rgba(0, 0, 0, 0.7),
+    0 0 26px -8px rgba(255, 202, 40, 0.24);
+}
+.tenet:hover {
+  border-color: rgba(255, 202, 40, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 26px -8px rgba(255, 202, 40, 0.16);
+}
+.agent-step:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 202, 40, 0.24);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 26px -8px rgba(255, 202, 40, 0.18);
+}
+/* Case titles get editorial weight */
+.case h3 {
+  font-size: clamp(24px, 2.8vw, 34px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+.case .tag {
+  border-color: rgba(232, 234, 237, 0.14);
+  background: rgba(232, 234, 237, 0.03);
+}
+
+/* 7. Stat numbers: size and weight hierarchy, one warm light */
+.stat-num {
+  font-size: clamp(44px, 5.6vw, 70px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  text-shadow: 0 0 26px rgba(255, 202, 40, 0.22);
+}
+.stat:first-child .stat-num { font-size: clamp(52px, 6.8vw, 84px); }
+.stat-label {
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/* 8. Vertical flow rails: lit line, glowing nodes */
+.fstep::before {
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(232, 234, 237, 0.16) 30%,
+    rgba(232, 234, 237, 0.16) 70%,
+    transparent
+  );
+}
+.fdot { box-shadow: 0 0 10px rgba(255, 202, 40, 0.55); }
+.fnode {
+  background: rgba(11, 14, 17, 0.5);
+  border: 1px solid rgba(232, 234, 237, 0.09);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.fnode-accent {
+  border-color: rgba(255, 202, 40, 0.55);
+  color: var(--accent);
+  background: rgba(255, 202, 40, 0.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 20px -4px rgba(255, 202, 40, 0.35);
+}
+/* Full-build expander: a warm-to-cool hairline */
+details.build {
+  position: relative;
+  border-top: 0;
+  padding-top: 16px;
+}
+details.build::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 202, 40, 0.4), rgba(232, 234, 237, 0.08) 34%, transparent 78%);
+}
+
+/* 9. The agent box: a glowing instrument.
+   A warm filament runs across the top edge; the box lights up
+   when focused or running, never louder, just brighter. */
+.agent-box {
+  position: relative;
+  border: 1px solid rgba(232, 234, 237, 0.08);
+  border-radius: 16px;
+  background-color: rgba(17, 21, 26, 0.7);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0) 34%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 28px 64px -34px rgba(0, 0, 0, 0.8);
+}
+.agent-box::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 26px; right: 26px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 202, 40, 0.5), transparent);
+  opacity: 0.8;
+  transition: opacity 0.3s ease, box-shadow 0.3s ease;
+}
+.agent-box:focus-within {
+  border-color: rgba(255, 202, 40, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 4px rgba(255, 202, 40, 0.06),
+    0 0 46px -8px rgba(255, 202, 40, 0.32);
+}
+.agent-box:focus-within::before {
+  opacity: 1;
+  box-shadow: 0 1px 10px rgba(255, 202, 40, 0.5);
+}
+.agent-box.running { border-color: rgba(255, 202, 40, 0.5); }
+.agent-box.running::before {
+  opacity: 1;
+  box-shadow: 0 0 14px rgba(255, 202, 40, 0.6);
+}
+#company-input {
+  background: rgba(11, 14, 17, 0.55);
+  border: 1px solid rgba(232, 234, 237, 0.12);
+  border-radius: 10px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+#company-input:focus {
+  border-color: var(--accent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 0 0 3px rgba(255, 202, 40, 0.1);
+}
+
+/* 10. Loop cards: one lit stage, a rotating dashed orbit.
+   The orbit ring turns slowly behind the three cards; a comet
+   dot rides the ring's top edge and travels with the dashes. */
+.agent-flow::before { border-top-color: rgba(255, 202, 40, 0.22); }
+.agent-flow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(400px, 40vw, 560px);
+  aspect-ratio: 1;
+  border: 1px dashed rgba(255, 202, 40, 0.15);
+  border-radius: 50%;
+  background: radial-gradient(circle 3px at 50% 4px, rgba(255, 202, 40, 0.85), rgba(255, 202, 40, 0) 70%);
+  transform: translate(-50%, -50%);
+  animation: orbit 46s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes orbit {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.agent-step:last-child {
+  border-color: rgba(255, 202, 40, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 0 30px -6px rgba(255, 202, 40, 0.3);
+}
+
+/* 11. Tenets: light icons, quiet cards */
+.tenet h4 {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.ticon { filter: drop-shadow(0 0 6px rgba(255, 202, 40, 0.4)); }
+
+/* 12. Timeline: a lit rail, glowing year markers */
+.timeline {
+  position: relative;
+  border-left: 0;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 10px; bottom: 10px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 202, 40, 0.55),
+    rgba(232, 234, 237, 0.14) 45%,
+    rgba(255, 202, 40, 0.1)
+  );
+}
+.trow { border-bottom: 1px solid rgba(232, 234, 237, 0.05); }
+.trow:last-child { border-bottom: 0; }
+.trow::before {
+  box-shadow: 0 0 0 3px rgba(255, 202, 40, 0.1), 0 0 12px rgba(255, 202, 40, 0.5);
+}
+.tyear { text-shadow: 0 0 14px rgba(255, 202, 40, 0.35); }
+
+/* 13. Buttons: hairline glass, one lit primary */
+.btn {
+  background: rgba(17, 21, 26, 0.5);
+  border: 1px solid rgba(232, 234, 237, 0.14);
+  border-radius: 10px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.btn:hover {
+  border-color: rgba(255, 202, 40, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 24px -6px rgba(255, 202, 40, 0.3);
+}
+.btn.primary {
+  background: linear-gradient(180deg, #ffd54f 0%, var(--accent) 100%);
+  border-color: rgba(255, 202, 40, 0.7);
+  color: #0b0e11;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 10px 30px -10px rgba(255, 202, 40, 0.55);
+}
+.btn.primary:hover {
+  filter: brightness(1.05);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 12px 36px -10px rgba(255, 202, 40, 0.7);
+}
+
+/* 14. Contact: sitemap sits on a hairline, not a border */
+.sitemap {
+  border-top: 1px solid rgba(232, 234, 237, 0.06);
+  padding-top: 20px;
+  margin-top: 34px;
+}
+
+/* 15. Motion and small screens */
+@media (prefers-reduced-motion: reduce) {
+  body::after { animation: none; }
+  .panel-hero .hero-ring,
+  .panel-hero .hero-ring circle:last-of-type,
+  .agent-flow::after { animation: none; }
+  nav .links a::after,
+  .case, .stat, .tenet, .agent-step,
+  .agent-box, .agent-box::before, .btn, .btn.primary { transition: none; }
+  .stat:hover, .agent-step:hover { transform: none; }
+}
+
+@media (max-width: 700px) {
+  .pinner { padding: 72px 20px 48px clamp(20px, 5vw, 36px); }
+  .panel-hero .pinner { padding-bottom: 56px; }
+  .panel-hero h1 {
+    font-size: clamp(44px, 11vw, 64px);
+    line-height: 0.98;
+  }
+  .panel-hero .hero-ring { opacity: 0.14; }
+  .agent-flow::after { display: none; }
+  h2 { font-size: clamp(28px, 7vw, 36px); }
+  .stat-num { font-size: clamp(38px, 12vw, 52px); }
+  .stat:first-child .stat-num { font-size: clamp(44px, 14vw, 60px); }
+}

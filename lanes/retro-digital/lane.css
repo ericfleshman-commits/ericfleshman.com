@@ -1,0 +1,452 @@
+/* ============================================================
+   RETRO-DIGITAL lane: screen-print meets early raster
+   A drop-in art-direction pass for the horizontal deck.
+   Halftone dither, hard 2px borders, stepped zero-blur shadows,
+   snap hover. No glow, no fade, no radius. A printed machine.
+
+   Load after styles.css and nav.css, e.g.:
+   <link rel="stylesheet" href="/lanes/retro-digital/lane.css">
+
+   Palette stays in the dark family:
+   bg #0b0e11, card #11151a, text #e8eaed, muted #9aa4ad,
+   accent #ffca28, line #232a31. Text contrast is untouched.
+   ============================================================ */
+
+/* ---------- 1. Global print texture: coarse halftone dither ---------- */
+
+body::after {
+  opacity: 0.08;
+  background-image: url("retro-dither.svg");
+  background-size: 96px 96px;
+}
+
+/* ---------- 2. Machine frame: nav strip, panel seams, focus ---------- */
+
+nav {
+  background: rgba(11, 14, 17, 0.95);
+  backdrop-filter: none;
+  border-bottom: 2px solid var(--line);
+}
+
+/* pixel tick strip on top of the nav: the machine's power bar */
+nav::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  opacity: 0.65;
+  background: repeating-linear-gradient(90deg, var(--accent) 0 10px, transparent 10px 22px);
+}
+
+nav .links a,
+.builds-trigger,
+.build-item { transition: none; }
+nav .links a:hover { color: var(--accent); }
+
+/* dropdown chrome squares up with the rest of the machine */
+.builds-panel,
+.build-item { border-radius: 0; }
+
+/* hard seam where one screen ends and the next begins */
+.panel { border-right: 1px solid var(--line); }
+.panel:last-child { border-right: 0; }
+
+::selection { background: var(--accent); color: #0b0e11; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 0;
+}
+
+/* ---------- 3. Hero: scanlines, registration marks, pixel orbit ---------- */
+
+.panel-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(232, 234, 237, 0.035) 0 1px,
+    transparent 1px 4px
+  );
+}
+
+/* print registration marks at the hero corners */
+.panel-hero::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  pointer-events: none;
+  opacity: 0.5;
+  background:
+    linear-gradient(var(--accent), var(--accent)) left 0 top 0 / 14px 2px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) left 0 top 0 / 2px 14px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) right 0 top 0 / 14px 2px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) right 0 top 0 / 2px 14px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) left 0 bottom 0 / 14px 2px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) left 0 bottom 0 / 2px 14px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) right 0 bottom 0 / 14px 2px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) right 0 bottom 0 / 2px 14px no-repeat;
+}
+
+/* the orbit becomes a chunky pixel ring, rotating in hard steps */
+.panel-hero .hero-ring {
+  opacity: 0.16;
+  animation: lane-ring 32s steps(32) infinite;
+}
+@keyframes lane-ring { to { transform: rotate(360deg); } }
+.hero-ring circle:first-of-type {
+  stroke: rgba(255, 202, 40, 0.7);
+  stroke-width: 4;
+  stroke-dasharray: 4 10;
+  stroke-linecap: butt;
+}
+.hero-ring circle:nth-of-type(2) {
+  stroke: rgba(255, 202, 40, 0.28);
+  stroke-width: 1.5;
+}
+.hero-ring path {
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-dasharray: 7 6;
+  stroke-linecap: butt;
+}
+.hero-ring circle:last-of-type {
+  fill: var(--accent);
+  filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.8));
+}
+
+/* kicker leads with a hard sunflower pixel block */
+.kicker::before {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 9px;
+  vertical-align: 1px;
+  background: var(--accent);
+}
+
+/* "ship" reads as a stamped misregistration: hard offset, no glow */
+.panel-hero h1 .accent {
+  text-shadow:
+    4px 4px 0 rgba(11, 14, 17, 0.9),
+    8px 8px 0 rgba(255, 202, 40, 0.16);
+}
+
+/* ---------- 4. Buttons and inputs: hard edges, snap hover ---------- */
+
+.btn {
+  border-radius: 0;
+  border: 2px solid var(--line);
+  background: var(--bg2);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.55);
+  transition: none;
+}
+.btn:hover {
+  transform: translate(-1px, -1px);
+  border-color: var(--muted);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.55);
+}
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.55);
+}
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0b0e11;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.65);
+}
+.btn.primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.65);
+}
+
+/* the one live LED on the page: the hero CTA blinks on a hard step */
+header .btn.primary {
+  animation: lane-cta 2.6s step-end infinite;
+}
+@keyframes lane-cta {
+  0%, 54% { box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.65); }
+  55%, 100% { box-shadow: 3px 3px 0 rgba(255, 202, 40, 0.55); }
+}
+
+#company-input {
+  border-radius: 0;
+  border: 2px solid var(--line);
+  caret-color: var(--accent);
+}
+#company-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 3px 3px 0 rgba(255, 202, 40, 0.18);
+}
+
+/* ---------- 5. Section numerals and pixel corner brackets ---------- */
+
+.panel[data-num]::before {
+  font-family: var(--mono);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  color: rgba(255, 202, 40, 0.11);
+  text-shadow:
+    3px 0 0 rgba(255, 202, 40, 0.09),
+    6px 0 0 rgba(255, 202, 40, 0.06),
+    9px 0 0 rgba(255, 202, 40, 0.04);
+}
+
+/* pixel window bracket, top-left of every numbered screen */
+section[data-num]::after,
+footer[data-num]::after {
+  content: "";
+  position: absolute;
+  top: 26px;
+  left: 14px;
+  width: 26px;
+  height: 26px;
+  pointer-events: none;
+  opacity: 0.55;
+  background:
+    linear-gradient(var(--accent), var(--accent)) left 0 top 0 / 26px 2px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) left 0 top 0 / 2px 26px no-repeat;
+}
+
+/* ---------- 6. The loop: chunky plates on a pixel track ---------- */
+
+.agent-flow::before {
+  border-top: 0;
+  height: 2px;
+  margin-top: -1px;
+  background: repeating-linear-gradient(90deg, rgba(255, 202, 40, 0.45) 0 6px, transparent 6px 13px);
+}
+
+.agent-step {
+  border: 2px solid var(--line);
+  border-radius: 0;
+  background-color: var(--bg2);
+  /* four square fasteners, one per corner */
+  background-image:
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent), var(--accent));
+  background-size: 3px 3px;
+  background-position: 7px 7px, calc(100% - 10px) 7px, 7px calc(100% - 10px), calc(100% - 10px) calc(100% - 10px);
+  background-repeat: no-repeat;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  transition: none;
+}
+.agent-step:hover {
+  transform: translate(-2px, -2px);
+  border-color: rgba(255, 202, 40, 0.55);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+}
+/* the last plate is the lit stage: a hard sunflower block, not a glow */
+.agent-step:last-child {
+  border-color: var(--accent);
+  box-shadow: 4px 4px 0 rgba(255, 202, 40, 0.3);
+}
+.agent-step:last-child .agent-step-num {
+  border-radius: 0;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+}
+
+.agent-box {
+  border: 2px solid var(--line);
+  border-radius: 0;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.5);
+  transition: none;
+}
+.agent-box:focus-within {
+  border-color: var(--accent);
+  box-shadow: 5px 5px 0 rgba(255, 202, 40, 0.22);
+}
+/* running state: an LED that blinks hard instead of breathing */
+.agent-box.running {
+  border-color: var(--accent);
+  animation: lane-blink 1.1s step-end infinite;
+}
+@keyframes lane-blink {
+  0%, 49% { border-color: var(--accent); }
+  50%, 100% { border-color: rgba(255, 202, 40, 0.35); }
+}
+.agent-box.running .agent-status::before {
+  border-radius: 0;
+  animation: lane-dot 1.1s step-end infinite;
+}
+@keyframes lane-dot { 50% { opacity: 0.08; } }
+
+.agent-output {
+  border-radius: 0;
+  border-left: 3px solid var(--accent);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* the guardrail is a stamped footnote */
+.guardrail {
+  border: 1px dashed rgba(154, 164, 173, 0.4);
+  border-radius: 0;
+  background: rgba(17, 21, 26, 0.55);
+  padding: 10px 14px;
+}
+
+/* ---------- 7. Case studies: printed plates and bitmap stats ---------- */
+
+.case {
+  border: 2px solid var(--line);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: var(--bg2);
+}
+.case .tag {
+  border-radius: 0;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  padding: 3px 8px;
+}
+
+/* stats: a bitmap grid plate with a sunflower block biting the corner */
+.stat {
+  position: relative;
+  border: 2px solid var(--line);
+  border-radius: 0;
+  background-color: var(--bg);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(232, 234, 237, 0.03) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(232, 234, 237, 0.03) 0 1px, transparent 1px 5px);
+  transition: none;
+}
+.stat::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+}
+.stat:hover {
+  transform: translate(-2px, -2px);
+  border-color: rgba(255, 202, 40, 0.65);
+  box-shadow: 4px 4px 0 rgba(255, 202, 40, 0.22);
+}
+.stat-num {
+  font-family: var(--mono);
+  letter-spacing: -0.05em;
+  color: var(--accent);
+  /* stepped shadow: the number reads as a bitmap counter */
+  text-shadow:
+    2px 2px 0 rgba(11, 14, 17, 0.9),
+    4px 4px 0 rgba(255, 202, 40, 0.18);
+}
+.stat-label {
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* flow rail: square nodes on a pixel-dashed rail, square pulse */
+.fstep::before {
+  background: repeating-linear-gradient(180deg, var(--line) 0 4px, transparent 4px 8px);
+}
+.fdot {
+  border-radius: 0;
+  width: 9px;
+  height: 9px;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+.fnode {
+  border-radius: 0;
+  border: 2px solid var(--line);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+}
+.fnode-accent {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(255, 202, 40, 0.06);
+  box-shadow: 3px 3px 0 rgba(255, 202, 40, 0.28);
+}
+.fpulse {
+  border-radius: 0;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+}
+
+details.build {
+  border-top: 2px dashed var(--line);
+}
+details.build summary {
+  display: inline-block;
+  margin: 12px 0 4px;
+  border: 2px solid var(--line);
+  border-radius: 0;
+  background: var(--bg);
+  padding: 6px 12px;
+  transition: none;
+}
+details.build summary:hover {
+  border-color: var(--accent);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.shots img {
+  border-radius: 0;
+  border: 2px solid var(--line);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- 8. Method and timeline ---------- */
+
+.tenet {
+  border: 2px solid var(--line);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.45);
+  transition: none;
+}
+.tenet:hover {
+  transform: translate(-2px, -2px);
+  border-color: rgba(255, 202, 40, 0.55);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.45);
+}
+
+.timeline { border-left: 2px solid var(--line); }
+.trow::before {
+  border-radius: 0;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+}
+/* each year is a printed stamp: sunflower chip, hard shadow */
+.tyear {
+  background: var(--accent);
+  color: #0b0e11;
+  font-weight: 700;
+  text-align: center;
+  min-width: 46px;
+  padding: 2px 6px;
+  align-self: flex-start;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- 9. Motion safety and small screens ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-hero .hero-ring,
+  header .btn.primary,
+  .agent-box.running,
+  .agent-box.running .agent-status::before {
+    animation: none;
+  }
+  .btn, .stat, .tenet, .case, .agent-step, .agent-box, .fnode { transition: none; }
+}
+
+@media (max-width: 600px) {
+  .case, .agent-box { box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5); }
+  .agent-flow::before { display: none; }
+  section[data-num]::after,
+  footer[data-num]::after { top: 18px; left: 8px; }
+}
