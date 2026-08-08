@@ -2,6 +2,13 @@
   "functions": {
     "api/agent.js": { "maxDuration": 60 }
   },
+  "redirects": [
+    {
+      "source": "/:path((?!api/)(?:[^/]+/)*[^/.]+)",
+      "destination": "/:path/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/Eric-Fleshman-Resume.pdf",
