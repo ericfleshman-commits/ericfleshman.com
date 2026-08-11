@@ -299,6 +299,14 @@ hr.rule {
   font-weight: 400;
 }
 .case p strong { color: var(--text); }
+
+/* Compact build cards on the "more builds" deck panel */
+.case-pair { display: flex; flex-direction: column; gap: 18px; }
+.case-pair .case { margin-bottom: 0; }
+.case-pair .case h3 { margin-bottom: 8px; }
+.case-pair .case p { color: var(--muted); margin: 0; }
+.case-more { margin-top: 10px; }
+.case-more a { font-size: 13px; }
 .metric {
   color: var(--accent);
   font-size: 13.5px;
