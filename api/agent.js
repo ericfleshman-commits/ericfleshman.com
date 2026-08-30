@@ -220,7 +220,6 @@ async function researchCompany(company) {
         query:
           "company overview, product, customers and recent news: " + company,
         max_results: 5,
-        search_context_size: "medium",
         max_tokens_per_page: 512,
       }),
       signal: AbortSignal.timeout(8000),
