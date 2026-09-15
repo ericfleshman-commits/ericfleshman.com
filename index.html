@@ -7,7 +7,7 @@
 <title>Eric Fleshman: I don't manage, I ship.</title>
 <meta name="description" content="AI-native GTM engineer. I build closed-loop revenue systems with AI agents at the core, the way engineers ship software.">
 <meta property="og:title" content="Eric Fleshman: I don't manage, I ship.">
-<meta property="og:description" content="AI-native GTM engineer. This site turns a company name into a first-pass GTM systems hypothesis.">
+<meta property="og:description" content="AI-native GTM engineer. I build closed-loop revenue systems with AI agents at the core, the way engineers ship software.">
 <link rel="canonical" href="https://ericfleshman.com/">
 <meta property="og:url" content="https://ericfleshman.com/">
 <meta property="og:image" content="https://ericfleshman.com/og-sunflower.png">
@@ -60,7 +60,7 @@
           <p class="lede">I build closed-loop revenue systems with AI agents at the core, the way engineers ship software.</p>
           <p class="open-line"><span class="open-dot"></span>Speaking: Vibranium AI outreach panel &middot; Aug 27 &middot; NYC</p>
           <div class="cta-row">
-            <a class="btn primary" href="#agent" data-panel="1">Run the loop on your company</a>
+            <a class="btn primary" href="#agent" data-panel="1">See the loop</a>
             <a class="btn" href="#work" data-panel="2">See the work</a>
           </div>
         </div>
@@ -68,36 +68,20 @@
 
       <section class="panel" id="agent" data-num="01">
         <div class="pinner">
-          <h2><span class="mono accent">01</span> The loop, run on your company</h2>
+          <h2><span class="mono accent">01</span> The loop, built to close</h2>
           <div class="agent-flow" aria-label="How the agent works">
             <div class="agent-step"><span class="mono agent-step-num">01</span><strong>Company name</strong><span>one input</span></div>
             <div class="agent-step"><span class="mono agent-step-num">02</span><strong>Public research</strong><span>Perplexity</span></div>
             <div class="agent-step"><span class="mono agent-step-num">03</span><strong>GTM hypothesis</strong><span>my rules, any model</span></div>
           </div>
-          <p class="agent-privacy">It runs on the company, not you. No person lookup, enrichment, or visitor record.</p>
-
-          <figure class="ghost-wrap" aria-label="A recorded run of the agent, replayed">
-            <div class="agent-box ghost" id="ghost-box">
-              <span class="mono ghost-chip">replay</span>
-              <div class="agent-input-row">
-                <div class="ghost-input mono" id="ghost-input" aria-hidden="true"><span class="ghost-caret"></span></div>
-                <span class="btn primary ghost-btn" id="ghost-btn" aria-hidden="true">Run the loop</span>
-              </div>
-              <div class="mono agent-status" id="ghost-status"></div>
-              <div class="agent-output" id="ghost-output" hidden></div>
-            </div>
-            <figcaption class="mono ghost-caption">One real run from July 2026, replayed exactly as it happened. Yours runs live below.</figcaption>
-          </figure>
-
           <div class="agent-box">
-            <div class="agent-input-row">
-              <input id="company-input" type="text" maxlength="80" placeholder="Your company name" autocomplete="organization">
-              <button id="run-loop" class="btn primary">Run the loop</button>
+            <span class="mono static-label">system sketch</span>
+            <div class="agent-output static-loop">
+              <div class="agent-q">A company signal enters the system.</div>
+              <div class="agent-a">Public evidence gives the system context. A GTM hypothesis turns that context into a concrete first build. The useful part is not the generated note. It is the loop behind it: clear inputs, bounded behavior, and a human who can inspect the result.</div>
             </div>
-            <div id="agent-status" class="mono agent-status" aria-live="polite"></div>
-            <div id="agent-output" class="agent-output" hidden></div>
           </div>
-          <p class="mono guardrail">Perplexity researches the public web. A model writes the systems hypothesis under my rules, and the provider is swappable by design. No cache, contact enrichment, visitor identification, outreach, or input storage by me. Both calls are key-locked and capped daily. If either fails, you get my email.</p>
+          <p class="mono guardrail">No person lookup, enrichment, visitor record, outreach, or input storage. The point is the build pattern: constrained inputs, public evidence, explicit guardrails, and a real failure path.</p>
         </div>
       </section>
 
@@ -236,7 +220,7 @@
       <footer class="panel panel-contact" id="contact" data-num="07">
         <div class="pinner">
           <h2><span class="mono accent">07</span> Contact</h2>
-          <p>The agent above is the demo. This is the human.</p>
+          <p>The systems above are the work. This is the human.</p>
           <div class="cta-row">
             <a class="btn primary btn-ic" href="mailto:eric.fleshman@gmail.com"><svg class="bicon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6L22 7"/></svg>Email</a>
             <a class="btn btn-ic" href="https://www.linkedin.com/in/eric-fleshman" target="_blank" rel="noopener"><svg class="bicon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.9c0-1.88-.03-4.3-2.62-4.3-2.63 0-3.03 2.05-3.03 4.17V23H8V8z"/></svg>LinkedIn</a>
@@ -254,8 +238,6 @@
 <script defer src="/_vercel/insights/script.js"></script>
 <script src="/nav.js?v=1"></script>
 <script src="/horizontal.js"></script>
-<script id="ghost-note" type="application/json">{"company": "Ramp", "note": "Ramp's clear focus on finance teams as its primary buyer suggests they have a defined target segment, particularly CFOs and finance operations leaders who seek to streamline workflow and manage spend effectively. This focus creates a sharp opportunity to enhance customer interactions through personalized onboarding and customer success initiatives tailored specifically for these finance professionals. These initiatives can drive product adoption and increase long-term customer value by ensuring that users experience immediate benefits from the platform. First system I'd build: a customer onboarding loop that integrates user feedback, enabling continuous improvement of the onboarding process based on customer needs and pain points."}</script>
-<script src="/ghost.js"></script>
 <script src="/app.js"></script>
 </body>
 </html>

@@ -208,7 +208,7 @@
       <h2>Build the harness before you trust the agent</h2>
       <div class="prose">
         <p>Reading a production harness changed the question I ask about an agent. The model still matters, but the harder questions are what the surrounding system lets it read, change, spend, expose, and claim it completed.</p>
-        <p>I used the same review on the live agent on my portfolio. That agent researches a company and writes a first-pass GTM systems hypothesis, but it cannot enrich a person, write to a CRM, or send outreach. Its narrowness is not a missing feature. It is the control boundary.</p>
+        <p>I used the same review on a portfolio-agent prototype. It accepted one company name and wrote a first-pass GTM systems hypothesis, but it could not enrich a person, write to a CRM, or send outreach. Its narrowness was the control boundary.</p>
       </div>
       <div class="check-grid">
         <article class="card check-card"><span class="check-num">01</span><h3>Scope</h3><p>What is the smallest input the agent needs? Remove access before adding instructions that ask the model to behave.</p></article>
@@ -220,14 +220,14 @@
         <article class="card check-card"><span class="check-num">07</span><h3>Proof</h3><p>What counts as done? Prefer tool evidence over confident prose, and never serve a canned success when the live path failed.</p></article>
         <article class="card check-card"><span class="check-num">08</span><h3>Stop</h3><p>How do you turn it off without shipping code? Give the system a kill switch and the user an honest failure state.</p></article>
       </div>
-      <h3>How the pattern translated to my public agent</h3>
-      <div class="table-scroll"><table class="compare-table"><thead><tr><th>Production harness pattern</th><th>My portfolio agent</th></tr></thead><tbody>
+      <h3>How the pattern translated to a portfolio-agent prototype</h3>
+      <div class="table-scroll"><table class="compare-table"><thead><tr><th>Production harness pattern</th><th>Portfolio-agent prototype</th></tr></thead><tbody>
         <tr><td>Hard capability boundary</td><td>No CRM writes, enrichment, contact lookup, or outbound messaging</td></tr>
         <tr><td>Central gate before action</td><td>One server endpoint accepts only a company name, with private inputs blocked before provider calls</td></tr>
         <tr><td>Mapped network paths</td><td>Perplexity receives the company for research, OpenRouter receives the research for synthesis, and analytics record pageviews only</td></tr>
         <tr><td>Usage accounting</td><td>A durable Upstash counter enforces the global daily generation cap</td></tr>
         <tr><td>Evidence over performance</td><td>No curated cache and no fake success response when research or synthesis fails</td></tr>
-        <tr><td>Operational stop</td><td>A server-side environment switch disables the endpoint without a code deployment</td></tr>
+        <tr><td>Operational stop</td><td>The prototype was removed rather than kept online without a clear use case</td></tr>
       </tbody></table></div>
       <div class="card provenance"><h3 class="flush">Source and limits</h3><p>This teardown is based on the public Grok Build source at commit <a href="https://github.com/xai-org/grok-build/commit/c68e39f60462f28d9be5e683d9cbe2c57b1a5027" target="_blank" rel="noopener">c68e39f</a>, published July 15, 2026. It describes that source snapshot, not every historical binary or server-side setting.</p><p class="source-note">Primary code paths: <a href="https://github.com/xai-org/grok-build/blob/c68e39f60462f28d9be5e683d9cbe2c57b1a5027/crates/codegen/xai-grok-shell/src/session/acp_session_impl/laziness_classifier.rs" target="_blank" rel="noopener">laziness classifier</a>, <a href="https://github.com/xai-org/grok-build/blob/c68e39f60462f28d9be5e683d9cbe2c57b1a5027/crates/codegen/xai-grok-shell/src/session/plan_mode.rs" target="_blank" rel="noopener">plan-mode state</a>, <a href="https://github.com/xai-org/grok-build/tree/c68e39f60462f28d9be5e683d9cbe2c57b1a5027/crates/codegen/xai-grok-shell/src/agent/subagent" target="_blank" rel="noopener">subagent coordinator</a>, and <a href="https://github.com/xai-org/grok-build/tree/c68e39f60462f28d9be5e683d9cbe2c57b1a5027/crates/codegen/xai-grok-shell/src/upload" target="_blank" rel="noopener">trace upload paths</a>.</p></div>
     </section>
