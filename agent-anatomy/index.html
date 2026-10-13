@@ -224,8 +224,8 @@
       <div class="table-scroll"><table class="compare-table"><thead><tr><th>Production harness pattern</th><th>Portfolio-agent prototype</th></tr></thead><tbody>
         <tr><td>Hard capability boundary</td><td>No CRM writes, enrichment, contact lookup, or outbound messaging</td></tr>
         <tr><td>Central gate before action</td><td>One server endpoint accepts only a company name, with private inputs blocked before provider calls</td></tr>
-        <tr><td>Mapped network paths</td><td>Perplexity receives the company for research, OpenRouter receives the research for synthesis, and analytics record pageviews only</td></tr>
-        <tr><td>Usage accounting</td><td>A durable Upstash counter enforces the global daily generation cap</td></tr>
+        <tr><td>Mapped network paths</td><td>The prototype sent a company name for research, then sent the resulting evidence to a writing model for synthesis</td></tr>
+        <tr><td>Usage accounting</td><td>The prototype used a durable counter to enforce a global daily generation cap</td></tr>
         <tr><td>Evidence over performance</td><td>No curated cache and no fake success response when research or synthesis fails</td></tr>
         <tr><td>Operational stop</td><td>The prototype was removed rather than kept online without a clear use case</td></tr>
       </tbody></table></div>
